@@ -1,0 +1,41 @@
+<%= content_tag :div, '',:class=>'spacer' %>
+<%= content_tag :div, id: 'accordion' do %>
+    <%= content_tag :h3 do %>
+      <%= link_to "CPU management", '#'  %>
+    <% end %>
+    <%= content_tag :div do %>
+        <%= content_tag :ul do %>
+            <%= content_tag :li, "Processors Type" do %>
+                <%= link_to 'Processors Type', processor_types_path %>
+            <% end %>
+            <%= content_tag :li, "Rams Type" %>
+            <%= content_tag :li, "HardDisk Type" %>            
+          <% end %>
+    <% end %>
+    <%= content_tag :h3 do %>
+      <%= link_to "Monitor management", '#'  %>
+    <% end %>
+    <%= content_tag :div do %>
+        <%= content_tag :ul do %>
+            <%= content_tag :li, "Monitors Type" %>
+          <% end %>
+    <% end %>
+    <%= content_tag :h3 do %>
+      <%= link_to "Other Accessories management", '#'  %>
+    <% end %>
+    <%= content_tag :div do %>
+        <%= content_tag :ul do %>
+            <%= content_tag :li, "Keyboards Type" %>
+            <%= content_tag :li, "Mouse Type" %>
+            <%= content_tag :li, "Head Sets Type" %>            
+          <% end %>
+    <% end %>
+    <%= content_tag :h3 do %>
+        <%= link_to "Vendor Management", '#' %>
+    <% end %>
+    <%= content_tag :div do %>
+        <%= content_tag :ul, do %>
+            <%= content_tag :li, 'Vendors' %>
+        <% end %>
+    <% end %>
+  <% end %>

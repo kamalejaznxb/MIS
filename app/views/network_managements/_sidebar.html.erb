@@ -1,0 +1,8 @@
+<%= content_tag :div, :class=>'left-bar-list' do  %>
+  <%= content_tag :ul do %>
+    <%= content_tag :li do %>
+      <%= link_to "Add new IP", new_network_management_path, :class=>'font-12'%>
+    <% end %>
+    <%= content_tag :li, "&nbsp".html_safe, :class=>"space-top-20 space-bottom-20"  %>
+  <% end %>
+<% end %>

@@ -1,0 +1,19 @@
+<% unless @ticket.comments.empty? %>
+  <%= tag :hr, :class=>'clear' %>
+  <%= tag :br %>
+  <% @ticket.comments.each do |comment|  %>
+    <%= content_tag :div, :class=>'clear space-bottom-10' do %>
+      <%= content_tag :h3, "Comment by : #{ comment.user }", :class=>'bottom-border space-bottom-10' %>
+      <%= content_tag :p, comment.message.html_safe, :class=>'' %>
+      <% if comment.attachment.exists? %>
+          <% if comment.attachment.content_type =~ /^image/ %>
+              <%= link_to comment.attachment.url, class: 'pic' do %>
+                  <%= image_tag comment.attachment.url :thumb %>
+              <% end %>
+          <% else %>
+              <%= link_to "Download", comment.attachment.url( :original, false ) %>
+          <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

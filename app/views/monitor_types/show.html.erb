@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @monitor_type.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @monitor_type.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_monitor_type_path(@monitor_type) %> |
+<%= link_to 'Back', monitor_types_path %>

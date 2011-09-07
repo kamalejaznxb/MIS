@@ -1,0 +1,14 @@
+
+<%= content_tag :div, :id=>'listings' do %>
+  <% @ips.each do |ip| %>
+    <%= content_tag :ul, :class=>"row", :id=>"centre-#{ ip.id }" do %>
+      <%= content_tag :li,  ip,:style=>"width:110px;" %>
+      <%= content_tag :li, ip.hall, :style=>"width:110px;" %>
+      <%= content_tag :li, ip.center, :style=>"width:80px;" %>
+      <%= content_tag :li, ip.city, :style=>"width:80px;" %>
+      <%= content_tag :li, ip.broadcast_address, :style=>"width:110px;" %>
+      <%= content_tag :li, ip.network_address, :style=>"width:110px;" %>
+      <%= content_tag :li, ip.netmask_address, :style=>"width:110px;" %>
+    <% end %>
+  <% end %>
+<% end %>

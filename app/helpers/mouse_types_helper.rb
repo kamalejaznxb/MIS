@@ -1,0 +1,2 @@
+module MouseTypesHelper
+end

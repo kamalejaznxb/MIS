@@ -1,0 +1,27 @@
+<%= content_tag :div, class: "space-left-10" do %>
+<%= simple_form_for @network_management do |f| %>
+  <%= f.input :ip, label: false, wrapper_html:{ class:"left" } do %>
+    <%= f.input :ip,
+      label_html: { class:"right" },
+        wrapper_html: { class:"width-auto" } %>
+        /
+        <%= f.input :ip_range,
+          input_html:{ class:"width-20" },
+            label: false,
+            wrapper_html:{ class:"width-auto" } %>
+            <%= f.button :submit,
+              type:"button",
+              class:"",
+              value:"Calculate"
+            %>
+
+            <% end %>
+        <%= f.input :hall, wrapper_html: { class: "hide ip-fields" }, required: "true" %>
+        <%= f.input :center, wrapper_html: { class: "hide ip-fields" } , required: "true" %>
+        <%= f.input :city, 
+		wrapper_html: { class: "hide ip-fields" }, 
+		required: "true" %>
+        <%= f.button :submit, class: "hide ip-fields", value:"Save" %>
+            
+          <% end %>
+<% end %>

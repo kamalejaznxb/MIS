@@ -1,0 +1,25 @@
+<%= content_tag :div, :class=>"under-row padding10 " do %>
+  <%= content_tag :h3, 'New User', :class=>'space-top-10 space-bottom-10' %>
+  <%= tag 'hr', :class=>'clear' %>
+  <%= simple_form_for @user, :html=>{:class=>'space-left-10' }, 
+	:multiple => true do |f|
+  %>
+    <%= f.input :full_name  %>
+    <%= f.input :username %>
+    <%= f.input :password %>
+    <%= f.association :user_role, :collection=>current_user.get_user_roles,:include_blank=>false %>
+    <%= f.association :dm,
+	as: :select ,
+	label: 'Report to',
+	collection: User.get_dm,
+	wrapper_html: { class: "#{@user.check_employee('DM')} employee-role dm" } %>
+    <%= f.input :tl_list, as: :select, 
+	collection: User.get_tl,
+	label: 'Report to',
+	wrapper_html: { class: "#{@user.check_employee('TL')} employee-role tl" }
+    %>
+    <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
+    or
+    <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+  <% end %>
+<% end %>

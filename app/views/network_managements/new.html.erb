@@ -1,0 +1,11 @@
+<%= content_for :sidebar do %>
+	<%= render partial: "sidebar_new" %>
+<% end %>
+<%= content_tag :div, '',:class=>'spacer' %>
+<%= render 'form' %>
+<%= content_for :js do %>
+  <%= javascript_include_tag 'network_managements/new' %>
+<% end %>
+<%= content_for :js do %>
+  <%#= javascript_include_tag 'tickets/index' %>
+<% end %>

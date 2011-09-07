@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @harddisk_type.name %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @harddisk_type.size %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @harddisk_type.description %>
+</p>
+
+<p>
+  <b>Capacity:</b>
+  <%= @harddisk_type.capacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_harddisk_type_path(@harddisk_type) %> |
+<%= link_to 'Back', harddisk_types_path %>

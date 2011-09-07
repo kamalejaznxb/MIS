@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MIS HELP DESK</title>
+    <%= stylesheet_link_tag  'reset','login','simple_form', 'show_for' %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div id="page-wrap">
+
+      <header id="header">
+
+        <%= content_tag :h1, "MIS HELPDESK", :class=>"logo" %>
+        <%= yield :header %>
+      
+
+      </header>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <section>
+        <div class="inner">
+          <%= yield %>
+        </div>
+
+      </section>
+    </div>
+    <%= javascript_include_tag "jquery.min" %>
+    <%= javascript_include_tag "jquery_ujs" %>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

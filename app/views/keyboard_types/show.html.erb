@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @keyboard_type.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @keyboard_type.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_keyboard_type_path(@keyboard_type) %> |
+<%= link_to 'Back', keyboard_types_path %>

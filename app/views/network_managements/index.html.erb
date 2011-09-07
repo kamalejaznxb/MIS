@@ -1,0 +1,22 @@
+<%= content_for :sidebar do %>
+  <%= render :partial=>"sidebar" %>
+<% end %>
+
+<%= content_tag :div, :class=>'menu-holder' do %>
+  <%= content_tag :div, :class=>'menu-inner' do %>
+    <%= content_tag :ul, :class=>'head', :id=>'main-nav' do %>
+      <%= content_tag :li, "IP", :style=>"width:110px;"   %>
+      <%= content_tag :li, "Hall", :style=>"width:110px;"  %>
+      <%= content_tag :li, "Center", :style=>"width:80px;"  %>
+      <%= content_tag :li, "City", :style=>"width:80px;"  %>
+      <%= content_tag :li, "Broadcast", :style=>"width:110px;"  %>
+      <%= content_tag :li, "Network Address", :style=>"width:110px;"  %>
+      <%= content_tag :li, "Subnet", :style=>"width:110px;"  %>
+    <% end %>
+  <% end %>
+<% end %>
+<%= content_tag :div, '',:class=>'spacer' %>
+<%= render :partial=>'list' %>
+<%= content_for :css do %>
+  <%= stylesheet_link_tag 'data_list' %>
+<% end %>

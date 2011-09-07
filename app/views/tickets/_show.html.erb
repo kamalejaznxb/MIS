@@ -1,0 +1,76 @@
+<%= content_tag :div, :class=>'show padding10 under-row bottom-border border-color' do  %>
+  <%= link_to 'Cancel', '#', :class=>'cancel right' %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :ticket_time, "Ticket Time" %>
+    <%= content_tag :p, @ticket.created_at, :class=>'left' %>
+  <% end %>
+
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :owner, "Owner" %>
+    <%= content_tag :p, @ticket.user, :class=>'left' %>
+  <% end %>
+
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :subject, "Subject" %>
+    <%= content_tag :p, @ticket.ticket_category, :class=>'left' %>
+  <% end %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :ip, "IP" %>
+    <%= content_tag :p, @ticket.ip, :class=>'left' %>
+  <% end %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :type, "Type" %>
+    <%= content_tag :p, @ticket.ticket_type, :class=>'left' %>
+  <% end %>
+
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :solution_time, "Solution Time" %>
+    <%= content_tag :p, "2011-04-12 10:00am", :class=>'left' %>
+  <% end %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :status, "Status" %>
+    <%= content_tag :p, @ticket.ticket_status, :class=>'left' %>
+  <% end %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :assigned_to, "Assigned to" %>
+    <%= content_tag :p, @ticket.assigned, :class=>'left' %>
+  <% end %>
+  <%= tag :hr, :class=>'clear' %>
+  <%= tag :br %>
+  <%= content_tag :div, :class=>'clear space-bottom-10' do %>
+    <%= content_tag :h3, "Description", :class=>'bottom-border space-bottom-10' %>
+    <%= content_tag :p, @ticket.description.html_safe, :class=>'' %>
+  <% end %>
+  <% if @ticket.attachment.exists? %>
+    <%= content_tag :div, :class=>'clear space-bottom-10' do %>
+        <%= content_tag :h3, "Attachment", :class=>'bottom-border space-bottom-10' %>
+        <% if @ticket.attachment.content_type =~ /^image/ %>
+            <%= link_to @ticket.attachment.url, class: 'pic' do %>
+                <%= image_tag @ticket.attachment.url :thumb %>
+            <% end %>
+        <% else %>
+            <%= link_to "Download", @ticket.attachment.url( :original, false ) %>
+        <% end %>
+    <% end %>
+  <% end %>
+  <%= render :partial=> 'comment' %>
+  <% if @ticket.user.eql? current_user %>	
+   <%= simple_form_for @ticket,
+     :url=>url_for({:action=>"update", :controller=>"tickets"}), :remote=>true do |f| %>
+     <%= f.input :ratings,
+       :as=>:radio,
+       :collection=>1..5,
+       :include_blank=>false,
+       :checked=>3,
+       :input_html=>{ :class=>'stars-wrapper' },
+       :wrapper_html=>{ :class=>'stars' }
+     %>
+     <%= f.button :submit, 'Solved', :class=>'submit width-auto margin-0' %>
+     <%= f.button :submit, 'Not Solved', :class=>'submit width-auto margin-0' %> or
+     <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+   <% end %>
+ <% end %>
+
+<% end %>
+
+

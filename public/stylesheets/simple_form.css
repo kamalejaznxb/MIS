@@ -1,0 +1,310 @@
+
+.simple_form input[type="tel"],.simple_form input[type="text"], .simple_form input[type="email"], .simple_form input[type="password"]
+{
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border-bottom-color: #333333;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-left: none;
+    border-right: none;
+    border-top-width: 0;
+    font-size: 14px;
+    max-width: 35em;
+    padding-bottom: 0.3em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    padding-top: 0.3em;
+    width: 350px;
+}
+.simple_form textarea, .simple_form select, .simple_form input {
+
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border-bottom-color: #333333;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-left: none;
+    border-right: none;
+    border-top-width: 0;
+    font-size: 12px;
+    padding-bottom: 0.3em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    padding-top: 0.3em;
+    -webkit-border-bottom-colors: none;
+    -webkit-border-image: none;
+    -webkit-border-left-colors: none;
+    -webkit-border-right-colors: none;
+    -webkit-border-top-colors: none;
+}
+.simple_form label{
+    color: #666666;
+    display: block;
+    float: left;
+    line-height: 1.9;
+    width: 110px;
+
+}
+.simple_form label {
+    cursor: default;
+}
+.simple_form div.input{
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 5px;
+
+}
+div.radio >span{
+    display: block;
+    width: 100px;
+    float:left;
+}
+div.radio >span>input{
+    display: inline;
+    width: 30px;
+    float:left;
+}
+div.radio >span>label{
+    color: #666666;
+    display: block;
+    float: left;
+    width: 70px;
+}
+.simple_form .submit.button{
+    margin-bottom: 0;
+    margin-left: 132px;
+    margin-right: 0;
+    margin-top: 0;
+}
+.submit.button, .submit.button.up {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #00C63C;
+    background-image: -moz-linear-gradient(#00D438, #00B343);
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    text-align: center;
+}
+.submit.button, .submit.button.up {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #00C63C;
+    background-image: -moz-linear-gradient(#00D438, #00B343);
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    text-align: center;
+}
+.submit.button {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-box-sizing: content-box;
+    -moz-user-select: none;
+    border-bottom-color: #00A43E;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #00A43E;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: solid;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: 1px;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #00A43E;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: solid;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 1px;
+    border-top-color: #00A43E;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+
+    padding-bottom: 5px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 5px;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.45);
+}
+#login input[type="text"], #login input[type="email"], #login input[type="password"]
+{
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border-bottom-color: #333333;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-left: none;
+    border-right: none;
+    border-top-width: 0;
+    font-size: 14px;
+    max-width: 35em;
+    padding-bottom: 0.3em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    padding-top: 0.3em;
+    width: 350px;
+}
+
+#login input[type="text"]:focus, #login input[type="email"]:focus, #login input[type="password"]:focus {
+    background-attachment: scroll;
+    background-clip: border-box;
+    /*    background-color: #FFFFFF;*/
+    outline: none;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+}
+#login .submit.button{
+    margin-bottom: 0;
+    margin-left: 105px;
+    margin-right: 0;
+    margin-top: 0;
+}
+
+.primary {
+    float: left;
+    width: 74%;
+}
+form {
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+fieldset.classic-fieldset {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-bottom-color: -moz-use-text-color;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: -moz-use-text-color;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: none;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: 0;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: -moz-use-text-color;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: none;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 0;
+    border-top-color: -moz-use-text-color;
+    border-top-style: none;
+    border-top-width: 0;
+    font-size: 14px;
+}
+.easy-form label {
+    color: #666666;
+    display: block;
+    float: left;
+    line-height: 1.9;
+    width: 80px;
+}
+label {
+    cursor: default;
+}
+fieldset {
+    display: block;
+}
+input, #txtarea, #historytxt {
+    font-family: "Helvetica Neue",Arial,Helvetica,Arimo,FreeSans,"Nimbus Sans","Phetsarath OT",Malayalam,"Gargi_1.7",sans-serif;
+}
+
+input:-moz-read-write, textarea:-moz-read-write {
+    -moz-user-modify: read-write !important;
+}
+.note {
+    border-top: 1px solid #AAAAAA;
+    display: inline-block;
+    min-height: 50px;
+    padding-bottom: 15px;
+    position: relative;
+    width: 100%;
+}
+.radio-fix-label > span {
+    width: auto !important;
+}
+.radio-fix-label > span > label{
+    width: auto !important;
+}
+.simple_form textarea.sub-form{
+    width: 98%;
+}
+.simple_form .button.new-ticket{
+    margin-left: 138px;
+}
+.simple_form abbr{
+    color: #EE0000;
+}
+.simple_form input.width-20{ width: 20px; }
+.simple_form textarea{ color: #737373;  max-height: 140px; }
+.under-row{ /*background-color: #F9FAF9;*/}
+.simple_form textarea:focus{ color: #000 }
+.simple_form div.input.hide{ display: none; }

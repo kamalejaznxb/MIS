@@ -1,0 +1,19 @@
+
+<%= content_tag :div, :id=>"login" do  %>
+  <%= content_tag :h1, "Please sign in", :class=>"space-bottom-inner-25"  %>
+
+    <%= content_tag :div, :class=>"primary easy-form" do  %>
+      <%= simple_form_for :user,
+        :url=>url_for({:action=>"create", :controller=>"sessions"}) do |f|   %>
+        <%= content_tag :fieldset, :class=>"classic-fieldset" do %>
+          <%= f.error_notification %>
+
+
+          <%= f.input :login, :as=>:string,:wrapper_html=>{:class=>'display-inline-block width-100-percent space-bottom-15'} %>
+          <%= f.input :password, :as=>:password,:wrapper_html=>{:class=>'display-inline-block width-100-percent space-bottom-15'} %>
+          <%= f.button "submit", :value=>"Sign in", :class=>"submit button width-auto display-inline-block" %>
+        <% end %>
+
+      <% end %>
+    <% end %>
+<% end %>

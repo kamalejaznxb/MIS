@@ -1,0 +1,5 @@
+$('.cancel').trigger('click');
+$('<%= escape_javascript render :partial=>'tickets/MIS/show' %>').insertAfter('#centre-<%= params[:id] %>').show('blind');
+$(".stars-wrapper").rating();
+add_row_class('#centre-<%= params[:id] %>');
+fancy_box();

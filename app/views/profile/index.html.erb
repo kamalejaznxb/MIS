@@ -1,0 +1,35 @@
+<%= content_for :menu do %>
+   <%= render :partial=>'/shared/employee_menu' %>
+<% end %>
+
+<%= content_tag :div, :class=>'show padding-top-10 padding-bottom-5 under-row bottom-border border-color' do %>
+  <%= content_tag :div, :class=>'clear-both bottom-border' do %>
+     <%= content_tag :h3, "User Profile",
+         :class=>'space-left-10  space-bottom-10' %>
+  <% end %>
+  <%= content_tag :div, :class=>'clear-both sub-value padding-left-10' do %>
+    <%= label_tag :user_name, "User name" %>
+    <%= content_tag :p, current_user.username, :class=>'left' %>
+  <% end %>
+
+  <%= content_tag :div, :class=>'clear-both sub-value padding-left-10' do %>
+    <%= label_tag :full_name, "Full Name" %>
+    <%= content_tag :p, current_user, :class=>'left' %>
+  <% end %>
+
+  <%= content_tag :div, :class=>'clear-both sub-value padding-left-10' do %>
+    <%= label_tag :email, "Email" %>
+    <%= content_tag :p, '', :class=>'left' %>
+  <% end %>
+
+  <%= content_tag :div, :class=>'clear-both sub-value padding-left-10' do %>
+    <%= label_tag :user_role, "User Role" %>
+    <%= content_tag :p, current_user.user_role, :class=>'left' %>
+  <% end %>
+
+  <%= content_tag :div, :class=>'clear sub-value padding-left-10' do %>
+    <%= label_tag :center_hall, "Center Hall" %>
+    <%= content_tag :p, '', :class=>'left' %>
+  <% end %>
+  <%= render partial: 'change_password_form' %>
+<% end %>

@@ -1,0 +1,6 @@
+$('.cancel').trigger('click');
+$('<%= escape_javascript render :partial=>'tickets/form'  %>')
+.insertAfter('.inner').wrap('<div id="popup" />');
+new_ticket();
+set_position();
+start_rich();

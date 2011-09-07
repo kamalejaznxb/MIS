@@ -1,0 +1,67 @@
+<%= content_tag :div, :class=>'left-bar-list' do  %>
+  <%= content_tag :ul do %>
+    <%= content_tag :li do %>
+      <%= link_to "Add new ticket", new_ticket_path, :class=>'font-12',:remote=>true %>
+    <% end %>
+    <%= content_tag :li, "&nbsp".html_safe, :class=>"space-top-20 space-bottom-20"  %>
+
+    <%= content_tag :li do %>
+      <%= content_tag :h3, "Show by" %>
+    <% end %>
+    <%= content_tag :li do %>
+      <%= link_to "In Progress (#{ count_tickets 'ticket_status', 'In Progress' })",
+        filter_tickets_path(:filter_type=>'ticket_status', :value=>'In Progress'), :remote=>true %>
+    <% end %>
+    <%= content_tag :li do %>
+      <%= link_to "Solved (#{ count_tickets 'ticket_status', 'Solved' })",
+        filter_tickets_path( :filter_type=>'ticket_status', :value=>'Solved'), :remote=>true %>
+    <% end  %>
+    <%= content_tag :li do %>
+      <%= link_to "New (#{ count_tickets 'ticket_status', 'New' })",
+        filter_tickets_path(:filter_type=>'ticket_status', :value=>'New'), :remote=>true  %>
+    <% end  %>
+
+
+  <% end %>
+
+<% end %>
+<%#= simple_form_for :search_date, :url=>"/" do |f| %>
+<%#= f.input :from, :as=>:string, :input_html=>{ :class=>"datepicker" }  %>
+<%#= f.input :to, :as=>:string, :input_html=>{ :class=>"datepicker" } %>
+<%#= f.button 'submit', 'Search', :class=>'margin-0 width-auto submit' %>
+<%# end %>
+
+
+<%#= content_tag :div, :id=>'sidebar' do %>
+
+<%#= content_tag :dl do %>
+<%#= content_tag :dt do %>
+<%#= content_tag :h2, "Status", :class=>'space-bottom-5'  %>
+<%# end %>
+<%#= content_tag :dd do  %>
+<%#= link_to "In Process (5)", '#', :class=>'space-bottom-5 display-block clear' %>
+<%#= link_to "Waiting for Response (5)", '#', :class=>'space-bottom-5 display-block clear' %>
+<%#= link_to "On Hold (5)", '#' %>
+<%# end %>
+<%# end %>
+
+<%#= tag :br %>
+
+<%#= content_tag :dl do %>
+<%#= content_tag :dt do %>
+<%#= content_tag :h2, "Filter", :class=>'space-bottom-5' %>
+<%# end %>
+<%#= content_tag :dd do  %>
+<%#= link_to "This Month", '#', :class=>'space-bottom-5 display-block clear'%>
+<%#= link_to "All", '#' %>
+<%# end %>
+<%# end %>
+<%#= tag :br %>
+<%#= content_tag :h2, "Date Range:" %>
+<%#= simple_form_for :search_date, :url=>"/" do |f| %>
+<%#= f.input :from, :as=>:string, :input_html=>{ :class=>"datepicker" }  %>
+<%#= f.input :to, :as=>:string, :input_html=>{ :class=>"datepicker" } %>
+<%#= f.button 'submit', 'Search', :class=>'margin-0 width-auto submit' %>
+<%# end %>
+
+<%# end %>

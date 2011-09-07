@@ -1,0 +1,45 @@
+<%= content_tag :div, :class=>"footer-inner" do %>
+  <%= content_tag :div, :class=>"footer-inside" do %>
+    <%= content_tag :div, :id=>"bottom-nav" do %>
+      <%= content_tag :ul do %>
+        <%#= content_tag :li, :class=>'under-bottom-option' do %>
+          <%#= link_to 'Filter', '#', :class=>'bottom-option' %>
+          <%#= content_tag :ul, :class=>'under-bottom-nav hide' do %>
+            <%#= content_tag :li do %>
+              <%#= content_tag :h3, 'Status' %>
+            <%# end  %>
+            <%#= content_tag :li do %>
+              <%#= link_to 'In Process (5)', '#' %>
+            <%# end %>
+            <%#= content_tag :li do %>
+              <%#= link_to 'Waiting for Response (5)', '#' %>
+            <%# end %>
+            <%#= content_tag :li do %>
+              <%#= link_to 'On Hold (5)', '#' %>
+            <%# end %>
+          <%# end %>
+        <%# end %>
+        <%= content_tag :li do %>
+          <%= content_tag :span do %>
+            Total tickets
+        <% end %>
+        <%= content_tag :span, "(#{if params.has_key? :filter_type then count_tickets( params[:filter_type], params[:value]) else count_tickets end })" %>
+
+      <% end %>
+      <%#= simple_form_for :search_date, :url=>"/", :html=>{ :class=>'display-inline' } do |f| %>
+      <%#= content_tag :li do %>
+      <%#= f.input :from, :as=>:string, :label_html=>{:class=>'width-auto padding-0'}, :wrapper_html=>{ :class=>'space-left-10' },  :input_html=>{ :class=>"datepicker width-90 " }  %>
+      <%# end %>
+      <%#= content_tag :li do %>
+      <%#= f.input :to, :as=>:string, :input_html=>{ :class=>"datepicker width-90" }, :wrapper_html=>{ :class=>'space-left-10' }, :label_html=>{ :class=>'width-auto padding-0' }  %>
+      <%# end %>
+
+      <%#= content_tag :li do %>
+      <%#= f.button 'submit', 'Search', :class=>'margin-0 width-auto submit' %>
+      <%# end %>
+      <%# end %>
+    <% end %>
+  <% end %>
+<% end %>
+<% end %>
+<%= content_tag :div, '', :class=>'footer-shadow' %>

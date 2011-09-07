@@ -1,0 +1,7 @@
+<%= content_tag :div, :class=>'left-bar-list' do  %>
+  <%= content_tag :ul do %>
+    <%= content_tag :li do %>
+      <%= link_to "Add new Processor Type", new_processor_type_path, :class=>'font-12',:remote=>true %>
+    <% end %>
+  <% end %>
+<% end %>

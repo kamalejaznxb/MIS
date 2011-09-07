@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MIS HELPDESK</title>
+    <%= stylesheet_link_tag 'application', 'reset', 'simple_form',
+      'show_for', 'global', 'tabs', 'jquery-ui-1.8.10.custom',
+      'jquery.rating', 'sidetabs', 'colorbox', 'jquery.fancybox-1.3.4' %>
+    <%= yield :css %>
+    <%= csrf_meta_tag  %>
+  </head>
+  <body>
+    <div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>
+    <div id="flash_notice" class="notice"></div>
+
+  <section class="container">
+    <header>
+      <hgroup id="menu-grey">
+        <%= link_to "", "/", :id=>"logo", :title=>"MIS HELPDESK" %>
+        <hgroup id="app-status">
+          <%= content_tag :span, "Welcome - #{  current_user }",:id=>"user-name" %>
+          <% if current_user.can_user_do? :configuration %>
+              | <%= link_to 'Configuration', configuration_path %>
+          <% end %>
+          | <%= link_to "Profile", profile_index_path %>
+          | <%= link_to "Logout", logout_path %>
+        </hgroup>
+        <nav id="main-tabs">
+          <%= render :partial=>render_menu unless render_menu== false %>
+	  <%= yield :menu %>
+        </nav>
+
+      </hgroup>
+
+      <!-- end of menu strip -->
+    </header>
+    <!-- end of header -->
+    <%= content_tag :aside, :id=>'left-bar' do %>
+      <%= yield :sidebar %>
+    <% end %>
+    <%= content_tag :div, :class=>'holder' do%>
+
+      <%= content_tag :div, :class=>'inner' do %>
+        <%= content_tag :section, :class=>'content' do %>
+          <%= yield %>
+        <% end  %>
+      <% end %>
+
+    <% end %>
+
+
+    <%= content_tag :footer, :id=>'bottom-footer', :class=>'browse' do %>
+      <%= yield :footer %>
+    <% end %>
+  </section>
+  <div id='loader' style="display: none;">&nbsp;</div>
+  <%= javascript_include_tag "jquery.min" %>
+  <%= javascript_include_tag "jquery_ujs" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery-ui-1.8.10.custom.min" %>
+  <%= javascript_include_tag "jquery.rating" %>
+  <%= javascript_include_tag "highcharts/highcharts.js" %>
+  <%= javascript_include_tag "jquery.colorbox" %>
+  <%= javascript_include_tag "jquery.form" %>
+  <%= javascript_include_tag "jquery.remotipart" %>
+  <%= javascript_include_tag "jquery.fancybox-1.3.4.pack" %>
+  <%= yield :js %>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<%= content_tag :div, :class=>"under-row padding10 " do %>
+  <%= content_tag :h3, 'New Ticket', :class=>'space-top-10 space-bottom-10' %>
+  <%= tag 'hr', :class=>'clear' %>
+  <%= simple_form_for @ticket, html: { class: 'space-left-10',
+      multipart: true } do |f|
+  %>
+    <%= f.input :t_type,
+      :as=>:radio,
+      :label=>'Type',
+      :collection=>["Technical", "New hardware Request"],
+      :wrapper_html=>{:class=>"radio-fix-label"},
+      :checked=>'Technical'  %>
+    <%= f.input :issue,
+      :as=>:select,
+      :label=>'Related',
+      :collection=>TicketCategory.technical_issue.first.sub_category,
+      :include_blank=>false,
+      :wrapper_html=>{:class=>'technical-issues'} %>
+    <%= f.input :issue_type,
+      :as=>:select,
+      :label=>'Category',
+      :collection=>TicketCategory.internet_issue.first.sub_category,
+      :include_blank=>false,
+      :wrapper_html=>{ :class=>'internet-issue' } %>
+    <%= f.input :issue_type,
+      :as=>:select,
+      :label=>'Category',
+      :collection=>TicketCategory.software_issue.first.sub_category,
+      :include_blank=>false,
+      :wrapper_html=>{ :class=>'software-issue hide' } %>
+    <%= f.input :issue_type,
+      :as=>:select,
+      :label=>'Category',
+      :collection=>TicketCategory.hardware_issue.first.sub_category,
+      :include_blank=>false,
+      :wrapper_html=>{ :class=>'hardware-issue hide' }  %>
+    <%= f.input :description,
+      :as=>:text,
+      :input_html=>{ :rows=>'7',
+      :cols=>'40'}#,
+ #     :onfocus=>"this.value=''",
+#      :value=>"Enter Message here",
+#      :onblur=>"if (this.value == '') this.value ='Enter Message here'" } 
+    %>
+    
+    <%= f.input :attachment, :as=>:file, :required=>false %>
+    <%= f.button 'submit', :value=>'Save', :class=>'new-ticket  submit width-auto margin-0' %>
+    or
+    <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+  <% end %>
+<% end %>

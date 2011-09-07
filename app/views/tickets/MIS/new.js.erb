@@ -1,0 +1,4 @@
+$('.cancel').trigger('click');
+$('<%= escape_javascript render :partial=>'/tickets/MIS/form' %>').insertAfter('#centre-<%= params[:ticket_id] %>').show('blind');
+add_row_class('#centre-<%= params[:ticket_id] %>');
+start_rich();

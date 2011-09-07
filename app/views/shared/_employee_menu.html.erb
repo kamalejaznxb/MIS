@@ -1,0 +1,7 @@
+<%=  content_tag :ul, :class=>"tabs" do %>
+  <%= content_tag :li do %>
+    <%= link_to "My Tickets",
+      root_path,
+      :class=>current_page?( root_path )||current_page?( tickets_path ) ? "current" : "" %>
+  <% end %>
+<% end %>

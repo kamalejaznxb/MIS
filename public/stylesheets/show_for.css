@@ -1,0 +1,12 @@
+label {
+    color: #666666;
+    display: block;
+    float: left;
+    font-weight: bold;
+    line-height: 1.9;
+    width: 125px;
+    padding-right: 30px
+}
+label {
+    cursor: default;
+}

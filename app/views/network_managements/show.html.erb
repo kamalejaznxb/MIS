@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ip:</b>
+  <%= @network_management.ip %>
+</p>
+
+<p>
+  <b>Hall:</b>
+  <%= @network_management.hall %>
+</p>
+
+<p>
+  <b>Center:</b>
+  <%= @network_management.center %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @network_management.city %>
+</p>
+
+
+<%= link_to 'Edit', edit_network_management_path(@network_management) %> |
+<%= link_to 'Back', network_managements_path %>

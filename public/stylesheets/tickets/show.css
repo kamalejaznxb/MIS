@@ -1,0 +1,26 @@
+/* 
+    Document   : show
+    Created on : Jul 14, 2011, 5:21:32 PM
+    Author     : kamal
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.stars>span label{
+    display: none !important;
+}
+.stars>span{
+    width: auto !important;
+}
+.sub-value{
+    border-bottom: 1px dotted #EEEEEE;
+    min-height: 20px;
+}
+.sub-value p{
+    margin-top: 5px;
+}

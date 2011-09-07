@@ -1,0 +1,36 @@
+
+<%= content_tag :div, :class=>'clear space-bottom-10  space-left-20 space-top-10' do %>
+  <%= content_tag :ul, :class=>'display-inline' do %>
+    <%= content_tag :li, :class=>'display-inline' do %>
+      <%= link_to 'Today', dashboard_path(:type=>'list', :value=>'today'),
+        :remote=>true, :class=>'button' %>
+    <% end %>
+    <%= content_tag :li, :class=>'display-inline' do %>
+      <%= link_to 'Week', dashboard_path(:type=>'list', :value=>'week'),
+        :remote=>true, :class=>'button' %>
+    <% end %>
+    <%= content_tag :li, :class=>'display-inline' do  %>
+      <%= link_to 'Month', dashboard_path(:type=>'list', :value=>'month'), :remote=>true,:class=>'button' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render :partial=>'user_list' %>
+
+
+<%= content_tag :div, :class=>'clear space-bottom-10 space-left-20 space-top-10' do %>
+  <%= content_tag :ul, :class=>'display-inline' do %>
+    <%= content_tag :li, :class=>'display-inline' do %>
+      <%= link_to 'Today', dashboard_path(:type=>'chart', :value=>'today'), :class=>'button chart-button' %>
+    <% end %>
+    <%= content_tag :li, :class=>'display-inline' do %>
+      <%= link_to 'Week', dashboard_path(:type=>'chart', :value=>'week'), :class=>'button chart-button' %>
+    <% end %>
+    <%= content_tag :li, :class=>'display-inline' do  %>
+      <%= link_to 'Month', dashboard_path(:type=>'chart', :value=>'month'),
+        :class=>'chart-button button' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+

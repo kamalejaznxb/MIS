@@ -1,0 +1,45 @@
+
+<%= content_tag :div, :class=>'left-bar-list' do  %>
+  <%= content_tag :ul do %>
+    <%= content_tag :li do %>
+      <%= link_to "Add new Ticket", new_ticket_path, :class=>'font-12 space-bottom-10', :remote=>true %>
+    <% end %>
+    <%= content_tag :li do %>
+        <%= link_to "My Tasks",
+          tickets_path( :my_tasks=>true ),
+          :class=>'font-12',
+          :remote=>true %>
+    <% end %>
+    <%= content_tag :li, "&nbsp".html_safe, :class=>"space-top-20 space-bottom-20"  %>
+
+    <%= content_tag :li do %>
+      <%= content_tag :h3, "Filter" %>
+    <% end %>
+    <%= content_tag :li do %>
+      <%= link_to "New (#{ count_tickets 'ticket_status', 'New' })",
+        filter_tickets_path(:filter_type=>'ticket_status', :value=>'New'), :remote=>true %>
+    <% end %>
+    <%= content_tag :li do %>
+      <%= link_to "On Hold (#{ count_tickets 'ticket_status', 'On Hold' })",
+        filter_tickets_path(:filter_type=>'ticket_status', :value=>'On Hold'), :remote=>true , :class=>'space-bottom-5 display-block clear' %>
+    <% end  %>
+    <%= content_tag :li do %>
+      <%= link_to "Solved (#{ count_tickets 'ticket_status', 'Solved' })",
+        filter_tickets_path(:filter_type=>'ticket_status', :value=>'Solved'), :remote=>true , :class=>'space-bottom-5 display-block clear' %>
+    <% end  %>
+
+    <%= content_tag :li, "&nbsp".html_safe, :class=>"space-top-20 space-bottom-20"  %>
+
+    <%= content_tag :li do %>
+      <%= content_tag :h3, "Assigned to" %>
+    <% end %>
+    <% User.mis_staff.each do |user| %>
+      <%= content_tag :li do %>
+        <%= link_to "#{user} (#{ count_tickets 'Users', user.id })",
+          filter_tickets_path(:filter_type=>'Users', :value=>user.id),
+          :remote=>true,  :class=>'space-bottom-5 display-block clear' %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+<% end %>

@@ -1,0 +1,20 @@
+<%= content_tag :div, :class=>"under-row padding10 bottom-border border-color " do %>
+  <%= simple_form_for [@ticket, @comment],
+    :url=>url_for({:action=>"create", :controller=>"comments"}),
+    :class=>"note", :remote=>true do |f| %>
+    <%= tag :br %>
+    <%= content_tag :h2, "New Comment", :class=>'bottom-border' %>
+    <%= tag :br %>
+    <%= f.input :attachment,
+        as: :file %>
+
+
+    <%= f.input :message,
+      :as=>:text,
+      :label=>false,
+      :input_html=>{ :cols=>'50', :rows=>'5', :class=>'sub-form' }  %>
+    <%= f.button 'submit', :value=>'Save', :class=>'space-top-10  submit width-auto margin-0' %>
+    or
+    <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+  <% end %>
+<% end %>

@@ -1,0 +1,270 @@
+        /*
+    Document   : global
+    Created on : Nov 12, 2010, 2:30:14 PM
+    Author     : NEXTBRIDGE\nazar.hussain
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+/* =Global */
+
+* {
+    font-family: sans-serif;
+    font-size: 12px;
+    color: #111111;
+}
+
+a {
+    color: #00a6ec;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0AA9E8;
+    text-decoration: underline;
+}
+
+.alert {
+    background-color: rgba(255, 150, 150, 0.5);
+    position: fixed;
+    left: 25%;
+    top: 0;
+    width: 50%;
+    display: block;
+    z-index: 1000;
+    line-height: 30px;
+    text-align: center;
+}
+
+.notice {
+    background-color: rgba(150, 255, 150, 0.5);
+    position: fixed;
+    left: 25%;
+    top: 0px;
+    width: 50%;
+    display: block;
+    z-index: 1000;
+    line-height: 30px;
+    text-align: center;
+}
+
+.ver-gap {
+    display: block;
+    clear: both;
+    height: 10px;
+    border: none;
+}
+
+.ver-gap-small {
+    display: block;
+    clear: both;
+    height: 5px;
+    border: none;
+}
+
+.left-border {
+    border-left: #AAA solid 1px;
+}
+
+
+section.main > article > header h1 {
+    float: left;
+}
+
+section.main > article > header {
+    margin-bottom: 15px;
+}
+
+
+
+.right {
+    float: right;
+    margin-left: 10px;
+}
+
+.left {
+    float: left;
+}
+
+.hor-gap {
+    width: 2%;
+    border: none;
+    background: none;
+    display: block;
+    float: left;
+}
+
+.padding10 {
+    padding: 10px;
+}
+.space-5{ margin: 5px; }
+.space-10{ margin: 10px; }
+.space-15{ margin: 15px; }
+.padding-top-5{ padding-top: 5px; }
+.padding-top-10{ padding-top: 10px; }
+.padding-top-15{ padding-top: 15px; }
+.padding-left-5{ padding-left: 5px; }
+.padding-left-10{ padding-left: 10px; }
+.padding-left-15{ padding-left: 15px; }
+.padding-bottom-5{ padding-bottom: 5px; }
+.padding-bottom-10{ padding-bottom: 10px; }
+.padding-bottom-15{ padding-bottom: 15px; }
+.space-top-5{ margin-top: 5px; }
+.space-top-10{ margin-top: 10px; }
+.space-top-15{ margin-top: 15px; }
+.space-top-20{ margin-top: 20px; }
+.space-right-5{ margin-right: 5px; }
+.space-right-10{ margin-right: 10px; }
+.space-right-15{ margin-right: 15px; }
+.space-right-20{ margin-right: 20px; }
+.space-bottom-5{ margin-bottom: 5px; }
+.space-bottom-10{ margin-bottom: 10px; }
+.space-bottom-15{ margin-bottom: 15px; }
+.space-bottom-20{ margin-bottom: 20px; }
+.space-left-5{ margin-left: 5px; }
+.space-left-10{ margin-left: 10px; }
+.space-left-15{ margin-left: 15px; }
+.space-left-20{ margin-left: 20px; }
+.font-12{ font-size: 12px; }
+.border { border-style: solid; border-width: 1px; }
+.border-color{ border-color: #AAA; }
+.border-round{ border-radius: 16px 16px 16px 16px; }
+.bottom-border{ border-bottom: 1px dotted #AAAAAA; }
+.bottom-border-2{ border-bottom: 2px dotted #AAAAAA; }
+.bottom-border-solid{ border-bottom: 1px solid #AAAAAA; }
+.bottom-border-solid-2{ border-bottom: 2px solid #AAAAAA; }
+
+.top-border{ border-top: 1px solid #AAAAAA; }
+.top-border-2{ border-top: 2px solid #AAAAAA; }
+
+.clear { border: none; clear: both; }
+.display-block{ display: block; }
+.display-inline{ display: inline; }
+/*header > h1 {
+    float: left;
+    display: inline-block;
+}*/
+
+h1 {
+    font-size: 14px;
+}
+
+h2 {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+
+
+div.links {
+    margin-left: 120px;
+    float: left;
+}
+
+
+
+
+#errors {
+    background-color: #fef1ec;
+}
+
+.actions {
+    margin-left: 120px;
+}
+
+.actions input {
+    margin-right: 0px;
+}
+
+.actions a {
+    vertical-align: bottom;
+}
+
+#user-name {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+label.string, label.select, label.optional, label.required {
+    color: #777;
+    font-size: 12px;
+}
+
+.pagination {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.display-filter {
+    margin-left: 0;
+    position: absolute;
+    margin-top: -20px;
+}
+
+.tooltip {
+    display: none;
+    background-color: #E5E5E5;
+    border: 1px solid #777;
+    font-size: 12px;
+    height: auto;
+    width: 25px;
+    color: #000;
+}
+
+aside#left-bar input[type="text"] {
+    background-color: #FFF;
+    border: #BBBBBB solid 1px;
+    font-size: 12px;
+    color: #222;
+    margin-right: 0;
+    width: 139px;
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border-bottom-color: #333333;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-left: none;
+    border-right: none;
+    border-top-width: 0;
+    font-size: 14px;
+    max-width: 35em;
+    padding-bottom: 0.3em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    padding-top: 0.3em;
+}
+
+aside#left-bar .simple_form {
+    display: inline-block;
+}
+
+.thick-view-options {
+    float: right;
+}
+
+dd.content p {
+    margin-bottom: 0;
+}
+.active.button{ font-weight: bold; }

@@ -1,0 +1,5 @@
+$('.cancel').trigger('click');
+$('<%= escape_javascript render :partial=>'users/form'  %>')
+.insertAfter('.inner').wrap('<div id="popup" />');
+set_position();
+$('#user_user_role_id').trigger('change');

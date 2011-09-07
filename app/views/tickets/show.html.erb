@@ -1,0 +1,69 @@
+<%= content_tag :div, :class=>'show padding10 under-row space-bottom-10 ' do  %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :ticket_time, "Ticket Time" %>
+    <%= content_tag :p, "2011-04-12 10:00am", :class=>'left' %>
+  <% end %>
+
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :owner, "Owner" %>
+    <%= content_tag :p, "Kamal", :class=>'left' %>
+  <% end %>
+
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :subject, "Subject" %>
+    <%= content_tag :p, "Please upgrade the PC", :class=>'left' %>
+  <% end %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :ip, "IP" %>
+    <%= content_tag :p, "10.112.52.125", :class=>'left' %>
+  <% end %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :type, "Type" %>
+    <%= content_tag :p, "Hdw", :class=>'left' %>
+  <% end %>
+
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :solution_time, "Solution Time" %>
+    <%= content_tag :p, "2011-04-12 10:00am", :class=>'left' %>
+  <% end %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :status, "Status" %>
+    <%= content_tag :p, "In Progress", :class=>'left' %>
+  <% end %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :assigned_to, "Assigned to" %>
+    <%= content_tag :p, "Farooq Hussain", :class=>'left' %>
+  <% end %>
+  <%= tag :hr, :class=>'clear' %>
+  <%= tag :br %>
+  <%= content_tag :div, :class=>'clear ' do %>
+    <%= content_tag :h3, "Message", :class=>'bottom-border' %>
+    <%= content_tag :p, "We are solving it ASAP", :class=>'' %>
+  <% end %>
+  <%= link_to "Add Comments",
+    new_comment_path,
+    :remote=>true,
+    :class=>"button space-top-10"  %>
+  <%= simple_form_for :ratings,
+    :url=>url_for({:action=>"create", :controller=>"tickets"}) do |f| %>
+    <%= f.input :ratings,
+      :as=>:radio,
+      :collection=>1..5,
+      :include_blank=>false,
+      :checked=>3,
+      :input_html=>{ :class=>'stars-wrapper' },
+      :wrapper_html=>{ :class=>'stars' }
+  %>
+    <%= f.button :submit, 'Solved', :class=>'submit width-auto margin-0' %>
+    <%= f.button :submit, 'Not Solved', :class=>'submit width-auto margin-0' %>
+  <% end %>
+
+<% end %>
+
+
+<%= content_for :js do %>
+  <%= javascript_include_tag 'tickets/show' %>
+<% end %>
+<%= content_for :css do %>
+  <%= stylesheet_link_tag 'tickets/show' %>
+<% end %>

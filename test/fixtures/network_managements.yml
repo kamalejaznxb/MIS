@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ip: MyString
+  hall: MyString
+  center: MyString
+  city: MyString
+
+two:
+  ip: MyString
+  hall: MyString
+  center: MyString
+  city: MyString

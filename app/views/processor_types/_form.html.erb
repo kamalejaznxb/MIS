@@ -1,0 +1,14 @@
+<%= content_tag :div, :class=>"under-row padding10 " do %>
+  <%= content_tag :h3, 'New Processor Type', :class=>'space-top-10 space-bottom-10' %>
+  <%= tag 'hr', :class=>'clear' %>
+  <%= simple_form_for @processor_type, html:{:class=>'space-left-10' }, 
+      multiple: true do |f|  %>
+          <%= f.input :name  %>
+          <%= f.input :description, 
+              as: :text %>
+
+        <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>        or
+        <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+    <% end %>
+<% end %>
+

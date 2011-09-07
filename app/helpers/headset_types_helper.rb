@@ -1,0 +1,2 @@
+module HeadsetTypesHelper
+end

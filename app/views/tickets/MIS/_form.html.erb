@@ -1,0 +1,23 @@
+<%= content_tag :div, :class=>"under-row padding10  space-top-20 bottom-border border-color" do %>
+  <%= content_tag :h3, 'Assign to', :class=>'space-top-10 space-bottom-10' %>
+  <%= simple_form_for @ticket, :html=>{:class=>'space-left-10' }, :remote=>true do |f|
+  %>
+    
+    <%= f.input :assign_to,
+      :as=>:select,
+      :collection=>current_user.get_assign_staff,
+      :label=>'Assign',
+      :include_blank=>false %>
+    
+    <%= f.input :comment,
+      :as=>:text,
+      :input_html=>{ :rows=>'7',
+      :cols=>'60',
+      :onfocus=>"this.value=''",
+      :value=>"Enter Comment here",
+      :onblur=>"if (this.value == '') this.value ='Enter Comment here'" }  %>
+    <%= f.button 'submit', :value=>'Assign', :class=>' submit ' %>
+    or
+    <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+  <% end %>
+<% end %>

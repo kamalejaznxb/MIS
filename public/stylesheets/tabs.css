@@ -1,0 +1,99 @@
+#main-tabs {
+    /*    display: inline-block;*/
+    float: left;
+    width: 65%;
+    margin-left: 195px;
+    margin-top: -26px;
+    clear: both;
+}
+
+.tabs {
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 25px;
+}
+
+.tabs li {
+    float: left;
+    padding: 0;
+    display: block;
+    margin-right: 3px;
+    vertical-align: bottom;
+    height: 32px;
+}
+
+.tabs a {
+    display: block;
+    height: 96%;
+    padding: 0 5px 0 5px;
+    margin: 0;
+    line-height: 25px;
+    cursor: pointer;
+    color: #111111;
+    text-decoration: none;
+    /*    border-top: #AAAAAA solid 1px;
+        border-left: #AAAAAA solid 1px;
+        border-right: #AAAAAA solid 1px;
+       border-bottom: #fff solid 1px; */
+}
+
+.tabs a:hover {
+    color: #00a6ec;
+    text-decoration: none;
+}
+
+.tabs .current,
+.tabs .current:hover,
+.tabs li.current a,
+.tabs a:active {
+    /*color: #00a6ec;*/
+    /*    font-weight:bold;*/
+    /*    border-top: #AAAAAA solid 1px;
+        border-left: #AAAAAA solid 1px;
+        border-right: #AAAAAA solid 1px;
+        border-bottom: #fff solid 1px;
+        background-color:#fff;*/
+    line-height: 25px;
+    padding: 0 4px 0 4px;
+}
+
+.tabs li.current {
+    background-image: url("/images/anchor.png");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+
+#menu-strip .pane {
+    display: none;
+}
+#menu-strip .panes > div{
+    display:none;
+}
+#menu-strip a {
+    color: #111111;
+    display: block;
+    float: left;
+    height: 100%;
+    line-height: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+/*#menu-strip a {
+    margin-left: 5px;
+    margin-right: 5px;
+    display: block;
+    float: left;
+    height:100%;
+    line-height:25px;
+    color: #111111;
+}*/
+
+#menu-strip a:hover {
+    text-decoration: none;
+    color: #00a6ec;
+}
+

@@ -1,0 +1,29 @@
+<%= content_tag :table, :class=>'table-data' do %>
+  <%= content_tag :tr, :class=>'bottom-border-solid-2 top-border head' do %>
+    <%= content_tag :td, "MIS Staff" %>
+    <%= content_tag :td, "Open" %>
+    <%= content_tag :td , "Solved"%>
+    <%= content_tag :td , "Quoted"%>
+  <% end %>
+  <% @users.each do |user| %>
+    <%= content_tag :tr, :class=>'bottom-border row' do %>
+      <%= content_tag :td, user %>
+      <%= content_tag :td, dashboard_count_tickets( user.id,
+        "Open",
+       params[:value] 
+      )%>
+      <%= content_tag :td, dashboard_count_tickets( user.id, 
+        "Closed",
+        params[:value] 
+      )%>
+      <%= content_tag :td, dashboard_count_tickets( user.id, "All", params[:value] )%>
+    <% end %>
+  <% end %>
+
+  <%= content_tag :tr, :class=>'bottom-border-solid-2 top-border-2 row' do %>
+    <%= content_tag :td, "Total" %>
+    <%= content_tag :td, dashboard_count_tickets( "All", "Open", params[:value] ) %>
+    <%= content_tag :td, dashboard_count_tickets( "All", "Closed", params[:value] ) %>
+    <%= content_tag :td, dashboard_count_tickets( "All", "All", params[:value] ) %>
+  <% end %>
+<% end %>

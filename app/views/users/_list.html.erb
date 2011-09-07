@@ -1,0 +1,39 @@
+
+<%= content_tag :div, :id=>'listings' do %>
+  <% @users.each do |user| %>
+
+    <%= content_tag :ul, :class=>"row", :id=>"centre-#{ user.id }" do %>
+        
+      <%= content_tag :li, user ,:style=>"width:150px;" %>
+      <%= content_tag :li, user.username, :style=>"width:150px;" %>
+      <%= content_tag :li, user.password, :style=>"width:140px;" %>
+      <%= content_tag :li, user.user_role, :style=>"width:90px;" %>
+
+      <%= content_tag :li, :class=>"options" do %>
+        <%= content_tag :dl, :class=>"options space-right-10" do %>
+
+          <%= content_tag :dt do %>
+            <%= link_to "&nbsp".html_safe, '#' %>
+          <% end %>
+
+          <%= content_tag :dd, :class=>"hide" do %>
+            <%= content_tag :ul do %>
+              <%= content_tag :li do %>
+                <%#= link_to 'Show', ticket_path( ticket ), :remote=>true %>
+              <% end %>
+
+              <%= content_tag :li do %>
+                <%= link_to "Edit User",
+                edit_user_path( user ),
+                :remote=>true %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+        <% end %>
+      <% end %>
+
+    <% end %>
+
+  <% end %>
+<% end %>
