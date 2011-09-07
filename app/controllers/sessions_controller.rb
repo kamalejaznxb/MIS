@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
         #session[:user] = user.first.full_name
         #session[:role] = user.first.user_role.to_s
         #session[:user_id] = user.first.id
-	session[:user_id] = User.check_login( params[:user][:login] ).first.id
+        session[:user_id] = User.check_login( params[:user][:login] ).first.id
         format.html { redirect_to( "/",  :notice => 'Successfuly Sign In .' ) }
       else
         format.html { redirect_to( login_path, :alert => 'Invalid Username or password' ) }
