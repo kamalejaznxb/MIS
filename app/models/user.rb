@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     #    :foreign_key => :refered_to, :class_name=>'User'
     scope :check_login, proc {|username|
     where( :username => username)}
-    scope :check_admin, proc { |username, password|
+    scope :check_user_login, proc { |username, password|
     where( :username => username, :password => password) }
     has_many :subordinates, class_name: "User",
     foreign_key:"dm_id"
