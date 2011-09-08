@@ -1,4 +1,8 @@
+require 'digest'
+
 class User < ActiveRecord::Base
+
+  before_save :encrypt_password
 
   validates :username, :presence => true, :uniqueness => true
   validates :password, :presence => true, :confirmation => true
@@ -134,8 +138,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def encrypt_and_save_password
-    
+  def encrypt_password
+    self.password = self.class.get_encrypted_password(password)
+  end
+
+  def self.get_encrypted_password(password)
+    Digest::SHA2.hexdigest(password)
   end
   
 end
