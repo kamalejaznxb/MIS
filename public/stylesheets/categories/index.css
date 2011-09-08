@@ -2,7 +2,9 @@
     width: 100px;
     height: 115px;
     float: left;
+    text-align: center;
 }
-.category-box span{
-    margin: 0 auto;
+.category-box img{
+    width: 100px;
+    height: 100px;
 }
