@@ -41,7 +41,7 @@ class NetworkManagementsController < ApplicationController
    # POST /network_managements.xml
    def create
       #@network_management = NetworkManagement.new(params[:network_management])
-      @ip = IPAddress "#{params[:network_management][:ip]}/#{params[:network_management][:ip_range]}"
+      @ip = IPAddress "#{params[:network_management][:ip]}/24"
       @ip.each do |addr|
          @network_management = NetworkManagement.new params[:network_management]
          @network_management.ip = addr.to_s
@@ -83,8 +83,10 @@ class NetworkManagementsController < ApplicationController
          format.xml  { head :ok }
       end
    end
+   
    def get_ip
-      @ip = IPAddress "#{params[:ip]}/#{params[:ip_range]}"
+      @ip = IPAddress "#{params[:ip]}/24"
+      @starting_point = @ip[3]
       respond_to do |format|
          format.js
       end
