@@ -1,3 +1,4 @@
 $('.cancel').trigger('click');
-$('<%= escape_javascript render partial:'ip_list' %>').insertAfter('.simple_form');
+jQuery("#ip_lists_div").remove();
+jQuery(".simple_form").append("<%= escape_javascript(render :partial => "ip_list")  %>");
 show_fields();

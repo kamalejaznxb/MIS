@@ -1,5 +1,6 @@
+<div id="ip_lists_div">
 <%= content_tag :div,
-  class:'show padding10 under-row' do  %>
+  class:'show padding10 under-row', id: 'ip_info_div' do  %>
   <%= content_tag :div, class:'clear-both sub-value' do %>
     <%= label_tag :subnet, "Subnet mask" %>
     <%= content_tag :p, @ip.netmask, class:'left' %>
@@ -19,7 +20,23 @@
 
       <%= content_tag :div, class:'clear space-bottom-10' do %>
         <%= content_tag :h3, "Ip list", class:'bottom-border space-bottom-10' %>
+
+        <% i = 0;
+          finishing_point = params[:ip_range].to_i; %>
+  
         <% @ip.each do |addr| %>
-          <%= content_tag :p, addr  %>
+          
+            <% if (i >= finishing_point) %>
+              <% break %>
+            <% end %>
+
+            <% if (addr[3] >= @starting_point) %>
+              <%= content_tag :p, "#{addr}" %>
+              <% i = i + 1 %>
+            <% end %>
+         
+
         <% end %>
+  
       <% end %>
+</div>
