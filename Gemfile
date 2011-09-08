@@ -1,12 +1,11 @@
 source 'http://rubygems.org'
 gem 'net-ldap','0.2.2'
 gem 'rails', '3.0.10'
-gem 'rake', '0.8.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'show_for'
 gem 'mysql2', '<0.3'
-gem 'rake', '0.8.7'
+gem 'rake', '0.9.2'
 gem 'jquery-rails'
 gem "simple_form"
 gem "paperclip", "~> 2.3"
