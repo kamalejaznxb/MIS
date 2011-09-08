@@ -1,12 +1,18 @@
 <%= content_tag :div, :class=>"under-row padding10 " do %>
   <%= content_tag :h3, 'New User', :class=>'space-top-10 space-bottom-10' %>
   <%= tag 'hr', :class=>'clear' %>
+
+  <div id="errors">
+    
+  </div>
+
   <%= simple_form_for @user, :html=>{:class=>'space-left-10' }, 
-	:multiple => true do |f|
+	:multiple => true, :remote => true do |f|
   %>
     <%= f.input :full_name  %>
     <%= f.input :username %>
     <%= f.input :password %>
+    <%= f.input :password_confirmation, :as => :password, :label => "Password Confirmation" %>
     <%= f.association :user_role, :collection=>current_user.get_user_roles,:include_blank=>false %>
     <%= f.association :dm,
 	as: :select ,

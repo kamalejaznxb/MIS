@@ -1,0 +1,7 @@
+<% if @user.errors.empty? %>
+  jQuery("#errors").html("");
+  jQuery(".cancel").trigger("click");
+  jQuery("#listings").html("<%= escape_javascript(render :partial => "list") %>");
+<% else %>
+  jQuery("#errors").html("<%= escape_javascript(render :partial => "error_messages") %>")
+<% end %>

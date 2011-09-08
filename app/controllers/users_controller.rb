@@ -16,9 +16,12 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
     respond_to do |format|
       if @user.save
+        @users = current_user.get_users
         format.html { redirect_to( users_path,  :notice => 'Successfuly Sign In .' ) }
+        format.js
       else
-        format.html{ redirect_to( users_path, :alert=>'Can not save User' ) }
+        format.html { redirect_to( users_path, :alert=>'Can not save User' ) }
+        format.js
       end
     end
   end
