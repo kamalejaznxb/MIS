@@ -1,2 +1,0 @@
-module RamTypesHelper
-end

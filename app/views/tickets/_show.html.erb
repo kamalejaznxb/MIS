@@ -12,6 +12,10 @@
 
   <%= content_tag :div, :class=>'clear sub-value' do %>
     <%= label_tag :subject, "Subject" %>
+    <%= content_tag :p, @ticket.subject, :class=>'left' %>
+  <% end %>
+   <%= content_tag :div, :class=>'clear sub-value' do %>
+    <%= label_tag :subject, "Category" %>
     <%= content_tag :p, @ticket.ticket_category, :class=>'left' %>
   <% end %>
   <%= content_tag :div, :class=>'clear sub-value' do %>

@@ -1,0 +1,10 @@
+<%= content_for :css do %>
+    <%= stylesheet_link_tag 'categories/index' %>
+<% end %>
+
+<%= content_for :sidebar do %>
+    <%= render partial: 'sidebar' %>
+<% end %>
+<%= content_tag :div, '', class: 'spacer' %>
+<%= render partial: 'list' %>
+

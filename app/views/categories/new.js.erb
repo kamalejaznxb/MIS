@@ -1,0 +1,4 @@
+$('.cancel').trigger('click');
+$('<%= escape_javascript render partial: 'form'  %>')
+.insertAfter('.inner').wrap('<div id="popup" />');
+set_position();

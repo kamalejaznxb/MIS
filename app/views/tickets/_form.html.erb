@@ -34,6 +34,7 @@
       :collection=>TicketCategory.hardware_issue.first.sub_category,
       :include_blank=>false,
       :wrapper_html=>{ :class=>'hardware-issue hide' }  %>
+    <%= f.input :subject %>
     <%= f.input :description,
       :as=>:text,
       :input_html=>{ :rows=>'7',

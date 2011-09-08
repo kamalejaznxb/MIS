@@ -1,0 +1,8 @@
+
+<% @categories.each do |category| %>
+
+    <%= content_tag :div, class: 'category-box'  do %>
+        <%= image_tag category.display.url :thumb %>
+        <%= content_tag :span, category %>
+    <% end %>
+<% end %>

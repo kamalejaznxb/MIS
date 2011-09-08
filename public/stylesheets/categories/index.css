@@ -1,0 +1,8 @@
+.category-box{
+    width: 100px;
+    height: 115px;
+    float: left;
+}
+.category-box span{
+    margin: 0 auto;
+}

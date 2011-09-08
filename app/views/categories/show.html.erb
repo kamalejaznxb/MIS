@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @category.name %>
+</p>
+
+<p>
+  <b>Display file name:</b>
+  <%= @category.display_file_name %>
+</p>
+
+<p>
+  <b>Display content type:</b>
+  <%= @category.display_content_type %>
+</p>
+
+<p>
+  <b>Display file size:</b>
+  <%= @category.display_file_size %>
+</p>
+
+<p>
+  <b>Display updated at:</b>
+  <%= @category.display_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

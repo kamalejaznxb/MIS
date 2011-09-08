@@ -1,4 +1,6 @@
 Mis::Application.routes.draw do
+  resources :categories
+
   resources :headset_types
 
   resources :vendors
