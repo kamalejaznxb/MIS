@@ -1,21 +1,8 @@
 Mis::Application.routes.draw do
-  resources :categories
 
-  resources :headset_types
-
-  resources :vendors
-
-  resources :mouse_types
-
-  resources :keyboard_types
-
-  resources :monitor_types
-
-  resources :harddisk_types
-
-  resources :ram_types
-
-  resources :processor_types
+  resources :categories do 
+      resources :category_types
+  end
 
   match '/configuration' => 'configuration#index'
 
