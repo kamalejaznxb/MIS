@@ -1,6 +1,6 @@
 module UserAuth
   def check_user user_name, password
-    if User.check_user_login( user_name, password ).empty?
+    if User.check_user_login( user_name, User.get_encrypted_password(password)).empty?
       ldap = Net::LDAP.new
       ldap.host = "10.28.82.2"
       ldap.port = 389
