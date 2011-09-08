@@ -40,20 +40,29 @@ class NetworkManagementsController < ApplicationController
    # POST /network_managements
    # POST /network_managements.xml
    def create
-      #@network_management = NetworkManagement.new(params[:network_management])
-      @ip = IPAddress "#{params[:network_management][:ip]}/24"
-      @ip.each do |addr|
+     #@network_management = NetworkManagement.new(params[:network_management])
+     @ip = IPAddress "#{params[:network_management][:ip]}/24"
+     i = 0
+     @starting_point = @ip[3].to_i
+     @finishing_point = params[:network_management][:ip_range].to_i
+
+     @ip.each do |addr|
+       if(i >= @finishing_point)
+         break
+       end
+
+       if (addr[3] >= @starting_point)
          @network_management = NetworkManagement.new params[:network_management]
          @network_management.ip = addr.to_s
          @network_management.save
-      end
-      respond_to do |format|
+         i = i + 1
+       end
+     end
 
-         format.html { redirect_to(network_managements_path,
-         notice:'IP was successfully created.') }
-
-
-      end
+     respond_to do |format|
+       format.html { redirect_to(network_managements_path, notice:'IP was successfully created.') }
+     end
+     
    end
 
    # PUT /network_managements/1
