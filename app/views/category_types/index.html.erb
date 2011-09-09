@@ -1,27 +1,21 @@
-<h1>Listing category_types</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Category</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @category_types.each do |category_type| %>
-  <tr>
-    <td><%= category_type.name %></td>
-    <td><%= category_type.description %></td>
-    <td><%= category_type.category %></td>
-    <td><%= link_to 'Show', category_type %></td>
-    <td><%= link_to 'Edit', edit_category_type_path(category_type) %></td>
-    <td><%= link_to 'Destroy', category_type, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<%= content_for :css do %>
+    <%= stylesheet_link_tag 'data_list' %>
 <% end %>
-</table>
+<%= content_tag :div, :class=>'menu-holder' do %>
+    <%= content_tag :div, :class=>'menu-inner' do %>
+        <%= content_tag :ul, :class=>'head', :id=>'main-nav' do %>
+            <%= content_tag :li, "#{ @category } Name", :style=>"width:150px;"   %>
+            <%= content_tag :li, "Description", :style=>"width:150px;"  %>
+            <%= content_tag :li, "&nbsp".html_safe  %>
+        <% end %>
+    <% end %>
+<% end %>
 
-<br />
+<%= content_for :sidebar do %>
+    <%= render partial: 'sidebar' %>
+<% end %>
 
-<%= link_to 'New Category type', new_category_type_path %>
+<%= content_tag :div, '',:class=>'spacer' %>
+<%= render :partial=>'list' %>
+
+

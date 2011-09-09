@@ -1,0 +1,11 @@
+
+<%= content_tag :div, :class=>'left-bar-list' do  %>
+  <%= content_tag :ul do %>
+    <%= content_tag :li do %>
+        <%= link_to "Add new Type", new_category_category_type_path( @category ), 
+            class: 'font-12',
+            remote: true %>
+    <% end %>
+  <% end %>
+
+<% end %>

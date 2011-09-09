@@ -1,29 +1,20 @@
-<%= form_for(@category_type) do |f| %>
-  <% if @category_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@category_type.errors.count, "error") %> prohibited this category_type from being saved:</h2>
-
-      <ul>
-      <% @category_type.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= content_tag :div, :class=>"under-row padding10 " do %>
+    <%= simple_form_for [@category, @category_type],
+        html: { class: 'space-left-10',
+        multipart: true } do |f|
+    %>
+    <%= f.input :name %>
+    <%= f.input :description,
+      :as=>:text,
+      :input_html=>{ :rows=>'7',
+      :cols=>'40'}#,
+ #     :onfocus=>"this.value=''",
+#      :value=>"Enter Message here",
+#      :onblur=>"if (this.value == '') this.value ='Enter Message here'" } 
+    %>
+    
+    <%= f.button 'submit', class: 'submit width-auto margin-0' %>
+    or
+    <%= link_to "Cancel", '#', class: 'space-top-10 cancel' %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

@@ -1,0 +1,11 @@
+<%= content_tag :div, :class=>'show padding10 under-row bottom-border border-color' do  %>
+  <%= link_to 'Cancel', '#', :class=>'cancel right' %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+      <%= label_tag :category_type_name , "#{ @category_type.category } Name" %>
+      <%= content_tag :p, @category_type, :class=>'left' %>
+  <% end %>
+  <%= content_tag :div, :class=>'clear sub-value' do %>
+      <%= label_tag :category_type_description , "Description" %>
+      <%= content_tag :p, @category_type.description, :class=>'left' %>
+  <% end %>
+<% end %>

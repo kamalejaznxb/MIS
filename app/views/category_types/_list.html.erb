@@ -1,0 +1,30 @@
+
+<%= content_tag :div, :id=>'listings' do %>
+  <% @category.category_types.each do |category_type| %>
+
+    <%= content_tag :ul, :class=>"row", :id=>"centre-#{ category_type.id }" do %>
+      <%= content_tag :li, category_type, :style=>"width:90px;" %>
+      <%= content_tag :li,  :style=>"width:150px;" do  %>
+        <%= link_to  category_category_type_path( @category, category_type ), :class=>'subject', :remote=>true do %>
+          <%= truncate( category_type.description, :length => 17 ) %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li, :class=>'row-options hide' do %>
+        <%= content_tag :ul do %>
+          <%= content_tag :li do %>
+            <%= link_to 'Show', category_category_type_path( @category, category_type ), :remote=>true %>
+          <% end %>
+          <%= content_tag :li, "|" %>
+          <%= content_tag :li do %>
+            <%= link_to "Edit",                
+                edit_category_category_type_path( @category, category_type ),
+              :remote=>true %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+
+    <% end %>
+
+  <% end %>
+<% end %>

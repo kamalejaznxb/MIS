@@ -2,7 +2,7 @@ class CategoryTypesController < ApplicationController
   # GET /category_types
   # GET /category_types.xml
   def index
-    @category_types = CategoryType.all
+    @category = Category.find_by_id params[:category_id]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class CategoryTypesController < ApplicationController
     @category_type = CategoryType.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.js
       format.xml  { render :xml => @category_type }
     end
   end
@@ -24,12 +24,12 @@ class CategoryTypesController < ApplicationController
   # GET /category_types/new
   # GET /category_types/new.xml
   def new
-    @category_type = CategoryType.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @category_type }
-    end
+      @category = Category.find( params[:category_id] )
+      @category_type = CategoryType.new
+      respond_to do |format|
+          format.js
+          format.xml  { render :xml => @category_type }
+      end
   end
 
   # GET /category_types/1/edit
@@ -40,11 +40,12 @@ class CategoryTypesController < ApplicationController
   # POST /category_types
   # POST /category_types.xml
   def create
-    @category_type = CategoryType.new(params[:category_type])
+    @category = Category.find params[:category_id]
+    @category_type = @category.category_types.build(params[:category_type])
 
     respond_to do |format|
       if @category_type.save
-        format.html { redirect_to(@category_type, :notice => 'Category type was successfully created.') }
+        format.html { redirect_to(category_category_types_path( @category ), :notice => 'Category type was successfully created.') }
         format.xml  { render :xml => @category_type, :status => :created, :location => @category_type }
       else
         format.html { render :action => "new" }
