@@ -1,0 +1,27 @@
+<h1>Listing category_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @category_types.each do |category_type| %>
+  <tr>
+    <td><%= category_type.name %></td>
+    <td><%= category_type.description %></td>
+    <td><%= category_type.category %></td>
+    <td><%= link_to 'Show', category_type %></td>
+    <td><%= link_to 'Edit', edit_category_type_path(category_type) %></td>
+    <td><%= link_to 'Destroy', category_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Category type', new_category_type_path %>
