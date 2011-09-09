@@ -1,0 +1,4 @@
+<% if @category_type.errors.empty? %>
+  jQuery(".cancel").trigger("click");
+  jQuery("#listings").html("<%= escape_javascript(render :partial => "list") %>");
+<% end %>

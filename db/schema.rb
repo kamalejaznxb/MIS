@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(:version => 20110908121742) do
 
+  create_table "capacities", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.string   "display_file_name"
@@ -43,11 +49,64 @@ ActiveRecord::Schema.define(:version => 20110908121742) do
     t.datetime "updated_at"
   end
 
+  create_table "harddisk_types", :force => true do |t|
+    t.string   "name"
+    t.string   "size"
+    t.text     "description"
+    t.integer  "capacity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "headset_types", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "keyboard_types", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "monitor_types", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mouse_types", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "network_managements", :force => true do |t|
     t.string   "ip"
     t.string   "hall"
     t.string   "center"
     t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "processor_types", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ram_types", :force => true do |t|
+    t.string   "name"
+    t.string   "size"
+    t.integer  "capacity_id"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -110,6 +169,14 @@ ActiveRecord::Schema.define(:version => 20110908121742) do
     t.string   "tm"
     t.string   "tl_id"
     t.integer  "user_role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vendors", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.text     "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

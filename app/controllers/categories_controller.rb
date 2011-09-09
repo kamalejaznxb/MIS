@@ -44,11 +44,14 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
+        @categories = Category.all
         format.html { redirect_to(categories_path, :notice => 'Category was successfully created.') }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
+        format.js
       else
         format.html { redirect_to( categories_path, alert: 'Category can not be created') }
         format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end

@@ -3,5 +3,5 @@
   jQuery(".cancel").trigger("click");
   jQuery("#listings").html("<%= escape_javascript(render :partial => "list") %>");
 <% else %>
-  jQuery("#errors").html("<%= escape_javascript(render :partial => "error_messages") %>")
+  jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @user}) %>")
 <% end %>

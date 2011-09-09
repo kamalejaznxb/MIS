@@ -1,9 +1,10 @@
-
-<% @categories.each do |category| %>
-    <%= content_tag :div, class: 'category-box'  do %>
-        <%= link_to category_category_types_path( category ) do %>
-            <%= image_tag category.display.url :thumb %>
-            <%= content_tag :span, category %>
-        <% end %>
-    <% end %>
-<% end %>
+<div id="listings">
+  <% @categories.each do |category| %>
+      <%= content_tag :div, class: 'category-box'  do %>
+          <%= link_to category_category_types_path( category ) do %>
+              <%= image_tag category.display.url :thumb %>
+              <%= content_tag :span, category %>
+          <% end %>
+      <% end %>
+  <% end %>
+</div>

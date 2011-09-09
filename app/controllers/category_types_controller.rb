@@ -47,9 +47,11 @@ class CategoryTypesController < ApplicationController
       if @category_type.save
         format.html { redirect_to(category_category_types_path( @category ), :notice => 'Category type was successfully created.') }
         format.xml  { render :xml => @category_type, :status => :created, :location => @category_type }
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @category_type.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end

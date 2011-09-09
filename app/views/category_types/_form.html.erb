@@ -1,8 +1,13 @@
 <%= content_tag :div, :class=>"under-row padding10 " do %>
     <%= simple_form_for [@category, @category_type],
         html: { class: 'space-left-10',
-        multipart: true } do |f|
+        multipart: true }, :remote => true do |f|
     %>
+
+    <div id="errors">
+      
+    </div>
+    
     <%= f.input :name %>
     <%= f.input :description,
       :as=>:text,

@@ -1,7 +1,11 @@
 <%= content_tag :div, :class=>"under-row padding10 " do %>
   <%= tag 'hr', :class=>'clear' %>
+
+  <div id="errors">
+  </div>
+
   <%= simple_form_for @category, html:{ class:'space-left-10',
-      multipart: true }	 do |f|  %>
+      multipart: true }, :remote => true do |f|  %>
     <%= f.input :name, label: 'Name' %>
     <%= f.input :display, as: :file %>
 
