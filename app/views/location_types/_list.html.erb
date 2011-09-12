@@ -1,0 +1,36 @@
+
+<%= content_tag :div, :id=>'listings' do %>
+  <% @location_types.each do |location_type| %>
+
+    <%= content_tag :ul, :class=>"row", :id=>"centre-#{ location_type.id }" do %>
+
+      <%= content_tag :li, location_type.name, :style=>"width:150px;" %>
+      
+      <%= content_tag :li, :class=>"options" do %>
+        <%= content_tag :dl, :class=>"options space-right-10" do %>
+
+          <%= content_tag :dt do %>
+            <%= link_to "&nbsp".html_safe, '#' %>
+          <% end %>
+
+          <%= content_tag :dd, :class=>"hide" do %>
+            <%= content_tag :ul do %>
+              <%= content_tag :li do %>
+                <%#= link_to 'Show', ticket_path( ticket ), :remote=>true %>
+              <% end %>
+
+              <%= content_tag :li do %>
+                <%= link_to "Edit Location Type",
+                edit_location_type_path(location_type),
+                :remote=>true %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+        <% end %>
+      <% end %>
+
+    <% end %>
+
+  <% end %>
+<% end %>

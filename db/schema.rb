@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110908121742) do
+ActiveRecord::Schema.define(:version => 20110912105726) do
 
   create_table "capacities", :force => true do |t|
     t.string   "title"
@@ -68,6 +68,20 @@ ActiveRecord::Schema.define(:version => 20110908121742) do
   create_table "keyboard_types", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "location_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.integer  "location_type_id"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

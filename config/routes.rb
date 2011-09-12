@@ -1,5 +1,9 @@
 Mis::Application.routes.draw do
 
+  resources :locations
+
+  resources :location_types
+
   resources :categories do 
       resources :category_types
   end

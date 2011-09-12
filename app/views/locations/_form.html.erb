@@ -1,0 +1,20 @@
+<%= content_tag :div, :class=>"under-row padding10 " do %>
+  <%= content_tag :h3, 'New Location Type', :class=>'space-top-10 space-bottom-10' %>
+  <%= tag 'hr', :class=>'clear' %>
+
+  <div id="errors">
+
+  </div>
+
+  <%= simple_form_for @location, :html=>{:class=>'space-left-10' },
+	:remote => true do |f| %>
+    <%= f.input :name  %>
+    <%= f.label :location_type, :label => "Location Type" %>
+    <%= f.collection_select :location_type_id, LocationType.all, :id, :name, :html => { :class => 'new-user  submit width-auto margin-0'} %> <br />
+    <%= f.label :location_id, :label => "Parent Location" %>
+    <%= f.collection_select :location_id, Location.parent_locations, :id, :name %> <br />
+    <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
+    or
+    <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+  <% end %>
+<% end %>
