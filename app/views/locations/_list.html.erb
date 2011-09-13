@@ -2,11 +2,10 @@
 <%= content_tag :div, :id=>'listings' do %>
   <% @locations.each do |location| %>
 
-    <%= content_tag :ul, :class=>"row", :id=>"centre-#{ location.id }" do %>
+    <%= content_tag :ul, :class=>"row", :style => "height: 50px;", :id=>"centre-#{ location.id }" do %>
 
-      <%= content_tag :li, location.name, :style=>"width:150px;" %>
-      <%= content_tag :li, location.parent_location, :style => "width: 200px;" %>
-      <%= content_tag :li, location.location_type, :style => "width: 200px;" %>
+      <%= content_tag :li, location.name, :style=>"width: 250px;" %>
+      <%= content_tag :li, location.location_type.name, :style => "width: 250px;" %>
       
       <%= content_tag :li, :class=>"options" do %>
         <%= content_tag :dl, :class=>"options space-right-10" do %>
@@ -24,8 +23,36 @@
               <%= content_tag :li do %>
                 <%= link_to "Edit Location",
                 edit_location_path(location),
-                :remote=>true %>
+                :remote => true %>
               <% end %>
+            <% end %>
+          <% end %>
+
+          <%= content_tag :li, :class => "row-options hide" do %>
+            <%= content_tag :ul, :style => "width: 500px;" do %>
+
+              <%= content_tag :li, :style => "width: 100px;" do %>
+                <%= link_to "Add Sub Location", {:action => "new", :location_id => location.id}, :remote => true %>
+              <% end %>
+
+              <%= content_tag :li, "|" %>
+
+              <%= content_tag :li, :style => "width: 100px;" do %>
+                <%= link_to "Show Sub Locations", {:action => "show_sub_locations", :location_id => location.id }, :remote => true %>
+              <% end %>
+
+              <%= content_tag :li, "|" %>
+
+              <%= content_tag :li, :style => "width: 75px;" do %>
+                <%= link_to "Assign User", {:action => "assign_location_to_user", :location_id => location.id}, :remote => true %>
+              <% end %>
+
+              <%= content_tag :li, "|" %>
+
+              <%= content_tag :li, :style => "width: 100px;" do %>
+                <%= link_to "Show Users", {:action => "show_users_at_location", :location_id => location.id}, :remote => true %>
+              <% end %>
+
             <% end %>
           <% end %>
 

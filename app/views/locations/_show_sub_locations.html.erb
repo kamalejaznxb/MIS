@@ -1,0 +1,17 @@
+<%= content_tag :div, :style => "border: solid black 1px;" do %>
+  <% unless @locations.empty? %>
+      <%= content_tag :div, :class=>'menu-holder' do %>
+        <%= content_tag :div, :class=>'menu-inner' do %>
+          <%= content_tag :ul, :class=>'head', :id=>'main-nav' do %>
+            <%= content_tag :li, "Name", :style=>"width: 250px;"   %>
+            <%= content_tag :li, "Location Type", :style => "width: 250px;" %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :div, '',:class=>'spacer' %>
+      <%= render :partial=>'list' %>
+  <% else %>
+    <%= "No Sub Location(s) for this Location." %>
+  <% end %>
+  <%= link_to "Cancel", '#', :class=>'space-top-10 sub_locations_cancel' %>
+<% end %>

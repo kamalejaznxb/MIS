@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :tickets
   has_many :comments
   belongs_to :user_role
+
+  belongs_to :location
+
   include UserPermission
   #  has_many :assigned,
   #    :foreign_key => :assigned_id, :class_name=>'User'
@@ -31,6 +34,8 @@ class User < ActiveRecord::Base
   scope :noc_staff, joins(:user_role) &  where('user_roles.title' => 'noc' )
 
   scope :mis_staff, joins(:user_role) &  where('user_roles.title' => 'MIS' )
+
+  scope :users_not_assigned_to_any_location, where("location_id IS NULL OR location_id = ''")
 
   def to_s
     self.full_name

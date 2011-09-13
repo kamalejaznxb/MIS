@@ -9,12 +9,18 @@
   <%= simple_form_for @location, :html=>{:class=>'space-left-10' },
 	:remote => true do |f| %>
     <%= f.input :name  %>
+
     <%= f.label :location_type, :label => "Location Type" %>
-    <%= f.collection_select :location_type_id, LocationType.all, :id, :name, :html => { :class => 'new-user  submit width-auto margin-0'} %> <br />
-    <%= f.label :location_id, :label => "Parent Location" %>
-    <%= f.collection_select :location_id, Location.parent_locations, :id, :name %> <br />
+
+    <%= f.collection_select :location_type_id, LocationType.all, :id, :name, :prompt => "Please! Select Location Type", :html => { :class => 'new-user  submit width-auto margin-0'} %> <br />
+
+    <% if params[:location_id] %>
+      <%= f.input :location_id, :as => :hidden, :input_html => { :value => params[:location_id] } %>
+    <% end %>
+
     <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
     or
     <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+    
   <% end %>
 <% end %>

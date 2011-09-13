@@ -1,6 +1,13 @@
 Mis::Application.routes.draw do
 
-  resources :locations
+  resources :locations do
+    collection do
+      get   'show_sub_locations'
+      get   'assign_location_to_user'
+      get   'show_users_at_location'
+      post  'save_location_assigned_user'
+    end
+  end
 
   resources :location_types
 

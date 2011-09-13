@@ -1,0 +1,5 @@
+jQuery(".cancel").trigger("click");
+jQuery("<%= escape_javascript(render :partial => "assign_location_to_user") %> ")
+.insertAfter(".inner")
+.wrap("<div id='popup'></div>");
+set_position();

@@ -1,0 +1,23 @@
+<%= content_tag :div, :class=>"under-row padding10 " do %>
+  <%= content_tag :h3, 'Assign Location to User', :class=>'space-top-10 space-bottom-10' %>
+  <%= tag 'hr', :class=>'clear' %>
+
+  <div id="errors">
+
+  </div>
+
+  <%= form_tag({:action => "save_location_assigned_user"}, :remote => true) do |f| %>
+
+    <%= label_tag "Select User" %>
+    <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "full_name") %>
+    <%= hidden_field_tag "location_id", params[:location_id] %>
+
+    <br />
+
+    <%= submit_tag "Save", :class=>'button new-user  submit width-auto margin-0' %>
+    or
+    <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+
+  <% end %>
+<% end %>
+

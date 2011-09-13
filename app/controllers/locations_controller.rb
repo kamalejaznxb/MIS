@@ -24,6 +24,8 @@ class LocationsController < ApplicationController
   # GET /locations/new
   # GET /locations/new.xml
   def new
+    logger.debug("XXXXXXXXXXXXXXXXXX #{params[:location_id]}")
+    
     @location = Location.new
 
     respond_to do |format|
@@ -48,6 +50,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
+        @locations = Location.index_locations
         format.html { redirect_to(@location, :notice => 'Location was successfully created.') }
         format.xml  { render :xml => @location, :status => :created, :location => @location }
         format.js
@@ -66,6 +69,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
+        @locations = Location.index_locations
         format.html { redirect_to(@location, :notice => 'Location was successfully updated.') }
         format.xml  { head :ok }
         format.js
@@ -88,4 +92,40 @@ class LocationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+#  To view Sub Locations in a Location.
+  def show_sub_locations
+    @locations = Location.sub_locations(params[:location_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+#  This method will assign a location to a User.
+  def assign_location_to_user
+    @users = User.users_not_assigned_to_any_location
+    respond_to do |format|
+      format.js
+    end
+  end
+
+# This method will save a User in a Location.
+  def save_location_assigned_user
+    @user = User.where("id = #{params[:user_id]}").first
+    @user.location_id = params[:location_id]
+    @user.save(:validate => false)
+    @locations = Location.index_locations
+    respond_to do |format|
+      format.js
+    end
+  end
+
+#  This method will show the users assigned to a Particular Location
+  def show_users_at_location
+    @users = Location.where("id = #{params[:location_id]}").first.users
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
