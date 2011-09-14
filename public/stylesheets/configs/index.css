@@ -1,0 +1,22 @@
+.config-links-container {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.config-link {
+    border: solid 1px black;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding-left: 20px;
+    width: 150px;
+    height: 20px;
+    padding-top: 7px;
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+.config-link a {
+    color: #00A6EC;
+    font-size: 15px;
+}

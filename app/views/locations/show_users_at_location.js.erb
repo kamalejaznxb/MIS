@@ -1,4 +1,5 @@
 jQuery(".cancel").trigger("click");
+jQuery(".location-users-<%= params[:location_id] %>").remove();
 jQuery("<%= escape_javascript(render :partial => "show_users_at_location" ) %> ").insertAfter("#centre-<%= params[:location_id] %>").show("blind");
 add_row_class("#centre-<%= params[:location_id] %>");
 fancy_box();

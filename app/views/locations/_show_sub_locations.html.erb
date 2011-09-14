@@ -1,4 +1,4 @@
-<%= content_tag :div, :style => "border: solid black 1px;" do %>
+<%= content_tag :div, :class => "sublocations-#{params[:location_id]}", :style => "border: solid black 1px;" do %>
   <% unless @locations.empty? %>
       <%= content_tag :div, :class=>'menu-holder' do %>
         <%= content_tag :div, :class=>'menu-inner' do %>

@@ -20,7 +20,7 @@
         <hgroup id="app-status">
           <%= content_tag :span, "Welcome - #{  current_user }",:id=>"user-name" %>
           <% if current_user.can_user_do? :configuration %>
-              | <%= link_to 'Categories', categories_path %>
+              | <%= link_to 'Configs', {:controller => "configs", :action => "index"} %>
           <% end %>
           | <%= link_to "Profile", profile_index_path %>
           | <%= link_to "Logout", logout_path %>

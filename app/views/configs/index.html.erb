@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag "configs/index" %>
+<%= content_tag :h3, "Configs", :class => "space-top-10" %>
+
+<%= content_tag :div, :class => "config-links-container" do %>
+
+  <%= content_tag :div, :class => "config-link" do %>
+    <%= link_to "- Categories", categories_path %>
+  <% end %>
+
+  <%= content_tag :div, :class => "config-link" do %>
+    <%= link_to "- Location Types", location_types_path %>
+  <% end %>
+
+  <%= content_tag :div, :class => "config-link" do %>
+    <%= link_to "- Locations", locations_path %>
+  <% end %>
+
+<% end %>

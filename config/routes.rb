@@ -1,5 +1,7 @@
 Mis::Application.routes.draw do
 
+  match "/configs" => "configs#index"
+
   resources :locations do
     collection do
       get   'show_sub_locations'
