@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
 
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, :presence => true, :uniqueness => {:scope => :location_id}
 
   validates :location_type, :presence => true
 

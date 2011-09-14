@@ -2,7 +2,7 @@
 <%= content_tag :div, :id=>'listings' do %>
   <% @locations.each do |location| %>
 
-    <%= content_tag :ul, :class=>"row", :style => "height: 50px;", :id=>"centre-#{ location.id }" do %>
+    <%= content_tag :ul, :class=>"row", :style => "height: 75px;", :id=>"centre-#{ location.id }" do %>
 
       <%= content_tag :li, location.name, :style=>"width: 250px;" %>
       <%= content_tag :li, location.location_type.name, :style => "width: 250px;" %>
