@@ -14,6 +14,8 @@
 
     <%= f.collection_select :location_type_id, LocationType.all, :id, :name, :prompt => "Please! Select Location Type", :html => { :class => 'new-user  submit width-auto margin-0'} %> <br />
 
+    <%= f.input :capacity, :as => :string %>
+
     <% if params[:location_id] %>
       <%= f.input :location_id, :as => :hidden, :input_html => { :value => params[:location_id] } %>
     <% end %>

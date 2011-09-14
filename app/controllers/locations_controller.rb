@@ -24,8 +24,6 @@ class LocationsController < ApplicationController
   # GET /locations/new
   # GET /locations/new.xml
   def new
-    logger.debug("XXXXXXXXXXXXXXXXXX #{params[:location_id]}")
-    
     @location = Location.new
 
     respond_to do |format|
@@ -113,8 +111,9 @@ class LocationsController < ApplicationController
   def save_location_assigned_user
     @user = User.where("id = #{params[:user_id]}").first
     @user.location_id = params[:location_id]
-    @user.save(:validate => false)
-    @locations = Location.index_locations
+    if (@user.save)
+      @locations = Location.index_locations
+    end
     respond_to do |format|
       format.js
     end
@@ -123,6 +122,15 @@ class LocationsController < ApplicationController
 #  This method will show the users assigned to a Particular Location
   def show_users_at_location
     @users = Location.where("id = #{params[:location_id]}").first.users
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def get_location_back_from_user
+    @user = User.where("id = #{params[:user_id]}").first
+    @user.location_id = nil
+    @user.save(:validate => false)
     respond_to do |format|
       format.js
     end

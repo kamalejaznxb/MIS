@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 
   validates :username, :presence => true, :uniqueness => true
   validates :password, :presence => true, :confirmation => true
-  validates :password_confirmation, :presence => true
+#  validates :password_confirmation, :presence => true
+  validate  :location_capacity_full, :on => :update
  
   has_many :tickets
   has_many :comments
@@ -149,6 +150,13 @@ class User < ActiveRecord::Base
 
   def self.get_encrypted_password(password)
     Digest::SHA2.hexdigest(password)
+  end
+
+#  This method will check if the location that is being assigned to user is full or not. If it is already full then we will not assign a User to it.
+  def location_capacity_full
+    if (self.location_id.nil? == false && self.location.users.count >= self.location.capacity.to_i)
+      errors.add(:location_id, "is already full or no capacity.")
+    end
   end
   
 end

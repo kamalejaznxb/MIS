@@ -8,6 +8,7 @@ Mis::Application.routes.draw do
       get   'assign_location_to_user'
       get   'show_users_at_location'
       post  'save_location_assigned_user'
+      get   'get_location_back_from_user'
     end
   end
 

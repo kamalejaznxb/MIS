@@ -6,6 +6,7 @@
 
       <%= content_tag :li, location.name, :style=>"width: 250px;" %>
       <%= content_tag :li, location.location_type.name, :style => "width: 250px;" %>
+      <%= content_tag :li, location.capacity.nil? ? "0" : location.capacity, :style => "width: 250px;" %>
       
       <%= content_tag :li, :class=>"options" do %>
         <%= content_tag :dl, :class=>"options space-right-10" do %>

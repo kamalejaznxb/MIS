@@ -4,7 +4,7 @@ class CreateLocations < ActiveRecord::Migration
       t.string  :name
       t.integer :location_type_id
       t.integer :location_id
-
+      t.integer :capacity
       t.timestamps
     end
   end
