@@ -11,19 +11,19 @@
   %>
     <%= f.input :full_name  %>
     <%= f.input :username %>
-    <%= f.input :password %>
-    <%= f.input :password_confirmation, :as => :password, :label => "Password Confirmation" %>
-    <%= f.association :user_role, :collection=>current_user.get_user_roles, :include_blank=>false %>
-    <%= f.association :dm,
-	as: :select ,
-	label: 'Report to',
-	collection: User.get_dm,
-	wrapper_html: { class: "#{@user.check_employee('DM')} employee-role dm" } %>
-    <%= f.input :tl_list, as: :select, 
-	collection: User.get_tl,
-	label: 'Report to',
-	wrapper_html: { class: "#{@user.check_employee('TL')} employee-role tl" }
-    %>
+
+    <% if @user.new_record? %>
+      <%= f.input :password %>
+      <%= f.input :password_confirmation, :as => :password, :label => "Password Confirmation" %>
+    <% elsif @user.id == current_user.id %>
+      <%= f.input :old_password, :as => :password, :label => "Old Password" %>
+      <%= f.input :new_password, :as => :password, :label => "New Password" %>
+      <%= f.input :new_password_confirmation, :as => :password, :label => "New Password Confirmation" %>
+    <% end %>
+
+    <%= f.association :user_role, :collection => current_user.get_user_roles, :include_blank=>false %>
+    
+
     <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
     or
     <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>

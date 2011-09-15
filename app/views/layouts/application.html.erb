@@ -22,7 +22,7 @@
           <% if current_user.can_user_do? :configuration %>
               | <%= link_to 'Configs', {:controller => "configs", :action => "index"} %>
           <% end %>
-          | <%= link_to "Profile", profile_index_path %>
+          | <%= link_to "Profile", {:controller => "users", :action => "profile"} %>
           | <%= link_to "Logout", logout_path %>
         </hgroup>
         <nav id="main-tabs">

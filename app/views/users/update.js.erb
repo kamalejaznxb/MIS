@@ -1,1 +1,5 @@
-$('.cancel').trigger('click');
+<% if @user.errors.empty?  %>
+  $('.cancel').trigger('click');
+<% else %>
+  jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @user}) %>");
+<% end %>

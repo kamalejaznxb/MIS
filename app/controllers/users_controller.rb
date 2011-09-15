@@ -25,20 +25,30 @@ class UsersController < ApplicationController
       end
     end
   end
+
   def edit
     @user = User.find params[:id]
     respond_to do |format|
       format.js
     end
   end
+
   def update
     @user = User.find params[:id]
     respond_to do |format|
       if @user.update_attributes params[:user]
         format.js
+      else
+        format.js
       end
-      format.html{ redirect_to( users_path ) }
     end
-
   end
+
+  def profile
+    @user = current_user
+    respond_to do |format|
+      format.html
+    end
+  end
+
 end

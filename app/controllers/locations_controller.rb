@@ -110,7 +110,7 @@ class LocationsController < ApplicationController
 # This method will save a User in a Location.
   def save_location_assigned_user
     @user = User.where("id = #{params[:user_id]}").first
-    @user.location_id = params[:location_id]
+    @user.user_location_id = params[:location_id]
     if (@user.save)
       @locations = Location.index_locations
     end

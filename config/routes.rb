@@ -31,18 +31,29 @@ Mis::Application.routes.draw do
          post :change_password
       end
    end
-   resources :users 
-   match '/dashboard' => 'dashboard#index'
-   resources :tickets do
+
+  resources :users do
+    collection do
+      get  'profile'
+    end
+  end
+
+  match '/dashboard' => 'dashboard#index'
+
+  resources :tickets do
       resources :comments
       collection do
          get :filter
       end
    end
-   resources :sessions
-   match '/login' => 'sessions#new'
-   match '/logout' => 'sessions#destroy'
-   root :to => 'tickets#index'
+
+  resources :sessions
+
+  match '/login' => 'sessions#new'
+
+  match '/logout' => 'sessions#destroy'
+
+  root :to => 'tickets#index'
    # The priority is based upon order of creation:
    # first created -> highest priority.
 

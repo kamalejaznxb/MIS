@@ -4,10 +4,18 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
+  attr_accessor :password, :old_password, :new_password, :user_location_id
+
   validates :username, :presence => true, :uniqueness => true
-  validates :password, :presence => true, :confirmation => true
-#  validates :password_confirmation, :presence => true
+
+  validates :password, :presence => true, :confirmation => true, :on => :create
+  validates :password_confirmation, :presence => true, :unless => "password.blank?"
+  
+  validates :new_password, :presence => true, :confirmation => true, :on => :update, :unless => "old_password.blank?"
+  validates :new_password_confirmation, :presence => true, :unless => "new_password.blank?"
+
   validate  :location_capacity_full, :on => :update
+  validate  :old_password_correct, :on => :update
  
   has_many :tickets
   has_many :comments
@@ -22,14 +30,19 @@ class User < ActiveRecord::Base
   #    :foreign_key => :refered_to, :class_name=>'User'
   scope :check_login, proc {|username|
     where( :username => username)}
-  scope :check_user_login, proc { |username, password|
-    where( :username => username, :password => password) }
+  
+  scope :check_user_login, proc { |username, encrypted_password|
+    where( :username => username, :encrypted_password => encrypted_password) }
+
   has_many :subordinates, class_name: "User",
     foreign_key:"dm_id"
+
   belongs_to :dm, class_name: "User"
+
 
   has_many :members, class_name: "User",
     foreign_key: "tl_id"
+
   belongs_to :tl, class_name: "User"
 
   scope :noc_staff, joins(:user_role) &  where('user_roles.title' => 'noc' )
@@ -98,6 +111,7 @@ class User < ActiveRecord::Base
   end
 
   def tl_list=( value )
+    logger.debug("XXXXXXXXXXXXXXX #{value}")
     self.tl_id = value
     self.dm ||=  User.find_by_id( value ).dm
   end
@@ -145,7 +159,8 @@ class User < ActiveRecord::Base
   end
 
   def encrypt_password
-    self.password = self.class.get_encrypted_password(password)
+    return if password.nil? || password.blank?
+    self.encrypted_password = self.class.get_encrypted_password(password)
   end
 
   def self.get_encrypted_password(password)
@@ -154,8 +169,22 @@ class User < ActiveRecord::Base
 
 #  This method will check if the location that is being assigned to user is full or not. If it is already full then we will not assign a User to it.
   def location_capacity_full
-    if (self.location_id.nil? == false && self.location.users.count >= self.location.capacity.to_i)
-      errors.add(:location_id, "is already full or no capacity.")
+    if (!self.user_location_id.blank?)
+      self.location_id = self.user_location_id
+      if (self.location_id.to_i != 0 && !self.location_id.nil? && self.location.users.count >= self.location.capacity.to_i)
+        errors.add(:location_id, "is already full or no capacity.")
+      end
+    end
+  end
+
+#  This method will check that the old password matches with the existing Password while updating the User.
+  def old_password_correct
+    if (!self.old_password.blank? && self.class.get_encrypted_password(self.old_password) != self.encrypted_password)
+      errors.add(:old_password, "doesn't match with the Existing Password.")
+    elsif(self.old_password.blank? && !self.new_password.blank?)
+      errors.add(:old_password, "cannot be blank")
+    else
+      self.password = self.new_password
     end
   end
   
