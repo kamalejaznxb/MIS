@@ -9,8 +9,8 @@
       <% end %>
       <%= content_tag :div, '',:class=>'spacer' %>
       <% @users.each do |user| %>
-        <%= content_tag :div, :id => "location-user-#{user.id}" do %>
-          <%= user.full_name %> &nbsp; <%= link_to "Get Location Back", {:action => "get_location_back_from_user", :user_id => user.id}, :remote => true, :confirm => "Are you Sure?" %>   <br />
+        <%= content_tag :div, :id => "location-user-#{user.user_id}" do %>
+          <%= "#{user.user_name} - #{user.location_name}" %> &nbsp; <%= link_to "Get Location Back", {:action => "get_location_back_from_user", :user_id => user.user_id}, :remote => true, :confirm => "Are you Sure?" %>   <br />
         <% end %>
       <% end %>
 

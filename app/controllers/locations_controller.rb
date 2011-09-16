@@ -102,6 +102,7 @@ class LocationsController < ApplicationController
 #  This method will assign a location to a User.
   def assign_location_to_user
     @users = User.users_not_assigned_to_any_location
+    @empty_sub_locations = Location.where("id = #{params[:location_id]}").first.empty_sub_locations
     respond_to do |format|
       format.js
     end
@@ -110,7 +111,7 @@ class LocationsController < ApplicationController
 # This method will save a User in a Location.
   def save_location_assigned_user
     @user = User.where("id = #{params[:user_id]}").first
-    @user.user_location_id = params[:location_id]
+    @user.location_id = params[:location_id]
     if (@user.save)
       @locations = Location.index_locations
     end
@@ -121,7 +122,7 @@ class LocationsController < ApplicationController
 
 #  This method will show the users assigned to a Particular Location
   def show_users_at_location
-    @users = Location.where("id = #{params[:location_id]}").first.users
+    @users = Location.users_at_sub_locations(params[:location_id])
     respond_to do |format|
       format.js
     end

@@ -9,8 +9,11 @@
   <%= form_tag({:action => "save_location_assigned_user"}, :remote => true) do |f| %>
 
     <%= label_tag "Select User" %>
-    <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "full_name") %>
-    <%= hidden_field_tag "location_id", params[:location_id] %>
+    <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "full_name") %> <br />
+
+    <%= label_tag "Select Sub Location" %>
+    <%= select_tag "location_id", options_from_collection_for_select(@empty_sub_locations, :first, :last) %>
+    <%#= hidden_field_tag "location_id", params[:location_id] %>
 
     <br />
 
