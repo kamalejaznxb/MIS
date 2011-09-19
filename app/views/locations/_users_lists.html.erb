@@ -1,0 +1,23 @@
+<%= content_tag :div, :id => 'listings' do %>
+  <% users.each do |user| %>
+    <%= content_tag :ul, :class=>"row", :style => "height: 75px;", :id=>"centre-#{ user.id }" do %>
+      <%= content_tag :li, :style=>"width: 75px;" do %>
+        <%= link_to user.id, user, :remote => true %>
+      <% end %>
+      <%= content_tag :li, user.full_name, :style => "width: 75px;" %>
+      <%= content_tag :li, "", :style => "width: 75px;" %>
+      <%= content_tag :li, user.location.nil? ? "No Location Assigned" : user.location.full_hierarchy , :style => "width: 75px;" %>
+      <%= content_tag :li, :style => "width: 75px;" do %>
+        <%= link_to "Move", {:action => "move_user_to_another_sub_location", :user_id => user.id}, :remote => true, :id => "user-move-#{user.id}" %>
+      <% end %>
+
+      <%= content_tag :li, :style => "width: 75px;" do %>
+        <%= link_to "Replace/View HW", "#", :remote => true %>
+      <% end %>
+
+      <%= content_tag :li, :style => "width: 75px;" do %>
+        <%= link_to "Resign", "#", :remote => true %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

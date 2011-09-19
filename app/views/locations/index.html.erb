@@ -12,15 +12,38 @@
   <%#= render :partial=>"footer" %>
 <% end %>
 
-<%= content_tag :div, :class=>'menu-holder' do %>
-  <%= content_tag :div, :class=>'menu-inner' do %>
-    <%= content_tag :ul, :class=>'head', :id=>'main-nav' do %>
-      <%= content_tag :li, "Name", :style=>"width: 250px;"   %>
-      <%= content_tag :li, "Location Type", :style => "width: 250px;" %>
-      <%= content_tag :li, "Capacity", :style => "width: 250px;" %>
+<% current_user_role = current_user.user_role.title.downcase %>
+
+<% if (current_user_role == "admin") %>
+
+  <%= content_tag :div, :class=>'menu-holder' do %>
+    <%= content_tag :div, :class=>'menu-inner' do %>
+      <%= content_tag :ul, :class=>'head', :id=>'main-nav' do %>
+        <%= content_tag :li, "Name", :style=>"width: 250px;"   %>
+        <%= content_tag :li, "Location Type", :style => "width: 250px;" %>
+        <%= content_tag :li, "Capacity", :style => "width: 250px;" %>
+      <% end %>
     <% end %>
   <% end %>
+  <%= content_tag :div, '',:class=>'spacer' %>
+  <%= render :partial=>'list' %>
+
+<% elsif (current_user_role == "mis" ) %>
+  <%= content_tag :div, :class=>'menu-inner' do %>
+      <%= content_tag :ul, :class=>'head', :id=>'main-nav' do %>
+        <%= content_tag :li, "Employee ID", :style=>"width: 75px;"   %>
+        <%= content_tag :li, "Employee Name", :style => "width: 75px;" %>
+        <%= content_tag :li, "Current System", :style => "width: 75px;" %>
+        <%= content_tag :li, "Location", :style => "width: 75px;" %>
+        <%= content_tag :li, "", :style => "width: 75px;" %>
+        <%= content_tag :li, "", :style => "width: 75px;" %>
+        <%= content_tag :li, "", :style => "width: 75px;" %>
+    <% end %>
+  <% end %>
+  <%= content_tag :div, '',:class => 'spacer' %>
+  <%= render :partial => "users_lists", :locals => {:users => User.all} %>
+
+<% else %>
+  <%= "You are not Authorized to view this Page." %>
 <% end %>
-<%= content_tag :div, '',:class=>'spacer' %>
-<%= render :partial=>'list' %>
 

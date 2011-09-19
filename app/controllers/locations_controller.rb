@@ -137,4 +137,16 @@ class LocationsController < ApplicationController
     end
   end
 
+  def move_user_to_another_sub_location
+    if (!params[:user_id].nil?)
+      @locations = Location.index_locations
+    elsif(!params[:location_id].nil?)
+      @locations = Location.where("id = #{params[:location_id]}").first.empty_sub_locations
+
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end

@@ -44,6 +44,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.where("id = #{params[:id]}")
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def profile
     @user = current_user
     respond_to do |format|

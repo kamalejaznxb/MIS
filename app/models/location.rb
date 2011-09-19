@@ -54,4 +54,21 @@ class Location < ActiveRecord::Base
     empty_locations
   end
 
+#  This method will tell the full hierarchy of a location.
+  def full_hierarchy
+    hierarchy = []
+    current_location = self
+    hierarchy << current_location.name
+    while(1)
+      if (current_location.location)
+        location = current_location.location
+        hierarchy << location.name
+        current_location = location
+      else
+        break
+      end
+    end
+    hierarchy.reverse.map {|h| h}.join(", ")
+  end
+
 end

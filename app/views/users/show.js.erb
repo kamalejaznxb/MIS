@@ -1,0 +1,6 @@
+jQuery(".cancel").trigger("click");
+jQuery("<%= escape_javascript(render :partial => "show") %> ")
+.insertAfter(".inner")
+.wrap("<div id='popup'></div>");
+
+set_position();
