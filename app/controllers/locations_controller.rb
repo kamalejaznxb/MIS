@@ -142,7 +142,6 @@ class LocationsController < ApplicationController
       @locations = Location.index_locations
     elsif(!params[:location_id].nil?)
       @locations = Location.where("id = #{params[:location_id]}").first.empty_sub_locations
-
     end
     respond_to do |format|
       format.js

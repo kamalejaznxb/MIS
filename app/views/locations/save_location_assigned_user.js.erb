@@ -1,6 +1,11 @@
 <% if (@user.errors.empty?) %>
   jQuery(".cancel").trigger("click");
-  jQuery("#listings").html("<%= escape_javascript(render :partial => "list")  %>");
+  <% current_user_role = current_user.user_role.title.downcase %>
+  <% if current_user_role == "admin" %>
+    jQuery("#listings").html("<%= escape_javascript(render :partial => "list")  %>");
+  <% elsif current_user_role == "mis" %>
+    jQuery("#listings").html("<%= escape_javascript(render :partial => "users_lists", :locals => {:users => User.all})  %>")
+  <% end %>
 <% else %>
   jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @user}) %>");
 <% end %>

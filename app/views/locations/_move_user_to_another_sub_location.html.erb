@@ -1,21 +1,34 @@
 <% if (params[:location_id].nil?) %>
-<%= content_tag :div, :class=>'show padding-top-10 padding-bottom-5 under-row bottom-border border-color' do %>
+
+  <%= content_tag :div, :class=>'show padding-bottom-5 under-row bottom-border border-color' do %>
+
+    <%= content_tag :h3, 'Move User to Another Location', :class=>'space-top-10 space-bottom-10' %>
+    <%= tag 'hr', :class=>'clear' %>
 
   <%= content_tag :div, :id => "user-movement-listing" do %>
-    <%= label_tag "Parent Location" %>
-    <%= select_tag "index_locations", options_from_collection_for_select(@locations, :id, :name), :include_blank => true, :class => "locations" %>
+    <%= content_tag :div, :class => "sub_locations_select_tags" do %>
+      <%= label_tag "parent_locations", "Parent Locations" %>
+      <%= select_tag "index_locations", options_from_collection_for_select(@locations, :id, :name), :include_blank => true, :class => "locations" %>
+    <% end %>
   <% end %>
-  <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+  
   <%= form_tag({:action => "save_location_assigned_user"}, :remote => "true") do %>
     <%= hidden_field_tag "user_id", params[:user_id] %>
     <%= hidden_field_tag "location_id", "" %>
-    <%= submit_tag "Assign Location", :id => "user-move-submit" %>
+    <%= submit_tag "Assign Location", :id => "user-move-submit", :class => "new-user submit button" %>
+    or
+    <%= link_to "Cancel", '#', :class => 'space-top-10 cancel', :id => "user-move-cancel" %>
   <% end %>
+
   <%= link_to "#", "#", :remote => true, :class => "hide", :id => "hidden_link" %>
+
 <% end %>
+
 <% else %>
-    <br />
    <% unless (@locations.empty?) %>
-    <%= select_tag "sub_locations", options_from_collection_for_select(@locations, :first, :last), :include_blank => true, :class => "locations" %>
+    <%= content_tag :div, :class => "sub_locations_select_tags" do %>
+      <%= label_tag "sub_locations", "Sub Locations" %>
+      <%= select_tag "sub_locations", options_from_collection_for_select(@locations, :first, :last), :include_blank => true, :class => "locations" %>
+    <% end %>
    <% end %>
 <% end %>
