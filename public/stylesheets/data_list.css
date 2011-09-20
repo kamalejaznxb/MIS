@@ -43,11 +43,13 @@ ul.head{
     height: 41px;
     padding: 0 14px 0 0;
 }
-ul.row:hover{
-    background-color: #F7F7F7;
+
+ul.row-odd:hover, ul.row-even:hover{
+    background-color: #F1F1F1;
     border-bottom:  1px solid #f6f6f6;
 }
-ul.row li{
+
+ul.row-odd li, ul.row-even li{
     margin-top: 5px;
     margin-left: 10px;
     float: left;
@@ -56,13 +58,14 @@ ul.row-selected{ background: none repeat scroll 0 0 #C5EFFD !important; }
 div.row-container{
 
 }
-ul.row{
+ul.row-odd{
     /*    display: block;
         clear: both;
         height: 35px;*/
     /*    background: url("/images/listing-bg.png") repeat-x scroll left bottom transparent;*/
     clear: left;
     color: #838383;
+    background-color: #F7F7F7;
     font-size: 12px;
     height: 40px;
     margin: 0;
@@ -73,6 +76,26 @@ ul.row{
     /*    background: -moz-linear-gradient(top, #fff, #f6f6f6  );*/
     /*    background: -webkit-gradient(linear, 0 0, 0, from(#fff), to(#f6f6f6));*/
 }
+
+ul.row-even{
+    /*    display: block;
+        clear: both;
+        height: 35px;*/
+    /*    background: url("/images/listing-bg.png") repeat-x scroll left bottom transparent;*/
+    clear: left;
+    color: #838383;
+    background-color: #FFFFFF;
+    font-size: 12px;
+    height: 40px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    text-shadow: 0 2px 2px #FFFFFF;
+    border: 1px solid #fff;
+    /*    background: -moz-linear-gradient(top, #fff, #f6f6f6  );*/
+    /*    background: -webkit-gradient(linear, 0 0, 0, from(#fff), to(#f6f6f6));*/
+}
+
 div.head-wrapper{
     background: url("/images/shadow-lr.png") repeat-y scroll left top transparent;
     clear: left;
@@ -86,13 +109,13 @@ div.head-wrapper{
 
 }
 
-ul.row.height-23{
+ul.row-odd.height-23, ul.row-even.height-23 {
     height: 23px;
 }
-ul.row li.options {
+ul.row-odd li.options, ul.row-even li.options {
     float: right;
 }
-ul.row li.row-options{
+ul.row-odd li.row-options, ul.row-even li.row-options{
 	float: right;
 	margin-right: 5px;
 }

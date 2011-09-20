@@ -2,11 +2,15 @@
   <%= render :partial => "sidebar" %>
 <% end %>
 <%= content_for :js do %>
+  <%= javascript_include_tag 'jquery.tablesorter.min' %>
+  <%= javascript_include_tag 'jquery.tablesorter.pager' %>
   <%= javascript_include_tag 'users/index' %>
   <%= javascript_include_tag 'locations/index' %>
 <% end %>
 <%= content_for :css do %>
   <%= stylesheet_link_tag 'data_list'%>
+  <%= stylesheet_link_tag 'locations/jquery.tablesorter.css' %>
+  <%= stylesheet_link_tag 'locations/jquery.tablesorter.pager.css' %>
 <% end %>
 <%= content_for :footer do %>
   <%#= render :partial=>"footer" %>
@@ -29,20 +33,35 @@
   <%= render :partial=>'list' %>
 
 <% elsif (current_user_role == "mis" ) %>
-  <%= content_tag :div, :class=>'menu-inner' do %>
-      <%= content_tag :ul, :class=>'head', :id=>'main-nav' do %>
-        <%= content_tag :li, "Employee ID", :style=>"width: 75px;"   %>
-        <%= content_tag :li, "Employee Name", :style => "width: 75px;" %>
-        <%= content_tag :li, "Current System", :style => "width: 75px;" %>
-        <%= content_tag :li, "Location", :style => "width: 200px;" %>
-        <%= content_tag :li, "", :style => "width: 75px;" %>
-        <%= content_tag :li, "", :style => "width: 100px;" %>
-        <%= content_tag :li, "", :style => "width: 75px;" %>
-    <% end %>
-  <% end %>
-  <%= content_tag :div, '',:class => 'spacer' %>
-  <%= render :partial => "users_lists", :locals => {:users => User.all} %>
+  <%= content_tag :div, :id => 'listings' do %>
 
+    <table id="users_table" class="tablesorter">
+      <thead>
+        <tr>
+          <th class="header bold">Employee ID</th>
+          <th class="header bold">Employee Name</th>
+          <th class="header bold">Current System</th>
+          <th class="header bold">Location</th>
+          <th class="header bold">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="users_list_in_table">
+        <%= render :partial => "users_lists", :locals => {:users => User.all} %>
+      </tbody>
+    </table>
+
+  <div id="pager" class="pager">
+    <form>
+      <%= image_tag "tablesorter/pager/first.png", :class => "first" %>
+      <%= image_tag "tablesorter/pager/prev.png", :class => "prev" %>
+      <%= text_field_tag "pagedisplay", "", :class => "pagedisplay" %>
+      <%= image_tag "tablesorter/pager/next.png", :class => "next" %>
+      <%= image_tag "tablesorter/pager/last.png", :class => "last" %>
+      <%= select_tag "pagesize", options_from_collection_for_select([["5", "5"], ["10", "10"], ["20", "20"], ["30", "30"], ["40", "40"]], :first, :last), :class => "pagesize" %>
+    </form>
+  </div>
+
+<% end %>
 <% else %>
   <%= "You are not Authorized to view this Page." %>
 <% end %>

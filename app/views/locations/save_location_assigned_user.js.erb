@@ -4,7 +4,8 @@
   <% if current_user_role == "admin" %>
     jQuery("#listings").html("<%= escape_javascript(render :partial => "list")  %>");
   <% elsif current_user_role == "mis" %>
-    jQuery("#listings").html("<%= escape_javascript(render :partial => "users_lists", :locals => {:users => User.all})  %>")
+    jQuery("#users_list_in_table").html("<%= escape_javascript(render :partial => "users_lists", :locals => {:users => User.all}) %>");
+    jQuery("#users_table").trigger("update");
   <% end %>
 <% else %>
   jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @user}) %>");

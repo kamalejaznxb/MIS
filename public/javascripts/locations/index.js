@@ -1,4 +1,7 @@
 jQuery("document").ready(function() {
+    
+    jQuery("#users_table").tablesorter({widthFixed: true, widgets: ['zebra']}).tablesorterPager({container: jQuery("#pager"), size: 5});
+
     jQuery(".sub_locations_cancel").live("click", function() {
 //        jQuery(".row-selected").removeClass("row-selected");
         jQuery(this).parent().prev().removeClass("row-selected");
