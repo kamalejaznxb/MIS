@@ -1,15 +1,18 @@
-<% users.each do |user| %>
-  <tr class="<%= cycle("odd", "even") %>">
-    <td><%= link_to user.id, user, :remote => true %></td>
-    <td><%= user.full_name %></td>
-    <td>N/A</td>
-    <td><%= user.location.nil? ? "No Location Assigned" : user.location.full_hierarchy %></td>
-    <td>
-      <%= link_to "Move", {:action => "move_user_to_another_sub_location", :user_id => user.id}, :remote => true %>
-      |
-      <%= link_to "Replace / View HW", "#", :remote => true %>
-      |
-      <%= link_to "Resign", "#", :remote => true %>
-    </td>
-  </tr>
-<% end %>
+<table id="users_table" class="tablesorter">
+  <thead>
+    <tr>
+      <th class="header bold">Employee ID</th>
+      <th class="header bold">Employee Name</th>
+      <th class="header bold">Current System</th>
+      <th class="header bold">Location</th>
+      <th class="header bold">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="users_list_in_table">
+    <% users.each do |user| %>
+      <tr class="<%= cycle("odd", "even") %>" id = "user-row-<%= user.id %>">
+        <%= render :partial => "single_user", :locals => {:user => user} %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

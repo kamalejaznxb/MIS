@@ -2,7 +2,7 @@
   <%= render :partial => "sidebar" %>
 <% end %>
 <%= content_for :js do %>
-  <%= javascript_include_tag 'jquery.tablesorter.min' %>
+  <%= javascript_include_tag 'jquery.tablesorter' %>
   <%= javascript_include_tag 'jquery.tablesorter.pager' %>
   <%= javascript_include_tag 'users/index' %>
   <%= javascript_include_tag 'locations/index' %>
@@ -35,21 +35,22 @@
 <% elsif (current_user_role == "mis" ) %>
   <%= content_tag :div, :id => 'listings' do %>
 
-    <table id="users_table" class="tablesorter">
-      <thead>
-        <tr>
-          <th class="header bold">Employee ID</th>
-          <th class="header bold">Employee Name</th>
-          <th class="header bold">Current System</th>
-          <th class="header bold">Location</th>
-          <th class="header bold">Actions</th>
-        </tr>
-      </thead>
-      <tbody id="users_list_in_table">
-        <%= render :partial => "users_lists", :locals => {:users => User.all} %>
-      </tbody>
-    </table>
+    <%= content_tag :div, "", :class => "spacer" %>
 
+    <%= content_tag :div, :id => "location_users_filter_listings", :style => "width: 300px; float: left; margin-left: 5px; margin-bottom: 15px;" do %>
+      <%= content_tag :h3, "Advance User Filter" %>
+      <br />
+      <%= content_tag :div, :class => "location_users_filter_select_tags", :style => "width: 300px;" do %>
+        <%= label_tag "parent_locations", @locations.empty? ? "" : @locations.first.location_type.name.singularize, :style => "padding-right: 5px; width: 40px;" %>
+        <%= select_tag "parent_locations", options_from_collection_for_select(@locations, :id, :name), :include_blank => true, :class => "location_users_filter" %>
+      <% end %>
+    <% end %>
+
+
+          <%= content_tag :div, :id => "users_table_container" do %>
+            <%= render :partial => "users_lists", :locals => {:users => User.all} %>
+          <% end %>
+    
   <div id="pager" class="pager">
     <form>
       <%= image_tag "tablesorter/pager/first.png", :class => "first" %>
@@ -57,7 +58,7 @@
       <%= text_field_tag "pagedisplay", "", :class => "pagedisplay" %>
       <%= image_tag "tablesorter/pager/next.png", :class => "next" %>
       <%= image_tag "tablesorter/pager/last.png", :class => "last" %>
-      <%= select_tag "pagesize", options_from_collection_for_select([["5", "5"], ["10", "10"], ["20", "20"], ["30", "30"], ["40", "40"]], :first, :last), :class => "pagesize" %>
+      <%= select_tag "pagesize", options_from_collection_for_select([["3", "3"], ["5", "5"], ["10", "10"], ["20", "20"], ["30", "30"], ["40", "40"]], :first, :last), :class => "pagesize" %>
     </form>
   </div>
 
@@ -65,4 +66,6 @@
 <% else %>
   <%= "You are not Authorized to view this Page." %>
 <% end %>
+
+<%= link_to "#", "#", :remote => true, :class => "hide", :id => "hidden_link" %>
 

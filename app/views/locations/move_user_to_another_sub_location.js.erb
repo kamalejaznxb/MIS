@@ -4,5 +4,5 @@ jQuery("<%= escape_javascript(render :partial => "move_user_to_another_sub_locat
 .wrap("<div id='popup'></div>");
 set_position();
 <% else  %>
-  jQuery("#user-movement-listing").append("<%= escape_javascript(render :partial => "move_user_to_another_sub_location")  %> ")
+  jQuery("#user-movement-listing").append("<%= escape_javascript(render :partial => "move_user_to_another_sub_location") %> ");
 <% end %>

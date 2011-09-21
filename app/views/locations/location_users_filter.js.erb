@@ -1,0 +1,8 @@
+jQuery("#users_list_in_table").html("");
+<% unless @users.empty? %>
+  jQuery("#users_table").remove();
+  jQuery("#users_table_container").html("<%= escape_javascript(render :partial => "users_lists", :locals => {:users => @users}) %>");
+  jQuery("#users_table").tablesorter({widthFixed: true, widgets: ['zebra']}).tablesorterPager({container: jQuery("#pager"), size: 5});
+<% end %>
+jQuery("#location_users_filter_listings").append("<%= escape_javascript(render :partial => "location_users_filter") %>");
+

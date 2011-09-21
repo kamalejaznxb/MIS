@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.xml
+
   def index
     @locations = Location.index_locations
 
@@ -139,10 +140,27 @@ class LocationsController < ApplicationController
 
   def move_user_to_another_sub_location
     if (!params[:user_id].nil?)
+      @user = User.where("id = #{params[:user_id]}").first
       @locations = Location.index_locations
     elsif(!params[:location_id].nil?)
-      @locations = Location.where("id = #{params[:location_id]}").first.empty_sub_locations
+      @location = Location.where("id = #{params[:location_id]}").first
+      @locations = @location.empty_sub_locations
+      @location_type = Location.where("id = #{@locations.first[0]}").first.location_type.name
     end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+#  This method will filter the users based on the location_id.
+  def location_users_filter
+    @location = Location.where("id = #{params[:location_id]}").first
+    @sub_locations = @location.locations
+    full_tree_location_ids = @location.parent_location_full_child_tree
+    logger.debug("**************** #{full_tree_location_ids}")
+
+    @users = User.where("location_id IN (#{full_tree_location_ids})")
+    
     respond_to do |format|
       format.js
     end

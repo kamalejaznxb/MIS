@@ -1,5 +1,15 @@
 class Location < ActiveRecord::Base
 
+  @@full_tree_location_ids = ""
+
+  def self.full_tree_location_ids
+    @@full_tree_location_ids
+  end
+
+  def self.full_tree_location_ids=(value)
+    @@full_tree_location_ids = value
+  end
+
   validates :name, :presence => true, :uniqueness => {:scope => :location_id}
 
   validates :location_type, :presence => true
@@ -69,6 +79,24 @@ class Location < ActiveRecord::Base
       end
     end
     hierarchy.reverse.map {|h| h}.join(", ")
+  end
+
+#  This method will give us the all sub_locations of a Parent Location. If a sub_location has other sub_locations then they will be presented too. It's implementation is Recursive.
+  def parent_location_full_child_tree
+    parent_location = self
+
+    self.class.full_tree_location_ids = self.class.full_tree_location_ids + "#{self.id}, "
+    
+    parent_location.locations.each do |location|
+
+      self.class.full_tree_location_ids = self.class.full_tree_location_ids + "#{location.id}, "
+      logger.debug("XXXXXXXXXXXXXx #{self.class.full_tree_location_ids}")
+      
+      unless location.locations.empty?
+        location.parent_location_full_child_tree
+      end
+    end
+    self.class.full_tree_location_ids[0..-3]
   end
 
 end

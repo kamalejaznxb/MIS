@@ -7,6 +7,7 @@ jQuery("document").ready(function() {
         jQuery(this).parent().prev().removeClass("row-selected");
         jQuery(this).parent().remove();
     });
+
     jQuery(".locations").live("change", function() {
        if (jQuery(this).val() != "") {
            location_id = jQuery(this).val();
@@ -15,6 +16,7 @@ jQuery("document").ready(function() {
            jQuery("#hidden_link").trigger("click");
        }
     });
+    
     jQuery("#user-move-submit").live("click", function() {
        var result = confirm("Are you sure to move User Location ?");
        if (result)
@@ -28,6 +30,16 @@ jQuery("document").ready(function() {
        }
 
     });
+
+    jQuery(".location_users_filter").live("change", function() {
+       if (jQuery(this).val() != "") {
+           location_id = jQuery(this).val();
+           jQuery(this).parent().nextAll("div.location_users_filter_select_tags").remove();
+           jQuery("#hidden_link").attr("href", "/locations/location_users_filter?location_id=" + location_id);
+           jQuery("#hidden_link").trigger("click");
+       }
+    });
+    
 });
 
 

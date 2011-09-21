@@ -1,0 +1,6 @@
+<% unless (@sub_locations.empty?) %>
+  <%= content_tag :div, :class => "location_users_filter_select_tags", :style => "width: 300px; margin: auto;" do %>
+    <%= label_tag "sub_locations", @sub_locations.first.location_type.name.singularize, :style => "padding-right: 5px; width: 40px;" %>
+    <%= select_tag "sub_locations", options_from_collection_for_select(@sub_locations, :id, :name), :include_blank => true, :class => "location_users_filter" %>
+  <% end %>
+<% end %>
