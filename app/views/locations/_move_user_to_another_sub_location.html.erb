@@ -13,8 +13,9 @@
     <% end %>
 
     <br />
-
-    <%= content_tag :div, :style => "float: left; margin-left: 5px;" do %>
+    
+    
+    <%= content_tag :div, :style => "float: left; margin-left: 5px; margin-top: 5px;" do %>
       <%= content_tag :span, "Current Location: ", :class => "bold" %>
       &nbsp;&nbsp;
       <%= @user.location.nil? ? "No Location Assigned" : @user.location.full_hierarchy %>
@@ -25,14 +26,14 @@
     <%= content_tag :div, "", :class => "space-top-10" %>
 
     <%= content_tag :div, :id => "user-movement-listing" do %>
-      <%= content_tag :div, :class => "sub_locations_select_tags", :style => "width: 300px; margin: auto" do %>
-        <%= label_tag "parent_locations", @locations.empty? ? "" : @locations.first.location_type.name.singularize %>
+      <%= content_tag :div, :class => "sub_locations_select_tags", :style => "width: 200px; margin: auto" do %>
+        <%= label_tag "parent_locations", @locations.empty? ? "" : @locations.first.location_type.name.singularize, :style => "width: 40px;" %>
         <%= select_tag "index_locations", options_from_collection_for_select(@locations, :id, :name), :include_blank => true, :class => "locations" %>
       <% end %>
     <% end %>
 
     <%= content_tag :div, "", :class => "space-top-10" %>
-    <%= content_tag :div, :style => "width: 300px; margin: auto;" do %>
+    <%= content_tag :div, :style => "width: 200px; margin: auto;" do %>
       <%= form_tag({:action => "save_location_assigned_user"}, :remote => "true") do %>
         <%= hidden_field_tag "user_id", params[:user_id] %>
         <%= hidden_field_tag "location_id", "" %>
@@ -46,8 +47,8 @@
 
 <% else %>
   <% unless (@locations.empty?) %>
-    <%= content_tag :div, :class => "sub_locations_select_tags", :style => "width: 300px; margin: auto;" do %>
-      <%= label_tag "sub_locations", @location_type.singularize %>
+    <%= content_tag :div, :class => "sub_locations_select_tags", :style => "width: 200px; margin: auto;" do %>
+      <%= label_tag "sub_locations", @location_type.singularize, :style => "width: 40px;" %>
       <%= select_tag "sub_locations", options_from_collection_for_select(@locations, :first, :last), :include_blank => true, :class => "locations" %>
     <% end %>
   <% end %>
