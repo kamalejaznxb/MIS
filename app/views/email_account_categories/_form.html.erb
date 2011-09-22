@@ -1,0 +1,18 @@
+<%= content_tag :div, :class=>"under-row padding10 " do %>
+  <%= content_tag :h3, 'New Email Account Category', :class => 'space-top-10 space-bottom-10' %>
+  <%= tag 'hr', :class=>'clear' %>
+
+  <div id="errors">
+
+  </div>
+
+  <%= simple_form_for @email_account_category, :html => {:class => 'space-left-10' },
+	:remote => true do |f| %>
+    <%= f.input :name  %>
+
+    <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
+    or
+    <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+
+  <% end %>
+<% end %>

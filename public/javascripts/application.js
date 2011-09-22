@@ -59,7 +59,7 @@ $(document).ready(function() {
         $('dl.options>dd').hide();
     });
     
-    $('.row').live({
+    $('.row-odd, .row-even').live({
         mouseenter: function()
         {
             $(this).find('.row-options').show();

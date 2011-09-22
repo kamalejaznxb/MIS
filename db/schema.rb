@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110912105726) do
+ActiveRecord::Schema.define(:version => 20110922104032) do
 
   create_table "capacities", :force => true do |t|
     t.string   "title"
@@ -49,6 +49,12 @@ ActiveRecord::Schema.define(:version => 20110912105726) do
     t.datetime "updated_at"
   end
 
+  create_table "email_account_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "harddisk_types", :force => true do |t|
     t.string   "name"
     t.string   "size"
@@ -82,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20110912105726) do
     t.string   "name"
     t.integer  "location_type_id"
     t.integer  "location_id"
+    t.integer  "capacity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -177,11 +184,12 @@ ActiveRecord::Schema.define(:version => 20110912105726) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.string   "password"
+    t.string   "encrypted_password"
     t.string   "full_name"
     t.string   "dm_id"
     t.string   "tm"
     t.string   "tl_id"
+    t.integer  "location_id"
     t.integer  "user_role_id"
     t.datetime "created_at"
     t.datetime "updated_at"

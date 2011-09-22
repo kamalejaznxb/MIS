@@ -1,0 +1,6 @@
+<% if @email_account_category.errors.empty? %>
+  jQuery(".cancel").trigger("click");
+  jQuery("#email-account-category-row-<%= @email_account_category.id %>").html("<%= escape_javascript(render :partial => "single_email_account_category", :locals => {:email_account_category => @email_account_category}) %>");
+<% else %>
+  jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @email_account_category}) %>");
+<% end %>

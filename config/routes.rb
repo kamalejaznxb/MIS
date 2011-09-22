@@ -1,5 +1,7 @@
 Mis::Application.routes.draw do
 
+  resources :email_account_categories
+
   match "/configs" => "configs#index"
 
   resources :locations do

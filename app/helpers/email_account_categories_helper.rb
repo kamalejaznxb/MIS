@@ -1,0 +1,2 @@
+module EmailAccountCategoriesHelper
+end

@@ -4,15 +4,19 @@
 <%= content_tag :div, :class => "config-links-container" do %>
 
   <%= content_tag :div, :class => "config-link" do %>
-    <%= link_to "- Categories", categories_path %>
+    -  <%= link_to "Categories", categories_path %>
   <% end %>
 
   <%= content_tag :div, :class => "config-link" do %>
-    <%= link_to "- Location Types", location_types_path %>
+    -  <%= link_to "- Location Types", location_types_path %>
   <% end %>
 
   <%= content_tag :div, :class => "config-link" do %>
-    <%= link_to "- Locations", locations_path %>
+    -  <%= link_to "Locations", locations_path %>
+  <% end %>
+
+  <%= content_tag :div, :class => "config-link" do %>
+    -  <%= link_to "Email Account Categories", email_account_categories_path %>
   <% end %>
 
 <% end %>

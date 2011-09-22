@@ -2,7 +2,7 @@
 <%= content_tag :div, :id=>'listings' do %>
   <% @users.each do |user| %>
 
-    <%= content_tag :ul, :class=>"row", :id=>"centre-#{ user.id }" do %>
+    <%= content_tag :ul, :class => cycle("row-even", "row-odd"), :id=>"centre-#{ user.id }" do %>
         
       <%= content_tag :li, user ,:style=>"width:150px;" %>
       <%= content_tag :li, user.username, :style=>"width:150px;" %>
