@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
 
   belongs_to :location
 
+  has_many    :email_accounts, :dependent => :destroy
+  accepts_nested_attributes_for   :email_accounts, :reject_if => lambda { |a| a[:email_address].blank? }, :allow_destroy => true
+
   include UserPermission
   #  has_many :assigned,
   #    :foreign_key => :assigned_id, :class_name=>'User'

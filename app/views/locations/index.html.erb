@@ -9,8 +9,8 @@
 <% end %>
 <%= content_for :css do %>
   <%= stylesheet_link_tag 'data_list'%>
-  <%= stylesheet_link_tag 'locations/jquery.tablesorter.css' %>
-  <%= stylesheet_link_tag 'locations/jquery.tablesorter.pager.css' %>
+  <%= stylesheet_link_tag 'tablesorter/jquery.tablesorter.css' %>
+  <%= stylesheet_link_tag 'tablesorter/jquery.tablesorter.pager.css' %>
 <% end %>
 <%= content_for :footer do %>
   <%#= render :partial=>"footer" %>
@@ -47,22 +47,22 @@
     <% end %>
 
 
-          <%= content_tag :div, :id => "users_table_container" do %>
-            <%= render :partial => "users_lists", :locals => {:users => User.all} %>
-          <% end %>
-    
-  <div id="pager" class="pager">
-    <form>
-      <%= image_tag "tablesorter/pager/first.png", :class => "first" %>
-      <%= image_tag "tablesorter/pager/prev.png", :class => "prev" %>
-      <%= text_field_tag "pagedisplay", "", :class => "pagedisplay" %>
-      <%= image_tag "tablesorter/pager/next.png", :class => "next" %>
-      <%= image_tag "tablesorter/pager/last.png", :class => "last" %>
-      <%= select_tag "pagesize", options_from_collection_for_select([["3", "3"], ["5", "5"], ["10", "10"], ["20", "20"], ["30", "30"], ["40", "40"]], :first, :last), :class => "pagesize" %>
-    </form>
-  </div>
+    <%= content_tag :div, :id => "users_table_container" do %>
+      <%= render :partial => "users_lists", :locals => {:users => User.all} %>
+    <% end %>
 
-<% end %>
+    <div id="pager" class="pager">
+      <form>
+        <%= image_tag "tablesorter/pager/first.png", :class => "first" %>
+        <%= image_tag "tablesorter/pager/prev.png", :class => "prev" %>
+        <%= text_field_tag "pagedisplay", "", :class => "pagedisplay" %>
+        <%= image_tag "tablesorter/pager/next.png", :class => "next" %>
+        <%= image_tag "tablesorter/pager/last.png", :class => "last" %>
+        <%= select_tag "pagesize", options_from_collection_for_select([["3", "3"], ["5", "5"], ["10", "10"], ["20", "20"], ["30", "30"], ["40", "40"]], :first, :last), :class => "pagesize" %>
+      </form>
+    </div>
+
+  <% end %>
 <% else %>
   <%= "You are not Authorized to view this Page." %>
 <% end %>

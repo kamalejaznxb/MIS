@@ -120,3 +120,12 @@ function fancy_box(){
         'overlayShow'   : false
     });
 }
+
+function add_new_email_account(container, content) {
+    alert("Imran Latif");
+    var new_id = new Date().getTime();
+    var regExp = new RegExp("new_email_account", "g");
+    content = content.replace(regExp, new_id);
+    content = "<div>" + content + "</div>";
+    jQuery(container).append(content);
+}

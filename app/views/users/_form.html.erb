@@ -7,8 +7,7 @@
   </div>
 
   <%= simple_form_for @user, :html=>{:class=>'space-left-10' }, 
-	:multiple => true, :remote => true do |f|
-  %>
+	:multiple => true, :remote => true do |f| %>
     <%= f.input :full_name  %>
     <%= f.input :username %>
 
@@ -22,7 +21,19 @@
     <% end %>
 
     <%= f.association :user_role, :collection => current_user.get_user_roles, :include_blank=>false %>
-    
+
+    <%= content_tag :div, :id => "new_email_accounts_container" do %>
+      <%= content_tag :div do %>
+        <%= f.simple_fields_for :email_accounts do |builder| %>
+          <%= builder.input :email_address, :label => "Email Address", :input_html => { :style => "width: 200px;" } %>
+          <%= builder.collection_select :email_account_category_id, EmailAccountCategory.all, :id, :name %> <br />
+          <%= builder.input :_destroy, :as => :hidden, :html_input => { :value => "" } %>
+          <%= link_to_remove_email_account %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= add_new_email_account(f) %>
 
     <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
     or

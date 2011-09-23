@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110922104032) do
+ActiveRecord::Schema.define(:version => 20110923070919) do
 
   create_table "capacities", :force => true do |t|
     t.string   "title"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(:version => 20110922104032) do
 
   create_table "email_account_categories", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "email_accounts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "email_account_category_id"
+    t.string   "email_address"
+    t.boolean  "status",                    :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

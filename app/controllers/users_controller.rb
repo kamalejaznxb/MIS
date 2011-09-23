@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
   def new
     @user = User.new
+    1.times { @user.email_accounts.build }
     respond_to do |format|
       format.js
     end

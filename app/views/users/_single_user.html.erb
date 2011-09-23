@@ -1,0 +1,7 @@
+<td><%= link_to user.id, user, :remote => true %></td>
+<td><%= user.username %></td>
+<td><%= user.full_name %></td>
+<td><%= user.user_role.title %></td>
+<td>
+  <%= link_to "Edit", edit_user_path(user), :remote => true %>
+</td>
