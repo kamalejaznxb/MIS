@@ -321,6 +321,7 @@ section.container > footer ul li{
     -webkit-box-shadow: 0 0 10px 10px  #888;
     box-shadow: 0 0 10px 10px #888;
     border: 10px solid #bbb;
+    overflow: auto;
 }
 .sub-value>label{
     width: 125px;

@@ -2,7 +2,7 @@
 <%= content_tag :div, :id=>'listings' do %>
   <% @tickets.each do |ticket| %>
 
-    <%= content_tag :ul, :class=>"row", :id=>"centre-#{ ticket.id }" do %>
+    <%= content_tag :ul, :class => cycle("row-even", "row-odd"), :id=>"centre-#{ ticket.id }" do %>
       <%= content_tag :li, :class=>"ticket", :style=>"width:90px;" do %>
         <%= content_tag :div,
           :class=>"type #{ ticket.ticket_status }" do %>

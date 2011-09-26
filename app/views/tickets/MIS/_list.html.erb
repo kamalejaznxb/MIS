@@ -2,7 +2,7 @@
   <% @tickets.each do |ticket| %>
 
 
-    <%= content_tag :ul, :class=>"row bottom-border", :id=>"centre-#{ ticket[:id] }" do  %>
+    <%= content_tag :ul, :class => "#{cycle('row-even', 'row-odd')} bottom-border", :id=>"centre-#{ ticket[:id] }" do  %>
       <%= content_tag :li, :class=>"ticket", :style=>"width:90px;" do %>
         <%= content_tag :div,
           :class=>"type" do %>
@@ -11,7 +11,7 @@
           <%= content_tag :span, ticket.age %>
         <% end %>
       <% end %>
-      <%= content_tag :li,  :style=>"width:150px;" do  %>
+      <%= content_tag :li,  :style => "width:150px;" do  %>
         <%= link_to ticket.ticket_category,
           ticket_path( ticket),
           :class=>'subject',

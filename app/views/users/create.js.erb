@@ -4,5 +4,7 @@
   jQuery("#listings").html("<%= escape_javascript(render :partial => "list", :locals => {:users => @users}) %>");
   jQuery("#users_table").tablesorter({widthFixed: true, widgets: ['zebra']}).tablesorterPager({container: jQuery("#pager"), size: 5});
 <% else %>
-  jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @user}) %>")
+  alert(<%= @user.errors.count %>);
+  jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @user}) %>");
+  jQuery("#errors").append("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @user.email_accounts}) %>");
 <% end %>

@@ -94,7 +94,8 @@ function set_position(){
     var popupWidth = $("#popup").width();
     $("#popup").css({
         "top": windowHeight/2-popupHeight/2,
-        "left": windowWidth/2-popupWidth/2
+        "left": windowWidth/2-popupWidth/2,
+        "scrolling": 'auto'
     });
 }
 function start_rich(){
