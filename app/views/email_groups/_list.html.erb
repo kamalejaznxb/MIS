@@ -1,0 +1,17 @@
+<table id="email_groups_table" class="tablesorter">
+  <thead>
+    <tr>
+      <th class="header bold">Name</th>
+      <th class=""header bold>Description</th>
+      <th class="header bold">Created at</th>
+      <th class="header bold">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="email_groups_list_in_table">
+    <% email_groups.each do |email_group| %>
+      <tr class="<%= cycle("odd", "even") %>" id = "email-group-row-<%= email_group.id %>">
+        <%= render :partial => "single_email_group", :locals => {:email_group => email_group} %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

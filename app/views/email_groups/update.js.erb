@@ -1,0 +1,6 @@
+<% if @email_group.errors.empty? %>
+  jQuery(".cancel").trigger("click");
+  jQuery("#email-group-row-<%= @email_group.id %>").html("<%= escape_javascript(render :partial => "single_email_group", :locals => {:email_group => @email_group}) %>");
+<% else %>
+  jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @email_group}) %>");
+<% end %>

@@ -31,16 +31,21 @@ module ApplicationHelper
   def add_new_email_account(f)
     new_object = f.object.email_accounts.build
     fields = f.simple_fields_for :email_accounts, new_object, :child_index => "new_email_account" do |builder|
-      email_address = builder.input :email_address , :label => "Email Address"
-      email_account_category = builder.collection_select :email_account_category_id, EmailAccountCategory.all, :id, :name
-      hidden_field = builder.input :_destroy, :as => :hidden, :html_input => { :value => "" }
-      email_address + email_account_category + hidden_field + link_to_remove_email_account
+      email_address = content_tag :div, :style => "width: 350px; float: left;" do
+        builder.input :email_address , :label => "Email Address", :input_html => { :style => "width: 200px;", :type => "text" }
+      end
+      select_tag_and_hidden_field = content_tag :div, :style => "width: 150px; float: left;" do
+        email_account_category = builder.collection_select :email_account_category_id, EmailAccountCategory.all, :id, :name
+        hidden_field = builder.input :_destroy, :as => :hidden, :input_html => { :value => "" }
+        email_account_category + hidden_field + link_to_remove_email_account
+      end
+      email_address + select_tag_and_hidden_field
     end
     link_to "Add New E-Mail Account", "#", :remote => true, :onclick => "add_new_email_account('#new_email_accounts_container', '#{escape_javascript(fields)}')"
   end
 
   def link_to_remove_email_account
-    link_to "Remove", "#", :remote => true, :onclick => "jQuery(this).prev('input[type=hidden]').val('1'); jQuery(this).parent().hide();"
+    link_to "Remove", "#", :remote => true, :style => "color: black; font-weight: bold;", :onclick => "jQuery(this).prev('input[type=hidden]').val('1'); jQuery(this).parent().parent().hide();"
   end
   
 end

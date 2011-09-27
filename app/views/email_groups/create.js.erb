@@ -1,0 +1,7 @@
+<% if @email_group.errors.empty? %>
+  jQuery(".cancel").trigger("click");
+  jQuery("#listings").html("<%= escape_javascript(render :partial => "list", :locals => {:email_groups => @email_groups}) %>");
+  jQuery("#email_groups_table").tablesorter({widthFixed: true, widgets: ['zebra']}).tablesorterPager({container: jQuery("#pager"), size: 5});
+<% else %>
+  jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @email_group}) %>");
+<% end %>

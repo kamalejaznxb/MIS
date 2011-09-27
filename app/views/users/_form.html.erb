@@ -25,17 +25,22 @@
     <%= content_tag :div, :id => "new_email_accounts_container" do %>
       <%= f.simple_fields_for :email_accounts do |builder| %>
         <%= content_tag :div do %>
-          <%= builder.input :email_address, :label => "Email Address", :input_html => { :style => "width: 200px;" } %>
-          <%= builder.collection_select :email_account_category_id, EmailAccountCategory.all, :id, :name %> <br />
-          <%= builder.input :_destroy, :as => :hidden, :html_input => { :value => "" } %>
-          <%= link_to_remove_email_account %>
+          <%= content_tag :div, :style => "width:350px; float: left;" do  %>
+            <%= builder.input :email_address, :label => "Email Address", :input_html => { :style => "width: 200px;", :type => "text" } %>
+          <% end %>
+          <%= content_tag :div, :style => "width: 150px; float: left;" do  %>
+            <%= builder.collection_select :email_account_category_id, EmailAccountCategory.all, :id, :name %>
+            <%= builder.input :_destroy, :as => :hidden, :html_input => { :value => "" } %>
+            <%= link_to_remove_email_account %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
 
     <br />
+    <br />
     
-    <div id="new_email_account_link">
+    <div id="new_email_account_link" style="clear: both;">
       <%= add_new_email_account(f) %>
     </div>
 

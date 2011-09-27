@@ -1,0 +1,29 @@
+<%= content_tag :div, :class=>"under-row padding10 " do %>
+  <%= content_tag :h3, 'New Email Group Category', :class => 'space-top-10 space-bottom-10' %>
+  <%= tag 'hr', :class=>'clear' %>
+
+  <div id="errors">
+
+  </div>
+
+  <%= simple_form_for @email_group, :html => {:class => 'space-left-10' },
+	:remote => true do |f| %>
+    <%= f.input :name  %>
+    <%= f.input :description, :as => :text %>
+
+    <br />
+
+    <%= select_tag :email_accounts, options_from_collection_for_select(EmailAccount.all, :id, :email_address), :multiple => true, :class => "multiselect" %>
+
+    <br />
+
+    <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
+    or
+    <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+
+  <% end %>
+<% end %>
+
+<script type="text/javascript">
+  jQuery(".multiselect").multiselect();
+</script>
