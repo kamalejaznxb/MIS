@@ -10,14 +10,26 @@
 	:remote => true do |f| %>
     <%= f.input :name  %>
     <%= f.input :description, :as => :text %>
+    
+    <%= label_tag :email_accounts_to, "Email (TO)", :style => "width: 70px; padding-right: 0px;" %>
+    
+    <% email_accounts_to = EmailAccountsEmailGroups.singular_email_account_ids(@email_group.new_record? ? 0 : @email_group.id, "to").to_a %>
+
+    <%= content_tag :div, :class => "float_right" do %>
+      <%= select_tag :email_accounts_to, options_from_collection_for_select(EmailAccount.all, :id, :email_address, email_accounts_to), :multiple => true, :class => "multiselect" %>
+    <% end %>
+
+    <%= content_tag :div, "", :class => "clear" %>
 
     <br />
-    
-    <%= label_tag :email_accounts, "Email Accounts", :style => "width: 90px; padding-right: 0px;" %>
-    
-    <%= select_tag :email_accounts, options_from_collection_for_select(EmailAccount.all, :id, :email_address, @email_group.email_account_ids), :multiple => true, :class => "multiselect" %>
 
-    <br />
+    <%= label_tag :email_accounts_cc, "Email (CC)", :style => "width: 70px; padding-right: 0px;" %>
+
+    <% email_accounts_cc = EmailAccountsEmailGroups.singular_email_account_ids(@email_group.new_record? ? 0 : @email_group.id, "cc").to_a %>
+
+    <%= content_tag :div, :class => "float_right" do %>
+      <%= select_tag :email_accounts_cc, options_from_collection_for_select(EmailAccount.all, :id, :email_address, email_accounts_cc), :multiple => true, :class => "multiselect" %>
+    <% end %>
 
     <%= content_tag :div, "", :class => "clear" %>
 

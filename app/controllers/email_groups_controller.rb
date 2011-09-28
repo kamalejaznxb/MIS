@@ -48,10 +48,15 @@ class EmailGroupsController < ApplicationController
 
     respond_to do |format|
       if @email_group.save
-        params[:email_accounts].each do |email_account|
-          logger.debug("XXXXXXXXXXXXXXXX #{email_account}")
+
+        if (@email_group.email_accounts.size > 0)
+          @email_group.email_accounts.clear
         end
-        @email_group.email_account_ids = params[:email_accounts]
+        
+        save_email_accounts_of_email_group(params[:email_accounts_to], @email_group.id, "to")
+        save_email_accounts_of_email_group(params[:email_accounts_cc], @email_group.id, "cc")
+
+#        @email_group.email_account_ids = params[:email_accounts]
         @email_groups = EmailGroup.all
         format.html { redirect_to(@email_group, :notice => 'Email group was successfully created.') }
         format.xml  { render :xml => @email_group, :status => :created, :location => @email_group }
@@ -71,10 +76,15 @@ class EmailGroupsController < ApplicationController
 
     respond_to do |format|
       if @email_group.update_attributes(params[:email_group])
-        params[:email_accounts].each do |email_account|
-          logger.debug("%%%%%%%%%%%%%%%% #{email_account}")
+
+        if (@email_group.email_accounts.size > 0)
+          @email_group.email_accounts.clear
         end
-        @email_group.email_account_ids = params[:email_accounts]
+
+        save_email_accounts_of_email_group(params[:email_accounts_to], @email_group.id, "to")
+        save_email_accounts_of_email_group(params[:email_accounts_cc], @email_group.id, "cc")
+        
+#        @email_group.email_account_ids = params[:email_accounts]
         @email_groups = EmailGroup.all
         format.html { redirect_to(@email_group, :notice => 'Email group was successfully updated.') }
         format.xml  { head :ok }
@@ -98,4 +108,12 @@ class EmailGroupsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def save_email_accounts_of_email_group(email_accounts, email_group_id, scope)
+    email_accounts.each do |email_account|
+      logger.debug("XXXXXXXXXXXXXXXXX #{scope}")
+      EmailAccountsEmailGroups.create({:email_account_id => email_account, :email_group_id => email_group_id, :scope => scope })
+    end
+  end
+
 end

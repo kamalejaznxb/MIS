@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20110927145033) do
   create_table "email_accounts_email_groups", :id => false, :force => true do |t|
     t.integer  "email_account_id"
     t.integer  "email_group_id"
+    t.string   "scope"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
