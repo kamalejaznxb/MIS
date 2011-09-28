@@ -1,5 +1,5 @@
 <%= content_tag :div, :class=>"under-row padding10 " do %>
-  <%= content_tag :h3, 'New Email Group Category', :class => 'space-top-10 space-bottom-10' %>
+  <%= content_tag :h3, 'New Email Group', :class => 'space-top-10 space-bottom-10' %>
   <%= tag 'hr', :class=>'clear' %>
 
   <div id="errors">
@@ -12,14 +12,20 @@
     <%= f.input :description, :as => :text %>
 
     <br />
-
-    <%= select_tag :email_accounts, options_from_collection_for_select(EmailAccount.all, :id, :email_address), :multiple => true, :class => "multiselect" %>
+    
+    <%= label_tag :email_accounts, "Email Accounts", :style => "width: 90px; padding-right: 0px;" %>
+    
+    <%= select_tag :email_accounts, options_from_collection_for_select(EmailAccount.all, :id, :email_address, @email_group.email_account_ids), :multiple => true, :class => "multiselect" %>
 
     <br />
 
-    <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
+    <%= content_tag :div, "", :class => "clear" %>
+
+    <br />
+    
+    <%= f.button 'submit', :value => 'Save', :class => 'new-user  submit width-auto margin-0' %>
     or
-    <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+    <%= link_to "Cancel", '#', :class => 'space-top-10 cancel' %>
 
   <% end %>
 <% end %>

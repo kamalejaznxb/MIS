@@ -368,6 +368,11 @@ section.container > footer ul li{
 
 /* multiselect styles */
 .multiselect {
-        width: 460px;
+        width: 410px;
         height: 200px;
+        float: right;
+}
+
+.float_right {
+    float: right;
 }

@@ -49,7 +49,7 @@ class EmailGroupsController < ApplicationController
     respond_to do |format|
       if @email_group.save
         params[:email_accounts].each do |email_account|
-          logger.debug("XXXXXXXXXXXXXXXx #{email_account}")
+          logger.debug("XXXXXXXXXXXXXXXX #{email_account}")
         end
         @email_group.email_account_ids = params[:email_accounts]
         @email_groups = EmailGroup.all
@@ -71,6 +71,10 @@ class EmailGroupsController < ApplicationController
 
     respond_to do |format|
       if @email_group.update_attributes(params[:email_group])
+        params[:email_accounts].each do |email_account|
+          logger.debug("%%%%%%%%%%%%%%%% #{email_account}")
+        end
+        @email_group.email_account_ids = params[:email_accounts]
         @email_groups = EmailGroup.all
         format.html { redirect_to(@email_group, :notice => 'Email group was successfully updated.') }
         format.xml  { head :ok }
