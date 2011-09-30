@@ -3,6 +3,8 @@ class CreateEmailGroups < ActiveRecord::Migration
     create_table :email_groups do |t|
       t.string  :name
       t.text    :description
+      t.string  :email_subject
+      t.text    :email_format
 
       t.timestamps
     end

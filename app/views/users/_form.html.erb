@@ -43,7 +43,19 @@
     <div id="new_email_account_link" style="clear: both;">
       <%= add_new_email_account(f) %>
     </div>
+    
+    <br />
 
+    <%= label_tag :email_group, "Email Groups" %>
+    <%= select_tag :email_group, options_from_collection_for_select(EmailGroup.all, :id, :name), :include_blank => true %>
+
+    <br />
+    <br />
+
+    <%= label_tag :email_format, "Email Format" %>
+    <%= text_area_tag :email_format, nil, :rows => 50, :cols => 40 %>
+
+    <br />
     <br />
 
     <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>

@@ -6,6 +6,7 @@
   <%= javascript_include_tag "jquery.tablesorter" %>
   <%= javascript_include_tag "jquery.tablesorter.pager" %>
   <%= javascript_include_tag "users/index" %>
+  <%= javascript_include_tag "tiny_mce/tiny_mce" %>
 <% end %>
 
 <%= content_for :css do %>
@@ -33,3 +34,4 @@
       </form>
 </div>
 
+<%= link_to "#", "#", :id => "temp_link", :remote => true, :style => "display: none;" %>

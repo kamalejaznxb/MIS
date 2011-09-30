@@ -110,9 +110,18 @@ class EmailGroupsController < ApplicationController
   end
 
   def save_email_accounts_of_email_group(email_accounts, email_group_id, scope)
-    email_accounts.each do |email_account|
-      logger.debug("XXXXXXXXXXXXXXXXX #{scope}")
-      EmailAccountsEmailGroups.create({:email_account_id => email_account, :email_group_id => email_group_id, :scope => scope })
+    if email_accounts && !email_accounts.empty?
+      email_accounts.each do |email_account|
+        logger.debug("XXXXXXXXXXXXXXXXX #{scope}")
+        EmailAccountsEmailGroups.create({:email_account_id => email_account, :email_group_id => email_group_id, :scope => scope })
+      end
+    end
+  end
+
+  def get_email_format
+    @email_group = EmailGroup.where("id = #{params[:email_group]}").first
+    respond_to do |format|
+      format.js
     end
   end
 

@@ -1,6 +1,10 @@
 Mis::Application.routes.draw do
 
-  resources :email_groups
+  resources :email_groups do
+    collection do
+      get   'get_email_format'
+    end
+  end
 
   resources :email_account_categories
 

@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20110927145033) do
   create_table "email_groups", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "email_subject"
+    t.text     "email_format"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

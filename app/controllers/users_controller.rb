@@ -6,6 +6,7 @@ class UsersController < ApplicationController
       format.html
     end
   end
+
   def new
     @user = User.new
     1.times { @user.email_accounts.build }
@@ -13,10 +14,17 @@ class UsersController < ApplicationController
       format.js
     end
   end
+  
   def create
     @user = User.new params[:user]
     respond_to do |format|
       if @user.save
+
+        if params[:email_group] && params[:email_group] != ""
+          @email_group = EmailGroup.where("id = #{params[:email_group]}").first
+          UserMailer.new_user_hiring(@email_group).deliver
+        end
+        
         @users = current_user.get_users
         format.html { redirect_to( users_path,  :notice => 'Successfuly Sign In .' ) }
         format.js
@@ -38,6 +46,10 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     respond_to do |format|
       if @user.update_attributes params[:user]
+        if params[:email_group] && params[:email_group] != ""
+          @email_group = EmailGroup.where("id = #{params[:email_group]}").first
+          UserMailer.new_user_hiring(@email_group, params[:email_format]).deliver
+        end
         format.js
       else
         format.js
