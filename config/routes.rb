@@ -44,7 +44,8 @@ Mis::Application.routes.draw do
 
   resources :users do
     collection do
-      get  'profile'
+      get   'profile'
+      get   'user_email_accounts'
     end
   end
 

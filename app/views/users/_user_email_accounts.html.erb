@@ -1,0 +1,41 @@
+<%= content_tag :div, :class=>"under-row padding10 " do %>
+  <%= content_tag :h3, 'User E-Mail Accounts', :class=>'space-top-10 space-bottom-10' %>
+  <%= tag 'hr', :class=>'clear' %>
+
+  <div id="errors">
+    
+  </div>
+
+  <%= simple_form_for @user, :html=>{:class=>'space-left-10' }, 
+    :multiple => true, :remote => true do |f| %>
+    <%= content_tag :div, :id => "new_email_accounts_container" do %>
+      <%= f.simple_fields_for :email_accounts do |builder, email_account| %>
+
+        <%= content_tag :div do %>
+          <%= content_tag :div, :style => "width:350px; float: left;" do  %>
+            <%= builder.input :email_address, :label => "Email Address", :input_html => { :style => "width: 200px;", :type => "text" } %>
+          <% end %>
+          <%= content_tag :div, :style => "width: 165px; float: left;" do  %>
+            <%= builder.collection_select :email_account_category_id, EmailAccountCategory.all, :id, :name %>
+            <%= builder.collection_select :status, [[true, 'Enable'], [false, 'Disable']], :first, :last %>
+          <% end %>
+        <% end %>
+
+      <% end %>
+    <% end %>
+
+    <br />
+    <br />
+    
+    <div id="new_email_account_link" style="clear: both;">
+      <% logger.debug("XXXXXXXXXXX #{params[:action]}") %>
+      <%= add_new_email_account(f, params[:action]) %>
+    </div>
+    
+    <br />
+    
+   <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
+    or
+    <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
+  <% end %>
+<% end %>

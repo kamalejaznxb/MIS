@@ -2,7 +2,7 @@
 <%= content_tag :div, :id=>'listings' do %>
   <% @category.category_types.each do |category_type| %>
 
-    <%= content_tag :ul, :class=>"row", :id=>"centre-#{ category_type.id }" do %>
+    <%= content_tag :ul, :class => cycle("row-even", "row-odd"), :id=>"centre-#{ category_type.id }" do %>
       <%= content_tag :li, category_type, :style=>"width:90px;" %>
       <%= content_tag :li,  :style=>"width:150px;" do  %>
         <%= link_to  category_category_type_path( @category, category_type ), :class=>'subject', :remote=>true do %>

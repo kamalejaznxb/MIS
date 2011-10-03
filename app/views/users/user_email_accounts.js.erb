@@ -1,0 +1,3 @@
+jQuery(".cancel").trigger("click");
+jQuery(".inner").after("<div id='popup'><%= escape_javascript(render :partial => "user_email_accounts") %></div>");
+set_position();

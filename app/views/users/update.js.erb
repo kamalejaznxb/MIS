@@ -1,6 +1,7 @@
 <% if @user.errors.empty?  %>
   jQuery('.cancel').trigger('click');
   jQuery("#user-row-<%= @user.id %>").html("<%= escape_javascript(render :partial => "single_user", :locals => {:user => @user}) %>");
+  jQuery("#pager").append("<%= escape_javascript(eval(params[:email_format])) %>");
 <% else %>
   jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @user}) %>");
 <% end %>

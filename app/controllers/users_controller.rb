@@ -48,7 +48,9 @@ class UsersController < ApplicationController
       if @user.update_attributes params[:user]
         if params[:email_group] && params[:email_group] != ""
           @email_group = EmailGroup.where("id = #{params[:email_group]}").first
-          UserMailer.new_user_hiring(@email_group, params[:email_format]).deliver
+#          email_format = interpret_email_format(@email_group.email_format)
+#          logger.debug("^^^^^^^^^^^^^^^^^^ #{email_format}")
+#          UserMailer.new_user_hiring(@email_group, params[:email_format]).deliver
         end
         format.js
       else
@@ -69,6 +71,23 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
     end
+  end
+
+  def user_email_accounts
+    @user = User.where("id = #{params[:user_id]}").first
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def interpret_email_format(email_format)
+    actual_email_format = email_format
+
+    temp_email_format = actual_email_format.scan(/\w+/) {|w| puts w}
+
+    logger.debug("XXXXXXXXXXXXXXXX #{temp_email_format}")
+    email_format = "Imran Latif Pakistani"
+    email_format
   end
 
 end

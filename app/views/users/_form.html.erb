@@ -23,15 +23,17 @@
     <%= f.association :user_role, :collection => current_user.get_user_roles, :include_blank=>false %>
 
     <%= content_tag :div, :id => "new_email_accounts_container" do %>
-      <%= f.simple_fields_for :email_accounts do |builder| %>
-        <%= content_tag :div do %>
-          <%= content_tag :div, :style => "width:350px; float: left;" do  %>
-            <%= builder.input :email_address, :label => "Email Address", :input_html => { :style => "width: 200px;", :type => "text" } %>
-          <% end %>
-          <%= content_tag :div, :style => "width: 150px; float: left;" do  %>
-            <%= builder.collection_select :email_account_category_id, EmailAccountCategory.all, :id, :name %>
-            <%= builder.input :_destroy, :as => :hidden, :html_input => { :value => "" } %>
-            <%= link_to_remove_email_account %>
+      <%= f.simple_fields_for :email_accounts do |builder, email_account| %>
+        <% if !builder.object.new_record? && builder.object.status %>
+          <%= content_tag :div do %>
+            <%= content_tag :div, :style => "width:350px; float: left;" do  %>
+              <%= builder.input :email_address, :label => "Email Address", :input_html => { :style => "width: 200px;", :type => "text" } %>
+            <% end %>
+            <%= content_tag :div, :style => "width: 150px; float: left;" do  %>
+              <%= builder.collection_select :email_account_category_id, EmailAccountCategory.all, :id, :name %>
+              <%= builder.input :status, :as => :hidden, :input_html => { :value => "1" } %>
+              <%= link_to_disable_email_account %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
@@ -41,7 +43,8 @@
     <br />
     
     <div id="new_email_account_link" style="clear: both;">
-      <%= add_new_email_account(f) %>
+      <% logger.debug("XXXXXXXXXXX #{params[:action]}") %>
+      <%= add_new_email_account(f, params[:action]) %>
     </div>
     
     <br />

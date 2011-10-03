@@ -16,7 +16,7 @@
     <%= f.input :email_subject, :label => "Email Subject", :input_html => { :type => "text" } %>
 
     <%= f.input :email_format, :as => :text, :label => "Email Format", :input_html => { :class => "WYSIWYG_Editor" } %>
-    
+
     <%= label_tag :email_accounts_to, "Email (TO)", :style => "width: 70px; padding-right: 0px;" %>
     
     <% email_accounts_to = EmailAccountsEmailGroups.singular_email_account_ids(@email_group.new_record? ? 0 : @email_group.id, "to").to_a %>

@@ -4,4 +4,6 @@
 <td><%= user.user_role.title %></td>
 <td>
   <%= link_to "Edit", edit_user_path(user), :remote => true %>
+  |
+  <%= link_to "Manage E-Mail Accounts", {:action => "user_email_accounts", :user_id => user.id}, :remote => true %>
 </td>
