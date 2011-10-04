@@ -4,7 +4,7 @@
 <%= content_for :js do %>
   <%= javascript_include_tag 'jquery.tablesorter' %>
   <%= javascript_include_tag 'jquery.tablesorter.pager' %>
-  <%= javascript_include_tag 'users/index' %>
+  <%#= javascript_include_tag 'users/index' %>
   <%= javascript_include_tag 'locations/index' %>
 <% end %>
 <%= content_for :css do %>
@@ -48,7 +48,7 @@
 
 
     <%= content_tag :div, :id => "users_table_container" do %>
-      <%= render :partial => "users_lists", :locals => {:users => User.all} %>
+      <%= render :partial => "users_lists", :locals => {:users => @users} %>
     <% end %>
 
     <div id="pager" class="pager">

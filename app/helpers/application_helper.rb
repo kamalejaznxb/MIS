@@ -48,5 +48,9 @@ module ApplicationHelper
   def link_to_disable_email_account
     link_to "Disable", "#", :remote => true, :style => "color: black; font-weight: bold;", :onclick => "jQuery(this).prev('input[type=hidden]').val('0'); jQuery(this).parent().parent().hide();"
   end
-  
+
+  def get_user_name
+    "Imran Latif in Helper"
+  end
+
 end

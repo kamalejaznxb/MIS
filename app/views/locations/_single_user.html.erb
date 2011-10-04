@@ -1,7 +1,7 @@
 <td><%= link_to user.id, user, :remote => true %></td>
 <td><%= user.full_name %></td>
 <td>N/A</td>
-<td><%= user.location.nil? ? "No Location Assigned" : user.location.full_hierarchy %></td>
+<td><%= user.location_id.nil? || user.location_id.to_i == 0 ? "No Location Assigned" : user.location.full_hierarchy %></td>
 <td>
   <%= link_to "Move", {:action => "move_user_to_another_sub_location", :user_id => user.id}, :remote => true %>
   |

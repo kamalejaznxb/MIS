@@ -27,7 +27,8 @@ class Location < ActiveRecord::Base
   scope :parent_locations,        lambda {|id=nil| where("id != #{id}") unless id.nil? }    # For the Drop Down to select a Parent Location.
   scope :sub_locations,           lambda {|location_id| where("location_id = #{location_id}") }   # For fetching sub-locations of a Parent Location.
   scope :users_at_sub_locations,  lambda {|location_id| select("locations.location_id, locations.name as location_name, users.id as user_id, users.full_name as user_name").joins("INNER JOIN users on users.location_id = locations.id").where("users.location_id IN (Select id from locations where location_id = #{location_id})").order("locations.id ASC")}
-  
+
+
 #  Parent Location of the created Location.
   def parent_location
     return "" if self.location_id.nil? || self.location_id.blank?

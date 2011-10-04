@@ -4,7 +4,8 @@ class LocationsController < ApplicationController
 
   def index
     @locations = Location.index_locations
-
+    @users = User.order("id DESC").all
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @locations }

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     #@users = User.order('created_at DESC').get_users
     @users = current_user.get_users
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
       if @user.update_attributes params[:user]
         if params[:email_group] && params[:email_group] != ""
           @email_group = EmailGroup.where("id = #{params[:email_group]}").first
-#          email_format = interpret_email_format(@email_group.email_format)
+          @proper_email_format = interpret_email_format(params[:email_format])
 #          logger.debug("^^^^^^^^^^^^^^^^^^ #{email_format}")
 #          UserMailer.new_user_hiring(@email_group, params[:email_format]).deliver
         end
@@ -81,13 +82,59 @@ class UsersController < ApplicationController
   end
 
   def interpret_email_format(email_format)
-    actual_email_format = email_format
 
-    temp_email_format = actual_email_format.scan(/\w+/) {|w| puts w}
+    last_word = ""
+    proper_email_format = ""
+    email_format.split(" ").each do |w|
+      if (last_word.include? "/*" and w.include? "@")
+        w = check_for_nil_and_execute(w)
+      end
+      last_word = w
+      proper_email_format = proper_email_format + " " + w
+    end
 
-    logger.debug("XXXXXXXXXXXXXXXX #{temp_email_format}")
-    email_format = "Imran Latif Pakistani"
-    email_format
+    proper_email_format = proper_email_format.sub("/*", " ")
+    proper_email_format = proper_email_format.sub("*/", " ")
+    proper_email_format
+    
+#    actual_email_format = email_format
+#
+#    temp_email_format = actual_email_format.scan(/\w+/) {|w| puts w}
+#
+#    logger.debug("XXXXXXXXXXXXXXXX #{temp_email_format}")
+#    email_format = "Imran Latif Pakistani"
+#    email_format
+  end
+
+  private
+
+  def check_for_nil_and_execute(word)
+
+    executed_word = ""
+    is_valid = true
+    
+    words = word.split(".")
+    words_size = words.size
+
+    if (!words.empty? && words_size > 1)
+      current_object = words.first
+      
+      for i in 1..words_size-1 do
+        logger.debug("^^^^^^^^^^^^ #{current_object}.class")
+        if (eval(" !#{current_object}.respond_to?('#{words[i]}') || #{current_object}.#{words[i]}.nil?"))
+          is_valid = false
+          break
+        end
+        current_object = current_object + "." + words[i]
+      end
+      
+    end
+
+    if (is_valid)
+      executed_word = eval(word)
+    end
+
+    executed_word
   end
 
 end
