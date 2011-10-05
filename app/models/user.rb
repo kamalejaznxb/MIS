@@ -192,5 +192,9 @@ class User < ActiveRecord::Base
       self.password = self.new_password
     end
   end
+
+  def user_email_accounts(email_account_category_id)
+    email_accounts.where("email_account_category_id = #{email_account_category_id}").all.map {|e| e.email_address}.join(", ")
+  end
   
 end

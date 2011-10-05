@@ -120,12 +120,18 @@ class UsersController < ApplicationController
       current_object = words.first
       
       for i in 1..words_size-1 do
-        logger.debug("^^^^^^^^^^^^ #{current_object}.class")
-        if (eval(" !#{current_object}.respond_to?('#{words[i]}') || #{current_object}.#{words[i]}.nil?"))
+        if words[i].include?("(")
+          new_object = words[i]
+          method_name = words[i].split("(").first
+        else
+          new_object = words[i]
+          method_name = words[i]
+        end
+        if (eval(" !#{current_object}.respond_to?('#{method_name}') || #{current_object}.#{new_object}.nil?"))
           is_valid = false
           break
         end
-        current_object = current_object + "." + words[i]
+        current_object = current_object + "." + new_object
       end
       
     end
@@ -134,7 +140,7 @@ class UsersController < ApplicationController
       executed_word = eval(word)
     end
 
-    executed_word
+    executed_word.to_s
   end
 
 end

@@ -61,6 +61,20 @@
     <br />
     <br />
 
+    <%= content_tag :div, :id => "dynamic_attributes_container", :style => "display: none" do %>
+      <%= label_tag :dynamic_user_attribues, "User Info" %>
+      <%= select_tag :dynamic_user_attributes, options_from_collection_for_select(select_box_of_user_attributes(@user), :first, :last) %>
+      <%= link_to_dynamic_attributes_inserter %>
+
+      <br />
+      
+      <%= label_tag :dynamic_email_accounts_attributes, "E-Mail Account Info" %>
+      <%= select_tag :dynamic_email_accounts_attributes, options_from_collection_for_select(select_box_for_user_email_accounts_attributes, :first, :last) %>
+      <%= link_to_dynamic_attributes_inserter %>
+    <% end %>
+    
+    <br />
+
     <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
     or
     <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>

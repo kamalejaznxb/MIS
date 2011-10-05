@@ -53,4 +53,24 @@ module ApplicationHelper
     "Imran Latif in Helper"
   end
 
+  def select_box_of_user_attributes(object)
+    options_for_select = []
+    object.class.column_names.each do |column|
+      options_for_select << ["@#{object.class.name.downcase}.#{column}", column.humanize]
+    end
+    options_for_select
+  end
+
+  def select_box_for_user_email_accounts_attributes
+    options_for_select = []
+    EmailAccountCategory.all.each do |email_account_category|
+      options_for_select << ["@user.user_email_accounts(#{email_account_category.id})", email_account_category.name]
+    end
+    options_for_select
+  end
+
+  def link_to_dynamic_attributes_inserter
+    link_to "Insert Attribute", "#", :id => "insert_dynamic_attributes"
+  end
+
 end
