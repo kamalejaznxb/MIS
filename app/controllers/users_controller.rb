@@ -50,8 +50,7 @@ class UsersController < ApplicationController
         if params[:email_group] && params[:email_group] != ""
           @email_group = EmailGroup.where("id = #{params[:email_group]}").first
           @proper_email_format = interpret_email_format(params[:email_format])
-#          logger.debug("^^^^^^^^^^^^^^^^^^ #{email_format}")
-#          UserMailer.new_user_hiring(@email_group, params[:email_format]).deliver
+          UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
         end
         format.js
       else
@@ -93,8 +92,8 @@ class UsersController < ApplicationController
       proper_email_format = proper_email_format + " " + w
     end
 
-    proper_email_format = proper_email_format.sub("/*", " ")
-    proper_email_format = proper_email_format.sub("*/", " ")
+    proper_email_format = proper_email_format.gsub("/*", "")
+    proper_email_format = proper_email_format.gsub("*/", "")
     proper_email_format
     
 #    actual_email_format = email_format

@@ -22,16 +22,6 @@ jQuery(document).ready(function(){
 
     });
 
-    jQuery("#insert_dynamic_attributes").live("click", function() {
-        textarea = jQuery("textarea");
-        editor_id = textarea.attr("id");
-        editor = tinyMCE.get(editor_id);
-        content = " /* " + jQuery(this).prev("select").val() + " */ ";
-        editor.execCommand("mceInsertContent", false, content);
-        
-        return false;
-    });
-    
     jQuery('#user_user_role_id').live('change', function(e){
         if( jQuery('option:selected').text() == 'TL' ){
             jQuery('.dm').show();

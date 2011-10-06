@@ -17,6 +17,22 @@
 
     <%= f.input :email_format, :as => :text, :label => "Email Format", :input_html => { :class => "WYSIWYG_Editor" } %>
 
+    <br />
+
+    <%= content_tag :div, :id => "dynamic_attributes_container" do %>
+      <%= label_tag :dynamic_user_attribues, "User Info" %>
+      <%= select_tag :dynamic_user_attributes, options_from_collection_for_select(select_box_of_user_attributes, :first, :last) %>
+      <%= link_to_dynamic_attributes_inserter %>
+
+      <br />
+
+      <%= label_tag :dynamic_email_accounts_attributes, "E-Mail Account Info" %>
+      <%= select_tag :dynamic_email_accounts_attributes, options_from_collection_for_select(select_box_for_user_email_accounts_attributes, :first, :last) %>
+      <%= link_to_dynamic_attributes_inserter %>
+    <% end %>
+
+    <br />
+
     <%= label_tag :email_accounts_to, "Email (TO)", :style => "width: 70px; padding-right: 0px;" %>
     
     <% email_accounts_to = EmailAccountsEmailGroups.singular_email_account_ids(@email_group.new_record? ? 0 : @email_group.id, "to").to_a %>

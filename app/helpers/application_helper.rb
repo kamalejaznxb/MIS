@@ -53,10 +53,10 @@ module ApplicationHelper
     "Imran Latif in Helper"
   end
 
-  def select_box_of_user_attributes(object)
+  def select_box_of_user_attributes
     options_for_select = []
-    object.class.column_names.each do |column|
-      options_for_select << ["@#{object.class.name.downcase}.#{column}", column.humanize]
+    User.column_names.each do |column|
+      options_for_select << ["@user.#{column}", column.humanize]
     end
     options_for_select
   end

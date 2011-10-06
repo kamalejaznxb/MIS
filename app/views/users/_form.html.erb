@@ -63,7 +63,7 @@
 
     <%= content_tag :div, :id => "dynamic_attributes_container", :style => "display: none" do %>
       <%= label_tag :dynamic_user_attribues, "User Info" %>
-      <%= select_tag :dynamic_user_attributes, options_from_collection_for_select(select_box_of_user_attributes(@user), :first, :last) %>
+      <%= select_tag :dynamic_user_attributes, options_from_collection_for_select(select_box_of_user_attributes, :first, :last) %>
       <%= link_to_dynamic_attributes_inserter %>
 
       <br />

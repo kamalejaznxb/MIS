@@ -112,7 +112,8 @@ function start_rich(){
         extended_valid_elements : "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name], hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"
     });
 }
-function fancy_box(){
+function fancy_box()
+{
     $('a.pic').fancybox({
         'transitionIn'  : 'elastic',
         'transitionOut' : 'elastic',
@@ -122,10 +123,22 @@ function fancy_box(){
     });
 }
 
-function add_new_email_account(container, content) {
+function add_new_email_account(container, content)
+{
     var new_id = new Date().getTime();
     var regExp = new RegExp("new_email_account", "g");
     content = content.replace(regExp, new_id);
     content = "<div>" + content + "</div>";
     jQuery(container).append(content);
 }
+
+jQuery("#insert_dynamic_attributes").live("click", function(){
+//        textarea = jQuery("textarea");
+//        editor_id = textarea.attr("id");
+//        editor = tinyMCE.get(editor_id);
+        editor = tinyMCE.activeEditor;
+        content = " /* " + jQuery(this).prev("select").val() + " */ ";
+        editor.execCommand("mceInsertContent", false, content);
+
+        return false;
+});

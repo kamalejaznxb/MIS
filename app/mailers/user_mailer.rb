@@ -1,7 +1,7 @@
 class UserMailer < ActionMailer::Base
 
   def new_user_hiring(email_group, email_format)
-    @email_format = interpert_email_format(email_format)
+    @email_format = email_format
     
     to_email_accounts = get_email_accounts_of_email_group(email_group.id, 'to')
     cc_email_accounts = get_email_accounts_of_email_group(email_group.id, 'cc')
@@ -19,12 +19,12 @@ class UserMailer < ActionMailer::Base
     end
   end
 
-  def interpret_email_format(email_format)
-    actual_email_format = email_format
-
-    actual_email_format.scan(/\w+/) {|w| puts w}
-
-    email_format
-  end
+#  def interpret_email_format(email_format)
+#    actual_email_format = email_format
+#
+#    actual_email_format.scan(/\w+/) {|w| puts w}
+#
+#    email_format
+#  end
 
 end
