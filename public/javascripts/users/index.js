@@ -1,4 +1,5 @@
 jQuery(document).ready(function(){
+
     jQuery("#users_table").tablesorter({
         widthFixed: true,
         widgets: ['zebra']
@@ -20,6 +21,12 @@ jQuery(document).ready(function(){
             jQuery("#dynamic_attributes_container").hide();
         }
 
+    });
+
+    jQuery("#get_email_preview").live("click", function() {
+       jQuery("#get_email_preview_hidden_field").val("1");
+       jQuery("#user_submit_button").trigger("click");
+       return false;
     });
 
     jQuery('#user_user_role_id').live('change', function(e){

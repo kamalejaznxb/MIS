@@ -6,8 +6,7 @@
     
   </div>
 
-  <%= simple_form_for @user, :html=>{:class=>'space-left-10' }, 
-	:multiple => true, :remote => true do |f| %>
+  <%= simple_form_for @user, :multiple => true, :remote => true, :html => {:class => 'space-left-10', :id => "user_form" }  do |f| %>
     <%= f.input :full_name  %>
     <%= f.input :username %>
 
@@ -62,6 +61,13 @@
     <br />
 
     <%= content_tag :div, :id => "dynamic_attributes_container", :style => "display: none" do %>
+
+      <%= link_to "E-Mail Preview", "#", :id => "get_email_preview", :style => "margin-left: 140px;" %>
+      <%= hidden_field_tag :get_email_preview_hidden_field, "" %>
+
+      <br />
+      <br />
+    
       <%= label_tag :dynamic_user_attribues, "User Info" %>
       <%= select_tag :dynamic_user_attributes, options_from_collection_for_select(select_box_of_user_attributes, :first, :last) %>
       <%= link_to_dynamic_attributes_inserter %>
@@ -71,11 +77,16 @@
       <%= label_tag :dynamic_email_accounts_attributes, "E-Mail Account Info" %>
       <%= select_tag :dynamic_email_accounts_attributes, options_from_collection_for_select(select_box_for_user_email_accounts_attributes, :first, :last) %>
       <%= link_to_dynamic_attributes_inserter %>
+
+      <br />
+
     <% end %>
     
     <br />
 
-    <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0' %>
+    
+
+    <%= f.button 'submit', :value=>'Save', :class=>'new-user  submit width-auto margin-0', :id => "user_submit_button" %>
     or
     <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>
   <% end %>

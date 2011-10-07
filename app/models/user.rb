@@ -194,7 +194,12 @@ class User < ActiveRecord::Base
   end
 
   def user_email_accounts(email_account_category_id)
-    email_accounts.where("email_account_category_id = #{email_account_category_id}").all.map {|e| e.email_address}.join(", ")
+    if (self.new_record?)
+      email_accounts = self.email_accounts.map {|e| e.email_address if e.email_account_category_id == email_account_category_id}.join("")
+    else
+      email_accounts = self.email_accounts.where("email_account_category_id = #{email_account_category_id}").all.map {|e| e.email_address}.join(", ")
+    end
+    email_accounts
   end
   
 end

@@ -6,8 +6,7 @@
 
   </div>
 
-  <%= simple_form_for @email_group, :html => {:class => 'space-left-10' },
-	:remote => true do |f| %>
+  <%= simple_form_for @email_group, :remote => true, :html => { :class => 'space-left-10' } do |f| %>
 
     <%= f.input :name  %>
 

@@ -18,21 +18,32 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new params[:user]
-    respond_to do |format|
-      if @user.save
+    if (params[:get_email_preview_hidden_field] && params[:get_email_preview_hidden_field] == "1")
+      if params[:email_group] && params[:email_group] != ""
+        @email_group = EmailGroup.where("id = #{params[:email_group]}").first
+        @proper_email_format = interpret_email_format(params[:email_format])
+        #            UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
+      end
+      respond_to do |format|
+        format.js {render :action => "get_email_preview"}
+      end
+    else
+      respond_to do |format|
+        if @user.save
 
-        if params[:email_group] && params[:email_group] != ""
-          @email_group = EmailGroup.where("id = #{params[:email_group]}").first
-          @proper_email_format = interpret_email_format(params[:email_format])
-          UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
+          if params[:email_group] && params[:email_group] != ""
+            @email_group = EmailGroup.where("id = #{params[:email_group]}").first
+            @proper_email_format = interpret_email_format(params[:email_format])
+            UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
+          end
+
+          @users = current_user.get_users
+          format.html { redirect_to( users_path,  :notice => 'Successfuly Sign In .' ) }
+          format.js
+        else
+          format.html { redirect_to( users_path, :alert => 'Can not save User' ) }
+          format.js
         end
-        
-        @users = current_user.get_users
-        format.html { redirect_to( users_path,  :notice => 'Successfuly Sign In .' ) }
-        format.js
-      else
-        format.html { redirect_to( users_path, :alert=>'Can not save User' ) }
-        format.js
       end
     end
   end
@@ -46,16 +57,27 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    respond_to do |format|
-      if @user.update_attributes params[:user]
-        if params[:email_group] && params[:email_group] != ""
-          @email_group = EmailGroup.where("id = #{params[:email_group]}").first
-          @proper_email_format = interpret_email_format(params[:email_format])
-          UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
+    if (params[:get_email_preview_hidden_field] && params[:get_email_preview_hidden_field] == "1")
+      if params[:email_group] && params[:email_group] != ""
+            @email_group = EmailGroup.where("id = #{params[:email_group]}").first
+            @proper_email_format = interpret_email_format(params[:email_format])
+#            UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
+      end
+      respond_to do |format|
+        format.js {render :action => "get_email_preview"}
+      end
+    else
+      respond_to do |format|
+        if @user.update_attributes params[:user]
+          if params[:email_group] && params[:email_group] != ""
+            @email_group = EmailGroup.where("id = #{params[:email_group]}").first
+            @proper_email_format = interpret_email_format(params[:email_format])
+            UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
+          end
+          format.js
+        else
+          format.js
         end
-        format.js
-      else
-        format.js
       end
     end
   end
@@ -76,6 +98,12 @@ class UsersController < ApplicationController
 
   def user_email_accounts
     @user = User.where("id = #{params[:user_id]}").first
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def get_email_preview
     respond_to do |format|
       format.js
     end
