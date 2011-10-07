@@ -23,7 +23,8 @@ class UsersController < ApplicationController
 
         if params[:email_group] && params[:email_group] != ""
           @email_group = EmailGroup.where("id = #{params[:email_group]}").first
-          UserMailer.new_user_hiring(@email_group).deliver
+          @proper_email_format = interpret_email_format(params[:email_format])
+          UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
         end
         
         @users = current_user.get_users
