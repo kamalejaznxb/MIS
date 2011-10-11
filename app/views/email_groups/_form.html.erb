@@ -16,9 +16,30 @@
 
     <%= f.input :email_format, :as => :text, :label => "Email Format", :input_html => { :class => "WYSIWYG_Editor" } %>
 
+    <%= content_tag :div, :id => "email_group_attachments_container" do %>
+      <%= f.simple_fields_for :email_group_attachments do |builder| %>
+        <%= content_tag :div, :style => "width: 450px; float: left;" do %>
+          <%= builder.label :attachment_file_name, "E-Mail Attachment" %>
+          <%= content_tag :span, builder.object.attachment_file_name, :style => "font-weight: bold;" %>
+          <%= builder.input :_destroy, :as => :hidden, :input_html => { :value => "0" } %>
+          &nbsp; &nbsp;
+          <%= link_to_remove_email_group_attachment  %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <br />
+    <br />
+
+    <%= content_tag :div, "", :class => "clear" %>
+    
+    <%= add_new_email_group_attachment(f) %>
+
+    <br />
     <br />
 
     <%= content_tag :div, :id => "dynamic_attributes_container" do %>
+
       <%= label_tag :dynamic_user_attribues, "User Info" %>
       <%= select_tag :dynamic_user_attributes, options_from_collection_for_select(select_box_of_user_attributes, :first, :last) %>
       <%= link_to_dynamic_attributes_inserter %>

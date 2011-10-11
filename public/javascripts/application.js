@@ -142,3 +142,12 @@ jQuery("#insert_dynamic_attributes").live("click", function(){
 
         return false;
 });
+
+function add_new_email_group_attachment(container, content)
+{
+    var new_id = new Date().getTime();
+    var regExp = new RegExp("new_attachment", "g");
+    content = content.replace(regExp, new_id);
+    content = "<div>" + content + "</div>";
+    jQuery(container).append(content);
+}

@@ -60,7 +60,7 @@ class EmailGroupsController < ApplicationController
         @email_groups = EmailGroup.all
         format.html { redirect_to(@email_group, :notice => 'Email group was successfully created.') }
         format.xml  { render :xml => @email_group, :status => :created, :location => @email_group }
-        format.js
+        format.js 
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @email_group.errors, :status => :unprocessable_entity }

@@ -6,6 +6,9 @@ class UserMailer < ActionMailer::Base
     to_email_accounts = get_email_accounts_of_email_group(email_group.id, 'to')
     cc_email_accounts = get_email_accounts_of_email_group(email_group.id, 'cc')
 
+    email_group.email_group_attachments.each do |email_group_attachment|
+      attachments[email_group_attachment.attachment_file_name] = File.read(email_group_attachment.attachment.path)
+    end
     mail(:to => "#{to_email_accounts}", :cc => "#{cc_email_accounts}", :subject => email_group.email_subject , :from => "mis@nxb.com.pk")
   end
 

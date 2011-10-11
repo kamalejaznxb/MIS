@@ -1,3 +1,4 @@
 textarea = jQuery("textarea");
 editor_id = textarea.attr("id");
 tinyMCE.get(editor_id).setContent("<%= escape_javascript(@email_group.email_format.html_safe) %>");
+jQuery("#email_group_attachments_list").html("<%= escape_javascript(@email_group.email_group_attachments_list)  %>")

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927145033) do
+ActiveRecord::Schema.define(:version => 20111011103007) do
 
   create_table "capacities", :force => true do |t|
     t.string   "title"
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(:version => 20110927145033) do
     t.integer  "email_account_id"
     t.integer  "email_group_id"
     t.string   "scope"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "email_group_attachments", :force => true do |t|
+    t.integer  "email_group_id"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -73,4 +73,20 @@ module ApplicationHelper
     link_to "Insert Attribute", "#", :id => "insert_dynamic_attributes"
   end
 
+  def add_new_email_group_attachment(f)
+    new_object = f.object.email_group_attachments.build
+    fields = f.simple_fields_for :email_group_attachments, new_object, :child_index => "new_attachment" do |builder|
+      label = builder.label :attachment, "Email Attachment"
+      file_field = builder.file_field :attachment
+      label + file_field
+    end
+    link_to "Add E-Mail Group Attachment", "#", :onclick => "add_new_email_group_attachment('#email_group_attachments_container', '#{escape_javascript(fields)}')"
+  end
+
+  def link_to_remove_email_group_attachment
+    link_to "Remove", "#", :style => "width: 50px;", :onclick => "jQuery(this).prev('input[type=hidden]').val('1'); jQuery(this).parent().hide();"
+  end
+
+  
+
 end

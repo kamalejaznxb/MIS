@@ -62,6 +62,10 @@
 
     <%= content_tag :div, :id => "dynamic_attributes_container", :style => "display: none" do %>
 
+      <%= label_tag :email_attachments_list, "E-Mail Attachments" %>
+      <%= content_tag :div, "", :id => "email_group_attachments_list",  :style => "margin-left: 140px; font-weight: bold;"  %>
+      <br />
+
       <%= link_to "E-Mail Preview", "#", :id => "get_email_preview", :style => "margin-left: 140px;" %>
       <%= hidden_field_tag :get_email_preview_hidden_field, "" %>
 

@@ -13,6 +13,7 @@ gem "meta_where"
 gem "meta_search"
 gem "ipaddress"
 gem 'remotipart', '~>0.4'
+gem 'responds_to_parent'
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -12,6 +12,7 @@ jQuery(document).ready(function(){
         val = jQuery(this).val();
         if (val != "")
         {
+            jQuery("#email_group_attachments_list").html("");
             jQuery("#dynamic_attributes_container").show();
             href = "/email_groups/get_email_format?email_group=" + val;
             jQuery("#temp_link").attr("href", href).trigger("click");
