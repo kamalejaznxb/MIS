@@ -1,5 +1,7 @@
 Mis::Application.routes.draw do
 
+  resources :vendors
+
   resources :email_groups do
     collection do
       get   'get_email_format'

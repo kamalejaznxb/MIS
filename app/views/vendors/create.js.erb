@@ -1,0 +1,7 @@
+<% if @vendor.errors.empty? %>
+  jQuery(".cancel").trigger("click");
+  jQuery("#listings").html("<%= escape_javascript(render :partial => "list", :locals => {:vendors => @vendors}) %>");
+  jQuery("#vendors_table").tablesorter({widthFixed: true, widgets: ['zebra']}).tablesorterPager({container: jQuery("#pager"), size: 5});
+<% else %>
+  jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @vendor}) %>");
+<% end %>

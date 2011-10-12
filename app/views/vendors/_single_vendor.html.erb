@@ -1,0 +1,8 @@
+<td><%= vendor.name %></td>
+<td><%= vendor.description.html_safe %></td>
+<td><%= vendor.address %></td>
+<td><%= vendor.phone %></td>
+<td><%= vendor.created_at %></td>
+<td>
+  <%= link_to "Edit", edit_vendor_path(vendor), :remote => true %>
+</td>

@@ -1,0 +1,19 @@
+<table id="vendors_table" class="tablesorter">
+  <thead>
+    <tr>
+      <th class="header bold">Name</th>
+      <th class=""header bold>Description</th>
+      <th class=""header bold>Address</th>
+      <th class="header bold">Phone</th>
+      <th class="header bold">Created at</th>
+      <th class="header bold">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="vendors_list_in_table">
+    <% vendors.each do |vendor| %>
+      <tr class="<%= cycle("odd", "even") %>" id = "vendor-row-<%= vendor.id %>">
+        <%= render :partial => "single_vendor", :locals => {:vendor => vendor} %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

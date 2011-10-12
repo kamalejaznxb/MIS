@@ -1,0 +1,6 @@
+<% if @vendor.errors.empty? %>
+  jQuery(".cancel").trigger("click");
+  jQuery("#vendor-row-<%= @vendor.id %>").html("<%= escape_javascript(render :partial => "single_vendor", :locals => {:vendor => @vendor}) %>");
+<% else %>
+  jQuery("#errors").html("<%= escape_javascript(render :partial => "shared/error_messages", :locals => {:target => @vendor}) %>");
+<% end %>
