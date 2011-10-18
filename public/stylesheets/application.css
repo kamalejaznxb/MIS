@@ -376,3 +376,7 @@ section.container > footer ul li{
 .float_right {
     float: right;
 }
+
+.in_process {
+    background-color: red;
+}

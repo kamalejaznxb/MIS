@@ -48,6 +48,10 @@
 
     <% end %>
 
+    <%= content_tag :div, :id => "in_process", :class => "hide" do %>
+      <%= image_tag "loading.gif" %>
+    <% end %>
+
 
     <%= content_tag :footer, :id=>'bottom-footer', :class=>'browse' do %>
       <%= yield :footer %>
@@ -64,6 +68,7 @@
   <%= javascript_include_tag "jquery.form" %>
   <%= javascript_include_tag "jquery.remotipart" %>
   <%= javascript_include_tag "jquery.fancybox-1.3.4.pack" %>
+  <%= javascript_include_tag "jquery.blockUI" %>
   <%= yield :js %>
 
 </body>

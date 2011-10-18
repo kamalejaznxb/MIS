@@ -131,15 +131,27 @@
             if (settings.dataType === undefined) {
               xhr.setRequestHeader('accept', '*/*;q=0.5, ' + settings.accepts.script);
             }
+            jQuery.blockUI({
+                message: jQuery("#in_process"),
+                css: {
+                        top: (jQuery(window).height() - 32)/2 + 'px',
+                        left: (jQuery(window).width() - 32)/2 + 'px',
+                        width: "32px"
+                    }
+                }
+            );
             return rails.fire(element, 'ajax:beforeSend', [xhr, settings]);
           },
           success: function(data, status, xhr) {
+            jQuery.unblockUI();
             element.trigger('ajax:success', [data, status, xhr]);
           },
           complete: function(xhr, status) {
+            jQuery.unblockUI();
             element.trigger('ajax:complete', [xhr, status]);
           },
           error: function(xhr, status, error) {
+            jQuery.unblockUI();
             element.trigger('ajax:error', [xhr, status, error]);
           }
         };

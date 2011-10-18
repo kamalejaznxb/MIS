@@ -14,17 +14,12 @@
   <% end %>
 
   <%= content_tag :div, :class=>'clear-both sub-value padding-left-10' do %>
-    <%= label_tag :email, "Email" %>
-    <%= content_tag :p, '', :class=>'left' %>
-  <% end %>
-
-  <%= content_tag :div, :class=>'clear-both sub-value padding-left-10' do %>
     <%= label_tag :user_role, "User Role" %>
     <%= content_tag :p, current_user.user_role, :class=>'left' %>
   <% end %>
 
   <%= content_tag :div, :class=>'clear sub-value padding-left-10' do %>
-    <%= label_tag :center_hall, "Center Hall" %>
-    <%= content_tag :p, '', :class=>'left' %>
+    <%= label_tag :center_hall, "Location" %>
+    <%= content_tag :p, current_user.location.nil? ? "" : current_user.location.full_hierarchy, :class=>'left' %>
   <% end %>
 
