@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
       @current_user ||= ((session[:user_id] && User.find_by_id(session[:user_id])) || 0)
 
    end
+
    def check_user
       unless params[:controller] == 'sessions'
          unless session.has_key?(:user_id)

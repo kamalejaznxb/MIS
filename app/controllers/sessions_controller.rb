@@ -20,7 +20,8 @@ class SessionsController < ApplicationController
     user = UserAuth.check_user params[:user][:login], params[:user][:password]
     respond_to do |format|
       #unless user.empty?
-      unless user == false
+      logger.debug("XXXXXXXXXXX #{user}")
+      if user
         #session[:user] = user.first.full_name
         #session[:role] = user.first.user_role.to_s
         #session[:user_id] = user.first.id
