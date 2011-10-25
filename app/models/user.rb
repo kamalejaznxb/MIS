@@ -197,7 +197,13 @@ class User < ActiveRecord::Base
     if (self.new_record?)
       email_accounts = self.email_accounts.map {|e| e.email_address if e.email_account_category_id == email_account_category_id}.join("")
     else
-      email_accounts = self.email_accounts.where("email_account_category_id = #{email_account_category_id}").all.map {|e| e.email_address}.join(", ")
+#      email_accounts = self.email_accounts.where("email_account_category_id = #{email_account_category_id}").all.map {|e| e.email_address}.join(", ")
+      email_account = self.email_accounts.where("email_account_category_id = #{email_account_category_id} and status = 1").last
+      if email_account
+        email_accounts = email_account.email_address
+      else
+        email_accounts = ""
+      end
     end
     email_accounts
   end

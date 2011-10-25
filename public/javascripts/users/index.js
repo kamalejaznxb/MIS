@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
         widgets: ['zebra']
         }).tablesorterPager({
         container: jQuery("#pager"),
-        size: 5
+        size: 20
     });
 
     jQuery("#email_group").live("change", function() {

@@ -30,7 +30,7 @@
         <%= text_field_tag "pagedisplay", "", :class => "pagedisplay" %>
         <%= image_tag "tablesorter/pager/next.png", :class => "next" %>
         <%= image_tag "tablesorter/pager/last.png", :class => "last" %>
-        <%= select_tag "pagesize", options_from_collection_for_select([["3", "3"], ["5", "5"], ["10", "10"], ["20", "20"], ["30", "30"], ["40", "40"]], :first, :last), :class => "pagesize" %>
+        <%= select_tag "pagesize", options_from_collection_for_select([["5", "5"], ["10", "10"], ["20", "20"]], :first, :last, 20), :class => "pagesize" %>
       </form>
 </div>
 
