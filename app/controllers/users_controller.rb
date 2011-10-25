@@ -22,7 +22,8 @@ class UsersController < ApplicationController
       if params[:email_group] && params[:email_group] != ""
         @email_group = EmailGroup.where("id = #{params[:email_group]}").first
         @proper_email_format = interpret_email_format(params[:email_format])
-        #            UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
+        @proper_email_subject = interpret_email_format(@email_group.email_subject)
+#       UserMailer.new_user_hiring(@email_group, @proper_email_format, @proper_email_subject).deliver
       end
       respond_to do |format|
         format.js {render :action => "get_email_preview"}
@@ -34,7 +35,8 @@ class UsersController < ApplicationController
           if params[:email_group] && params[:email_group] != ""
             @email_group = EmailGroup.where("id = #{params[:email_group]}").first
             @proper_email_format = interpret_email_format(params[:email_format])
-            UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
+            @proper_email_subject = interpret_email_format(@email_group.email_subject)
+            UserMailer.new_user_hiring(@email_group, @proper_email_format, @proper_email_subject).deliver
           end
 
           @users = current_user.get_users
@@ -61,7 +63,8 @@ class UsersController < ApplicationController
       if params[:email_group] && params[:email_group] != ""
             @email_group = EmailGroup.where("id = #{params[:email_group]}").first
             @proper_email_format = interpret_email_format(params[:email_format])
-#            UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
+            @proper_email_subject = interpret_email_format(@email_group.email_subject)
+#            UserMailer.new_user_hiring(@email_group, @proper_email_format, @proper_email_subject).deliver
       end
       respond_to do |format|
         format.js {render :action => "get_email_preview"}
@@ -72,7 +75,8 @@ class UsersController < ApplicationController
           if params[:email_group] && params[:email_group] != ""
             @email_group = EmailGroup.where("id = #{params[:email_group]}").first
             @proper_email_format = interpret_email_format(params[:email_format])
-            UserMailer.new_user_hiring(@email_group, @proper_email_format).deliver
+            @proper_email_subject = interpret_email_format(@email_group.email_subject)
+            UserMailer.new_user_hiring(@email_group, @proper_email_format, @proper_email_subject).deliver
           end
           format.js
         else

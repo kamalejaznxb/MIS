@@ -1,8 +1,8 @@
 jQuery("#get_email_preview_hidden_field").val("");
 jQuery("#email_preview_dialog").html("<%= escape_javascript(@proper_email_format.html_safe) %>").dialog({
+  title: "<%= escape_javascript(@proper_email_subject.html_safe) %>",
   minWidth: 350,
   minHeight: 250,
-  title: "Email Preview",
   show: 'blind',
   modal: true,
   autoOpen: true

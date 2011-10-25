@@ -12,9 +12,27 @@
 
     <%= f.input :description, :as => :text, :input_html => { :class => "WYSIWYG_Editor", :value => "#{@email_group.description}" } %>
 
-    <%= f.input :email_subject, :label => "Email Subject", :input_html => { :type => "text" } %>
+    <%= f.input :email_subject, :as => :text, :label => "Email Subject", :input_html => { :type => "text" } %>
 
     <%= f.input :email_format, :as => :text, :label => "Email Format", :input_html => { :class => "WYSIWYG_Editor" } %>
+
+    <%= content_tag :div, :id => "dynamic_attributes_container" do %>
+
+      <%= label_tag :dynamic_user_attribues, "User Info" %>
+      <%= select_tag :dynamic_user_attributes, options_from_collection_for_select(select_box_of_user_attributes, :first, :last) %>
+      <%= link_to_dynamic_attributes_inserter %>
+
+      <br />
+
+      <%= label_tag :dynamic_email_accounts_attributes, "E-Mail Account Info" %>
+      <%= select_tag :dynamic_email_accounts_attributes, options_from_collection_for_select(select_box_for_user_email_accounts_attributes, :first, :last) %>
+      <%= link_to_dynamic_attributes_inserter %>
+    <% end %>
+
+    <%= content_tag :div, "", :class => "clear" %>
+
+    <br />
+    <br />
 
     <%= content_tag :div, :id => "email_group_attachments_container" do %>
       <%= f.simple_fields_for :email_group_attachments do |builder| %>
@@ -30,27 +48,14 @@
 
     <br />
     <br />
-
     <%= content_tag :div, "", :class => "clear" %>
-    
+
+    <br />
+    <br />
+
     <%= add_new_email_group_attachment(f) %>
 
     <br />
-    <br />
-
-    <%= content_tag :div, :id => "dynamic_attributes_container" do %>
-
-      <%= label_tag :dynamic_user_attribues, "User Info" %>
-      <%= select_tag :dynamic_user_attributes, options_from_collection_for_select(select_box_of_user_attributes, :first, :last) %>
-      <%= link_to_dynamic_attributes_inserter %>
-
-      <br />
-
-      <%= label_tag :dynamic_email_accounts_attributes, "E-Mail Account Info" %>
-      <%= select_tag :dynamic_email_accounts_attributes, options_from_collection_for_select(select_box_for_user_email_accounts_attributes, :first, :last) %>
-      <%= link_to_dynamic_attributes_inserter %>
-    <% end %>
-
     <br />
 
     <%= label_tag :email_accounts_to, "Email (TO)", :style => "width: 70px; padding-right: 0px;" %>

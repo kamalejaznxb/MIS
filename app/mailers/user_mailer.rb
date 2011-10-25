@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 
-  def new_user_hiring(email_group, email_format)
+  def new_user_hiring(email_group, email_format, email_subject)
     @email_format = email_format
     
     to_email_accounts = get_email_accounts_of_email_group(email_group.id, 'to')
@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
     email_group.email_group_attachments.each do |email_group_attachment|
       attachments[email_group_attachment.attachment_file_name] = File.read(email_group_attachment.attachment.path)
     end
-    mail(:to => "#{to_email_accounts}", :cc => "#{cc_email_accounts}", :subject => email_group.email_subject , :from => "mis@nxb.com.pk")
+    mail(:to => "#{to_email_accounts}", :cc => "#{cc_email_accounts}", :subject => email_subject.gsub(/<\/?[^>]+>/, '').gsub(/(&nbsp;|\s)+/, " ") , :from => "mis@nxb.com.pk")
   end
 
   def get_email_accounts_of_email_group(email_group_id, scope)
