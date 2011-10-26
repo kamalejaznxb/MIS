@@ -5,17 +5,11 @@
     
     <%= f.input :assign_to,
       :as=>:select,
-      :collection=>current_user.get_assign_staff,
+      :collection=>current_user.get_assign_and_refer_staff,
       :label=>'Assign',
       :include_blank=>false %>
     
-    <%= f.input :comment,
-      :as=>:text,
-      :input_html=>{ :rows=>'7',
-      :cols=>'60',
-      :onfocus=>"this.value=''",
-      :value=>"Enter Comment here",
-      :onblur=>"if (this.value == '') this.value ='Enter Comment here'" }  %>
+    <%= f.input :comment, :as => :text, :input_html => { :rows=>'7', :cols=>'60' }  %>
     <%= f.button 'submit', :value=>'Assign', :class=>' submit ' %>
     or
     <%= link_to "Cancel", '#', :class=>'space-top-10 cancel' %>

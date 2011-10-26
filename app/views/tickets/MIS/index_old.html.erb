@@ -1,0 +1,27 @@
+<%= content_tag :div, :class=>'menu-holder space-bottom-20' do %>
+  <%= content_tag :div, :class=>'menu-inner' do %>
+    <%= content_tag :ul, :class=>"head", :id=>'main-nav' do %>
+      <%= content_tag :li, "", :style=>"width:90px;" %>
+      <%= content_tag :li, "Subject", :style=>"width:150px;"   %>
+      <%= content_tag :li, "Type", :style=>"width:30px;"  %>
+      <%= content_tag :li, "Ticket", :style=>"width:140px;"  %>
+      <%= content_tag :li, "Owner", :style=>"width:90px;"  %>
+      <%= content_tag :li, "Assigned to", :style=>"width:90px;"  %>
+      <%= content_tag :li, "&nbsp".html_safe  %>
+    <% end %>
+  <% end %>
+<% end %>
+<%= content_tag :div, '', :class=>'spacer' %>
+<%= render :partial=>'tickets/MIS/list' %>
+<%= content_for :css do %>
+  <%= stylesheet_link_tag 'data_list', 'tickets/index' %>
+<% end %>
+<%= content_for :sidebar do %>
+   <%= render :partial => 'tickets/MIS/sidebar' %>
+<% end %>
+<%= content_for :footer do %>
+  <%= render :partial=>"tickets/MIS/footer" %>
+<% end %>
+<%= content_for :js do %>
+ <%= javascript_include_tag 'tiny_mce/tiny_mce' %>
+<% end %>

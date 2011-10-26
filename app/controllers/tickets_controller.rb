@@ -47,7 +47,7 @@ class TicketsController < ApplicationController
          if params.has_key? :assign_to
             format.js{ render '/tickets/MIS/edit' }
          elsif params.has_key? :refered_to
-            format.js{ render '/tickets/MIS/edit_assign_to' }
+            format.js{ render '/tickets/MIS/edit_refered_to' }
          else
             format.js
          end
@@ -60,7 +60,7 @@ class TicketsController < ApplicationController
          @ticket.update_attribute :ticket_status, TicketStatus.find_by_title( 'Solved' )
       else
          if @ticket.update_attributes( params[:ticket] )
-            if params[:ticket].has_key? :assign_to
+            if (params[:ticket].has_key? :assign_to or params[:ticket].has_key? :refered_to)
                @comment = Comment.new
                @comment.ticket = @ticket
                @comment.message = params[:ticket][:comment]

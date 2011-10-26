@@ -1,3 +1,7 @@
-$('.cancel').trigger('click');
-$('<%= escape_javascript render :partial=>'/tickets/MIS/form' %>').insertAfter('#centre-<%= params[:id] %>').show('blind');
-add_row_class('#centre-<%= params[:id] %>');
+jQuery('.cancel').trigger('click');
+jQuery(".inner").after("<div id='popup'><%= escape_javascript(render :partial => "tickets/MIS/form") %></div>");
+
+set_position();
+
+start_rich();
+

@@ -1,41 +1,22 @@
-
-<%= content_tag :div, :id=>'listings' do %>
-  <% @tickets.each do |ticket| %>
-
-    <%= content_tag :ul, :class => cycle("row-even", "row-odd"), :id=>"centre-#{ ticket.id }" do %>
-      <%= content_tag :li, :class=>"ticket", :style=>"width:90px;" do %>
-        <%= content_tag :div,
-          :class=>"type #{ ticket.ticket_status }" do %>
-          <%= ticket.ticket_status %>
-          <%= tag :br %>
-          <%= content_tag :span, ticket.age %>
-        <% end %>
-      <% end %>
-      <%= content_tag :li,  :style=>"width:150px;" do  %>
-        <%= link_to  ticket_path( ticket ), :class=>'subject', :remote=>true do %>
-          <%= truncate( ticket.subject, :length => 17 ) %>
-        <% end %>
-      <% end %>
-      <%= content_tag :li, ticket.ticket_type, :style=>"width:75px;" %>
-      <%= content_tag :li, ticket.created_at, :style=>"width:140px;" %>
-      <%= content_tag :li, ticket.assigned, :style=>"width:90px;" %>
-      <%= content_tag :li, ticket.refered, :style=>"width:90px;" %>
-      <%= content_tag :li, :class=>'row-options hide' do %>
-        <%= content_tag :ul do %>
-          <%= content_tag :li do %>
-            <%= link_to 'Show', ticket_path( ticket ), :remote=>true %>
-          <% end %>
-          <%= content_tag :li, "|" %>
-          <%= content_tag :li do %>
-            <%= link_to "Add Comment",
-              new_ticket_comment_path( ticket, :ticket=>true ),
-              :remote=>true %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-
+<table id="tickets_table" class="tablesorter">
+  <thead>
+    <tr>
+      <th class="header bold">Subject</th>
+      <th class="header bold">Type</th>
+      <th class="header bold">Status</th>
+      <th class="header bold">Owner</th>
+      <th class="header bold">Assigned to</th>
+      <th class="header bold">Referred to</th>
+      <th class="header bold">Age</th>
+      <th class="header bold">Created at</th>
+      <th class="header bold">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="tickets_list_in_table">
+    <% tickets.each do |ticket| %>
+      <tr class="<%= cycle("odd", "even") %>" id = "ticket-row-<%= ticket.id %>">
+        <%= render :partial => "single_ticket", :locals => {:ticket => ticket} %>
+      </tr>
     <% end %>
-
-  <% end %>
-<% end %>
+  </tbody>
+</table>

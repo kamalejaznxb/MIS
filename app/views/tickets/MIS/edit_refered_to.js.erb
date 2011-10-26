@@ -1,0 +1,7 @@
+jQuery('.cancel').trigger('click');
+jQuery(".inner").after("<div id='popup'><%= escape_javascript(render :partial => "tickets/MIS/form_refered") %></div>");
+
+set_position();
+
+start_rich();
+

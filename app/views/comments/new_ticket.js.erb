@@ -1,3 +1,5 @@
-$('.cancel').trigger('click');
-$('<%= escape_javascript render :partial=>'form' %>').insertAfter('#centre-<%= params[:ticket_id] %>').show('blind');
-add_row_class('#centre-<%= params[:ticket_id] %>');
+jQuery(".cancel").trigger('click');
+jQuery(".inner").after("<div id='popup'><%= escape_javascript(render :partial => "form") %></div>")
+
+set_position();
+start_rich();

@@ -15,6 +15,14 @@ $(document).ready(function(){
         value = value.split('-');
         $.getScript('/tickets/'+value[1]);
     });
+
+    jQuery("#tickets_table").tablesorter({
+        widthFixed: true,
+        widgets: ['zebra']
+        }).tablesorterPager({
+        container: jQuery("#pager"),
+        size: 20
+    });
   
 
 });

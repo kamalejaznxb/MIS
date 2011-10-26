@@ -1,6 +1,5 @@
 <%= content_tag :div,
   :class=>'show padding10 under-row space-bottom-10 bottom-border border-color' do  %>
-  <%= link_to 'Cancel', '#', :class=>'cancel right' %>
   <%= content_tag :div, :class=>'clear ' do %>
     <%= content_tag :h3, "Ticket Details", :class=>'bottom-border' %>
   <% end %>
@@ -49,7 +48,7 @@
 
   <%= content_tag :div, :class=>'clear sub-value' do %>
     <%= label_tag :status, "Refered to" %>
-    <%= content_tag :p, @ticket.refered, :class=>'left' %>
+    <%= content_tag :p, @ticket.refered.to_s == "" ? "N / A" : @ticket.refered, :class=>'left' %>
   <% end %>
   <%= content_tag :div, :class=>'clear sub-value' do %>
     <%= label_tag :status, "Priority" %>
@@ -70,7 +69,9 @@
     <% end %>
                                                                                                                      
   <%= simple_form_for  @ticket,
-    :url=>url_for({:action=>"update", :controller=>"tickets"}), :remote=> true do |f| %>
+    :url=>url_for({:action => "update", :controller => "tickets"}), :remote=> true do |f| %>
+
+    <%= content_tag :div, "", :class => "clear" %>
 
     <%= f.association :ticket_priority,
 	:as=>:select,
@@ -89,7 +90,13 @@
       :checked=>'Waiting'
   %>
 
-    <%= f.button :submit, 'Update', :class=>'right submit width-auto margin-0' %>
+    <%= content_tag :div, "", :class => "clear" %>
+
+    <br />
+    <br />
+    
+    <%= f.button :submit, 'Update', :class=>'submit width-auto margin-0' %>
+    <%= link_to 'Cancel', '#', :class => 'cancel' %>
   <% end %>
 
   <%= tag :hr, :class=>'clear' %>
@@ -101,7 +108,6 @@
   <% end %>
 
   <%= render :partial=> 'tickets/comment' %>
-
 
 <% end %>
 

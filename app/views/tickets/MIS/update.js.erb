@@ -1,3 +1,3 @@
-$('div#listings').replaceWith('<%= escape_javascript render :partial=>'/tickets/MIS/list' %>');
-$('.left-bar-list')
-.replaceWith('<%= escape_javascript render :partial=>'/tickets/MIS/sidebar' %>');
+jQuery(".cancel").trigger("click");
+jQuery("#ticket-row-<%= @ticket.id %>").html('<%= escape_javascript render :partial=>'tickets/MIS/single_ticket', :locals => {:ticket => @ticket} %>');
+jQuery('.left-bar-list').replaceWith('<%= escape_javascript render :partial=> 'tickets/sidebar' %>');

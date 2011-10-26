@@ -1,33 +1,36 @@
 <%= content_for :sidebar do %>
   <%= render :partial=>"sidebar" %>
 <% end %>
+
+<%= content_for :css do %>
+  <%= stylesheet_link_tag 'data_list' %>
+  <%= stylesheet_link_tag "tablesorter/jquery.tablesorter" %>
+  <%= stylesheet_link_tag "tablesorter/jquery.tablesorter.pager" %>
+<% end %>
+
 <%= content_for :js do %>
   <%= javascript_include_tag 'tickets/index' %>
   <%= javascript_include_tag 'tiny_mce/tiny_mce' %>
+  <%= javascript_include_tag "jquery.tablesorter" %>
+  <%= javascript_include_tag "jquery.tablesorter.pager" %>
 <% end %>
-<%= content_for :css do %>
-  <%= stylesheet_link_tag 'data_list' %>
-<% end %>
+
 <%= content_for :footer do %>
   <%= render :partial=>"footer" %>
 <% end %>
 
-<%= content_tag :div, :class=>'menu-holder' do %>
-  <%= content_tag :div, :class=>'menu-inner' do %>
-    <%= content_tag :ul, :class=>'head', :id=>'main-nav' do %>
-      <%= content_tag :li, "", :style=>"width:90px;" %>
-      <%= content_tag :li, "Subject", :style=>"width:150px;"   %>
-      <%= content_tag :li, "Type", :style=>"width:75px;"  %>
-      <%= content_tag :li, "Ticket", :style=>"width:140px;"  %>
-      <%= content_tag :li, "Assigned to", :style=>"width:90px;"  %>
-      <%= content_tag :li, "Reffered to", :style=>"width:90px;"  %>
-      <%= content_tag :li, "&nbsp".html_safe  %>
-    <% end %>
-  <% end %>
+<%= content_tag :div, :id => "listings" do %>
+  <%= render :partial => "list", :locals => {:tickets => @tickets} %>
 <% end %>
 
-
-
-<%= content_tag :div, '',:class=>'spacer' %>
-<%= render :partial=>'list' %>
+<div id="pager" class="pager">
+      <form>
+        <%= image_tag "tablesorter/pager/first.png", :class => "first" %>
+        <%= image_tag "tablesorter/pager/prev.png", :class => "prev" %>
+        <%= text_field_tag "pagedisplay", "", :class => "pagedisplay" %>
+        <%= image_tag "tablesorter/pager/next.png", :class => "next" %>
+        <%= image_tag "tablesorter/pager/last.png", :class => "last" %>
+        <%= select_tag "pagesize", options_from_collection_for_select([["5", "5"], ["10", "10"], ["20", "20"]], :first, :last, 20), :class => "pagesize" %>
+      </form>
+</div>
 

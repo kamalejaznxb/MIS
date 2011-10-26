@@ -35,6 +35,7 @@ class Ticket < ActiveRecord::Base
     def issue_type
         " "
     end
+    
     def t_type=( type )
         TicketCategory.find_by_title( type ).title == "Technical" ?
         self.ticket_type = TicketType.find_by_title( "Op" ):

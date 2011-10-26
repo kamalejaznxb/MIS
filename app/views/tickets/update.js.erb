@@ -1,2 +1,2 @@
-$('div#listings').replaceWith('<%= escape_javascript render :partial=>'tickets/list' %>');
+$("#ticket-row-<%= @ticket.id %>").html('<%= escape_javascript render :partial=>'tickets/single_ticket', :locals => {:ticket => @ticket} %>');
 $('.left-bar-list').replaceWith('<%= escape_javascript render :partial=> 'tickets/sidebar' %>');

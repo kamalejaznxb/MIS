@@ -90,7 +90,10 @@ class User < ActiveRecord::Base
     elsif ( self.user_role.title== "noc_admin" || self.user_role.title=="noc")
       User.search({ 'user_role_title_like' => 'MIS_admin'})
     end
+  end
 
+  def get_assign_and_refer_staff
+    User.where("user_role_id NOT IN (6, 7, 8)")
   end
 
   def get_user_roles
