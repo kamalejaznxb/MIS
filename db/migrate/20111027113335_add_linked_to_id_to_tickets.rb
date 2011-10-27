@@ -7,3 +7,6 @@ class AddLinkedToIdToTickets < ActiveRecord::Migration
     remove_column :tickets, :linked_to_id
   end
 end
+
+
+
