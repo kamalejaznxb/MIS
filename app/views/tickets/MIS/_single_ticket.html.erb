@@ -1,15 +1,17 @@
-<td><%= ticket.ticket_category %></td>
+<td><%= ticket.subject %></td>
 <td><%= ticket.ticket_type %></td>
 <td><%= ticket.ticket_status %></td>
 <td><%= ticket.user %></td>
 <td><%= ticket.assigned %></td>
 <td><%= ticket.refered %></td>
 <td><%= ticket.age %></td>
+<td><%= ticket.linked_to.to_s == "" ? "N / A" : (link_to ticket.linked_to.subject, ticket.linked_to, :remote => true) %></td>
 <td><%= ticket.created_at %></td>
 <td>
   <%= link_to 'Show', ticket_path( ticket ), :remote => true %>
   |
-  <%= link_to "Add Comment", new_ticket_comment_path(ticket, :ticket => true), :remote => true %>
+  <%#= link_to "Add Comment", new_ticket_comment_path(ticket, :ticket => true), :remote => true %>
+  <%= link_to "Add Comment", edit_ticket_path(ticket, :add_comment_and_update => true), :remote => true %>
   |
   <%= link_to "Assign to", edit_ticket_path(ticket, :assign_to => true), :remote => true %>
   |

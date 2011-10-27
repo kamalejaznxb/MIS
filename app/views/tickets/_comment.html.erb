@@ -3,7 +3,7 @@
   <%= tag :br %>
   <% @ticket.comments.each do |comment|  %>
     <%= content_tag :div, :class=>'clear space-bottom-10' do %>
-      <%= content_tag :h3, "Comment by : #{ comment.user }", :class=>'bottom-border space-bottom-10' %>
+      <%= content_tag :h3, "Comment by : #{ comment.user.to_s }", :class=>'bottom-border space-bottom-10' %>
       <%= content_tag :p, comment.message.html_safe, :class=>'' %>
       <% if comment.attachment.exists? %>
           <% if comment.attachment.content_type =~ /^image/ %>

@@ -28,16 +28,12 @@
 
   <%= content_tag :div, :class=>'clear sub-value' do %>
     <%= label_tag :solution_time, "Center" %>
-    <%= content_tag :p, "C3", :class=>'left' %>
+    <%= content_tag :p, @ticket.user.location.nil? ? "N / A" : @ticket.user.location.full_hierarchy , :class=>'left' %>
   <% end %>
-  <%= content_tag :div, :class=>'clear sub-value' do %>
-    <%= label_tag :status, "Hall" %>
-    <%= content_tag :p, "4", :class=>'left' %>
-  <% end %>
-
-  <%= tag :hr, :class=>'clear' %>
+ 
+ <%= tag :hr, :class=>'clear' %>
   <%= tag :br %>
-  <%= content_tag :div, :class=>'clear ' do %>
+  <%= content_tag :div, :class => 'clear' do %>
     <%= content_tag :h3, "Ticket Status", :class=>'bottom-border' %>
   <% end %>
 
@@ -68,37 +64,6 @@
         <% end %>
     <% end %>
                                                                                                                      
-  <%= simple_form_for  @ticket,
-    :url=>url_for({:action => "update", :controller => "tickets"}), :remote=> true do |f| %>
-
-    <%= content_tag :div, "", :class => "clear" %>
-
-    <%= f.association :ticket_priority,
-	:as=>:select,
-	:collection=>TicketPriority.all,
-	:label=>'Change Priority',
-	:label_html=>{ :class=>'text-align-right width-auto' },
-	:wrapper_html=>{ :class=>'width-auto-span width-auto display-block-important' },
-	:include_blank=>false if current_user.can_user_do? :change_priority
-    %>
-    <%= f.association :ticket_status,
-      :as=>:radio,
-      :collection=> TicketStatus.mis_status,
-      :label=>'Change Status',
-      :label_html=>{ :class=>'text-align-right width-auto' },
-      :wrapper_html=>{ :class=>'width-auto-span width-auto display-block-important' },
-      :checked=>'Waiting'
-  %>
-
-    <%= content_tag :div, "", :class => "clear" %>
-
-    <br />
-    <br />
-    
-    <%= f.button :submit, 'Update', :class=>'submit width-auto margin-0' %>
-    <%= link_to 'Cancel', '#', :class => 'cancel' %>
-  <% end %>
-
   <%= tag :hr, :class=>'clear' %>
   <%= tag :br %>
 
@@ -110,5 +75,10 @@
   <%= render :partial=> 'tickets/comment' %>
 
 <% end %>
+
+<%= link_to "Cancel", "#", :class => "cancel", :style => "margin-left: 10px;" %>
+
+<br />
+<br />
 
 

@@ -210,5 +210,9 @@ class User < ActiveRecord::Base
     end
     email_accounts
   end
+
+  def get_tickets_for_linked_to
+    self.tickets.order("id DESC")
+  end
   
 end

@@ -47,7 +47,9 @@ class TicketsController < ApplicationController
          if params.has_key? :assign_to
             format.js{ render '/tickets/MIS/edit' }
          elsif params.has_key? :refered_to
-            format.js{ render '/tickets/MIS/edit_refered_to' }
+            format.js { render '/tickets/MIS/edit_refered_to' }
+         elsif params.has_key? :add_comment_and_update
+            format.js { render 'add_comment_and_update' }
          else
             format.js
          end

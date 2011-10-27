@@ -18,10 +18,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = current_user.
-      tickets.
-      find_by_id(params[:ticket_id]).
-      comments.build(params[:comment])
+    @comment = current_user.tickets.find_by_id(params[:ticket_id]).comments.build(params[:comment])
     @comment.user = current_user
     @comment.save
     respond_to do |format|

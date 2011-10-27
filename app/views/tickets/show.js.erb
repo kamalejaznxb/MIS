@@ -1,5 +1,8 @@
-$('.cancel').trigger('click');
-$('<%= escape_javascript render :partial=>'show' %>').insertAfter('#centre-<%= params[:id] %>').show('blind');
-$(".stars-wrapper").rating();
-add_row_class('#centre-<%= params[:id] %>');
-fancy_box();
+jQuery('.cancel').trigger('click');
+
+jQuery('.inner').after("<div id='popup'><%= escape_javascript(render :partial => "show") %> </div>")
+
+set_position();
+
+jQuery(".stars-wrapper").rating();
+

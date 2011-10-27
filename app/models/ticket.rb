@@ -14,6 +14,8 @@ class Ticket < ActiveRecord::Base
         :medium => "300x300>", :thumb => "100x100>"
     }
 
+    belongs_to :linked_to, :class_name => "Ticket"
+
     def assign
         self.assigned_to
     end

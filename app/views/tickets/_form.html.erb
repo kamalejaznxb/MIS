@@ -43,6 +43,9 @@
 #      :value=>"Enter Message here",
 #      :onblur=>"if (this.value == '') this.value ='Enter Message here'" } 
     %>
+
+    <%= f.label :linked_to_id, "Linked to" %>
+    <%= f.collection_select :linked_to_id, current_user.get_tickets_for_linked_to, :id, :subject, :include_blank => true %>
     
     <%= f.input :attachment, :as=>:file, :required=>false %>
     <%= f.button 'submit', :value=>'Save', :class=>'new-ticket  submit width-auto margin-0' %>
